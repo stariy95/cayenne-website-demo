@@ -3,3 +3,5 @@
 public
 staging
 static/rev-manifest.json
+static/js
+static/css
