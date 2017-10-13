@@ -1,0 +1,44 @@
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            {{ range .Site.Menus.footer}}
+            <div class="col">
+                <h3 class="footer">{{ .Name }}</h3>
+                <ul class="list-unstyled">
+                    {{ range .Children }}
+                    <li><a href="{{ .URL }}" class="footer">{{ .Name }}</a>
+                    {{ end }}
+                </ul>
+            </div>
+            {{ end }}
+            <div class="col">
+                <h3 class="footer">News</h3>
+                <ul class="list-unstyled">
+                    {{ range first 5 (where (where $.Page.Site.Pages "Type" "news") "Kind" "page") }}
+                    <li>
+                        <div>
+                            <small class="text-muted">{{ .Date.Format "Jan 02, 2006" }}</small>
+                        </div>
+                        <a href="{{ .URL }}" class="footer">{{ .Title }}</a>
+                    </li>
+                    {{ end }}
+                    <li><a href="{{ .Site.BaseURL }}news" class="footer">More news</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-8">
+                <p class="text-center page-footer-copyright">
+                    Copyright © 2001-{{ now.Year }} Apache Software Foundation. Apache Cayenne, Cayenne, Apache,
+                    the Apache feather logo, and the Apache Cayenne project logo are trademarks of The Apache Software Foundation.
+                    <a href="{{ .Ref "privacy-policy.md" | safeURL }}">Privacy policy</a>
+                </p>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</footer>

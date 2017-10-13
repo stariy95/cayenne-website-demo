@@ -1,0 +1,36 @@
+releases:
+  - version: "4.1"
+    latestRevision: "4.1.M1"
+    type: "Alpha"
+    date: "2017-10-13"
+    visible: true
+
+  - version: "4.0"
+    latestRevision: "4.0.B2"
+    type: "Beta"
+    date: "2017-10-6"
+    visible: true
+
+  - version: "3.1"
+    latestRevision: "3.1.1"
+    type: "Stable"
+    date: "2016-5-16"
+    visible: true
+
+  - version: "3.0"
+    latestRevision: "3.0.2"
+    type: "Stable"
+    date: "2011-6-21"
+    visible: false
+
+  - version: "2.0"
+    latestRevision: "2.0.4"
+    type: "Legacy"
+    date: "2007-10-12"
+    visible: false
+
+  - version: "1.2"
+    latestRevision: "1.2.4"
+    type: "Legacy"
+    date: "2007-10-12"
+    visible: false

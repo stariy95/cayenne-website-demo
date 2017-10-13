@@ -1,0 +1,6 @@
+<ul>
+{{ range first 5 (where (where $.Page.Site.Pages "Type" "news") "Kind" "page") }}
+    <li><a href="{{ .URL }}" class="link black dim">{{ .Title }}</a>
+{{ end }}
+    <li><a href="/news">All news</a>
+</ul>

@@ -1,0 +1,23 @@
+title = "Apache Cayenne"
+DefaultContentLanguage = "en"
+baseURL = "https://192.168.1.133:3000/"
+
+canonifyurls = false
+uglyurls = false
+
+[mediaTypes]
+    [mediaTypes."application/rdf"]
+    suffix = "rdf"
+
+[outputFormats.rdf]
+    mediaType = "application/rdf"
+    isPlainText = true
+
+[permalinks]
+    news = "/:year/:month/:filename/"
+
+[[menu.footer]]
+    name = "Bug/Feature Tracker"
+    weight = 10
+    url = "https://issues.apache.org/jira/browse/CAY"
+    parent = "collaboration"

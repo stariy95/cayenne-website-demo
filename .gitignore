@@ -1,0 +1,5 @@
+.idea
+*.iml
+public
+staging
+static/rev-manifest.json

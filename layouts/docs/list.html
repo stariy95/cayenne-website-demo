@@ -1,0 +1,35 @@
+{{ partial "head.html" . }}
+{{ partial "header.html" . }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>{{ .Title }}</h1>
+                {{- .Content -}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <ul>
+                    {{- range where $.Site.Data.cayenne.releases "visible" true -}}
+                    {{- $ver := .version -}}
+                    <li>
+                        <h2>Version {{ $ver }}</h2>
+                        <ul>
+                            {{- range $.Data.Pages -}}
+                            {{- if eq .Params.cayenneVersion $ver -}}
+                            <li>
+                                <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+                            </li>
+                            {{- end -}}
+                            {{- end -}}
+                        </ul>
+                    </li>
+                    {{- end -}}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{{ partial "footer.html" . }}
+{{ partial "tail.html" . }}
