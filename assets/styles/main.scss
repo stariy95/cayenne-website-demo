@@ -1,4 +1,10 @@
 @import 'mixins';
+@import 'custom-fonts';
+
+body {
+  font-family: 'montserratlight', sans-serif;
+  font-weight: lighter;
+}
 
 h1,h2,h3,h4,h5,h6 {
   font-weight: lighter;

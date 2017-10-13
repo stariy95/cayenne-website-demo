@@ -134,7 +134,7 @@ release target already created for further work, but this was probably
 already done when a branch was created in preparation for release.
 * Update the [DOAP file](http://svn.apache.org/repos/asf/cayenne/site/cms/trunk/content/doap/cayenne.rdf)
  which will update
-http://projects.apache.org/projects/cayenne.html automatically.
+https://projects.apache.org/project.html?cayenne automatically.
 * If the release is significant, consider press releases to relevant news
 sources
 * Review the main website pages (front page and why-cayenne especially) to
