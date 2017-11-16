@@ -1,0 +1,44 @@
+@import 'custom-fonts';
+@import 'bootstrap-custom';
+@import '../node_modules/highlight.js/styles/github.css';
+
+body {
+  font-family: 'montserratlight', sans-serif;
+}
+
+.article {
+  margin-bottom: 10px;
+}
+
+pre {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.page-header {
+  background-color: #da5759;
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
+
+.page-footer {
+  background-color: #404040;
+  color: #fff;
+  font-size: smaller;
+  padding: 48px 0 32px 0;
+}
+
+.footer {
+  color: #fff;
+}
+
+hr.footer {
+  background-color: #555;
+  color: #555;
+  width: 100%;
+}
+
+.page-footer-copyright {
+  font-size: small;
+  color: #666;
+}
