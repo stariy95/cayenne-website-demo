@@ -4,7 +4,7 @@ var changed = require('gulp-changed');
 
 gulp.task('images', function () {
   return gulp.src('images/**/*.*')
-    .pipe(changed('../site/staging/img'))
+    .pipe(changed(global.hugoConfig.stagingDir + '/img'))
     .pipe(imagemin())
-    .pipe(gulp.dest('../site/staging/img'));
+    .pipe(gulp.dest(global.hugoConfig.stagingDir + '/img'));
 });

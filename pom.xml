@@ -27,16 +27,38 @@
 
     <packaging>pom</packaging>
 
+    <properties>
+        <node.version>v8.9.1</node.version>
+        <yarn.version>v1.3.2</yarn.version>
+        <frontend.plugin.version>1.6</frontend.plugin.version>
+        <gulp.task>serve</gulp.task>
+    </properties>
+
+    <!--
+    By default mvn will start gulp task dev build with live reload.
+    Use `mvn -Ppublish` to build production version of site (in src/main/site/public).
+    -->
+    <profiles>
+        <profile>
+            <id>publish</id>
+            <properties>
+                <gulp.task>publish</gulp.task>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
+        <!-- dev version can be build by simple `mvn` command -->
         <defaultGoal>clean compile</defaultGoal>
 
         <plugins>
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.6</version>
+                <version>${frontend.plugin.version}</version>
 
                 <executions>
+                    <!-- check and install node and yarn -->
                     <execution>
                         <id>install node and yarn</id>
                         <goals>
@@ -44,6 +66,7 @@
                         </goals>
                     </execution>
 
+                    <!-- check and install project dependencies -->
                     <execution>
                         <id>yarn install</id>
                         <goals>
@@ -51,21 +74,24 @@
                         </goals>
                     </execution>
 
+                    <!-- launch gulp tasks execution -->
                     <execution>
                         <id>gulp</id>
                         <goals>
                             <goal>gulp</goal>
                         </goals>
+                        <configuration>
+                            <arguments>${gulp.task}</arguments>
+                        </configuration>
                     </execution>
                 </executions>
 
                 <configuration>
-                    <nodeVersion>v8.9.1</nodeVersion>
-                    <yarnVersion>v1.3.2</yarnVersion>
+                    <nodeVersion>${node.version}</nodeVersion>
+                    <yarnVersion>${yarn.version}</yarnVersion>
                     <workingDirectory>src/main/assets</workingDirectory>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 </project>

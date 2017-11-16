@@ -1,38 +1,29 @@
-var gulp = require('gulp');
+var gulp         = require('gulp');
 var childProcess = require('child_process');
-var gutil = require('gulp-util');
-var path = require('path');
-var del = require('del');
+var path         = require('path');
+var hugo         = require('hugo-bin');
 
-function hugo(drafts) {
-    var src = path.join(process.cwd(), '../site/');
-    var dst = path.join(process.cwd(), '../site/public');
+function runHugo(publish) {
+    var src = global.hugoConfig.srcDir;
+    var dst = global.hugoConfig.publicDir;
     var conf = '../site/config.toml';
 
-    gutil.log('src: ' + src + ' dst: ' + dst);
+    var cmd = hugo + ' --config=' + conf + ' -s ' + src + ' -d ' + dst;
 
-    var cmd = 'hugo --config=' + conf + ' -s ' + src + ' -d ' + dst;
-    if (drafts) {
+    if (publish) {
+        cmd += ' --baseUrl="http://cayenne.apache.org/" ';
+    } else {
         cmd += ' --buildDrafts=true --verbose=true --baseUrl="http://localhost:3000/" ';
     }
 
     var result = childProcess.execSync(cmd, {encoding: 'utf-8'});
-    gutil.log('hugo: \n' + result);
+    console.log('hugo out: \n' + result);
 }
 
-gulp.task('hugo:draft', function() {
-    hugo(true);
+gulp.task('hugo:all', ['revision', 'fonts'], function() {
+    runHugo(false);
 });
 
-gulp.task('hugo:all', ['hugo:delete', 'fonts'], function() {
-    hugo(true);
-});
-
-gulp.task('hugo:delete', ['revision'], function() {
-    var dst = path.join(process.cwd(), '../site/public');
-    del.sync(dst, {force: true});
-});
-
-gulp.task('hugo:live', ['hugo:delete', 'fonts'], function() {
-    hugo(false);
+gulp.task('hugo:publish', ['revision', 'fonts'], function() {
+    runHugo(true);
 });

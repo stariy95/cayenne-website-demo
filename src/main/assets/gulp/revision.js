@@ -6,14 +6,15 @@ var path = require('path');
 gulp.task('revision', ['styles','scripts', 'images'], function() {
     return gulp.src(
         [
-            '../site/staging/css/**/*.css',
-            '../site/staging/js/**/*.js',
-            '../site/staging/img/**/*.*'
+            global.hugoConfig.stagingDir + '/css/**/*.css',
+            global.hugoConfig.stagingDir + '/js/**/*.js',
+            global.hugoConfig.stagingDir + '/img/**/*.*'
         ],
-        {base: path.join(process.cwd(), '../site/staging')})
+        {base: global.hugoConfig.stagingDir})
         .pipe(rev())
-        .pipe(gulp.dest('../site/static'))
-        .pipe(rev.manifest())
-        .pipe(del({dest: '../site/static', force: true}))
-        .pipe(gulp.dest('../site/static'));
+        .pipe(gulp.dest(global.hugoConfig.srcDir + '/static'))
+        // TODO: can't use global.hugoConfig.stagingDir as manifest path is relative to base dir, not current dir
+        .pipe(rev.manifest('../../../../target/site/staging/rev-manifest.json'))
+        .pipe(del({dest: global.hugoConfig.srcDir + '/static', force: true}))
+        .pipe(gulp.dest(global.hugoConfig.srcDir + '/static'));
 });

@@ -6,13 +6,17 @@ gulp.task('serve', ['build:all'], function() {
 
     browserSync({
         server: {
-            baseDir: "../site/public/"
+            baseDir: global.hugoConfig.publicDir
         },
         open: false
     });
 
     watch(
-        ['../site/layouts/**/*', '../site/content/**/*', '../site/archetypes/**/*'], {},
+        [
+            global.hugoConfig.srcDir + '/layouts/**/*',
+            global.hugoConfig.srcDir + '/content/**/*',
+            global.hugoConfig.srcDir + '/archetypes/**/*'
+        ], {},
         function handle() {
 		    gulp.start('build:content');
 	    }

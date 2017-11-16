@@ -1,9 +1,9 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
+var gulp 		 = require('gulp');
+var sass 		 = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
-var cleancss = require('gulp-clean-css');
-var merge = require('merge-stream');
-var concat = require('gulp-concat');
+var cleancss 	 = require('gulp-clean-css');
+var merge 		 = require('merge-stream');
+var concat 		 = require('gulp-concat');
 
 gulp.task('styles', function() {
 	var scssStream = gulp.src('styles/**/*.scss')
@@ -17,5 +17,5 @@ gulp.task('styles', function() {
         .pipe(autoprefixer('last 2 version'))
 		.pipe(cleancss({advanced:false}))
         .pipe(concat('styles.css'))
-        .pipe(gulp.dest('../site/staging/css'));
+        .pipe(gulp.dest(global.hugoConfig.stagingDir + '/css'));
 });

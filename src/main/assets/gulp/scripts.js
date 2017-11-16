@@ -14,5 +14,5 @@ gulp.task('scripts', function() {
         .pipe(jshint())
         .pipe(jshint.reporter("default"))
         .pipe(uglify())
-        .pipe(gulp.dest('../site/staging/js'));
+        .pipe(gulp.dest(global.hugoConfig.stagingDir + '/js'));
 });
