@@ -1,36 +1,62 @@
+#
+# This file used both to generate cayenne.rdf file
+# and to form Documentation section (where only visible version are used).
+# It may also be used in Downloads section.
+#
 releases:
   - version: "4.1"
     latestRevision: "4.1.M1"
     type: "Alpha"
+    description: "Latest development release"
     date: "2017-10-13"
-    visible: true
+    docs: true
+    downloadable: true
+
+    jdk: 1.8
 
   - version: "4.0"
     latestRevision: "4.0.B2"
     type: "Beta"
+    description: "Latest beta release"
     date: "2017-10-6"
-    visible: true
+    docs: true
+    downloadable: true
+    jdk: 1.7
 
   - version: "3.1"
     latestRevision: "3.1.1"
+    description: "Latest stable release"
     type: "Stable"
-    date: "2016-5-16"
-    visible: true
+    date: "2016-05-16"
+    docs: true
+    downloadable: true
+    customLink: "cayenne-parent-3.1.1/cayenne-3.1.1"
+    jdk: 1.5
 
   - version: "3.0"
     latestRevision: "3.0.2"
+    description: "Previous stable release"
     type: "Stable"
-    date: "2011-6-21"
-    visible: false
+    date: "2011-06-21"
+    docs: false
+    downloadable: true
+    customLink: "cayenne-3.0.2"
+    jdk: 1.5
 
   - version: "2.0"
     latestRevision: "2.0.4"
+    description: "Legacy release"
     type: "Legacy"
     date: "2007-10-12"
-    visible: false
+    docs: false
+    downloadable: false
+    jdk: 1.5
 
   - version: "1.2"
     latestRevision: "1.2.4"
+    description: "Legacy release"
     type: "Legacy"
     date: "2007-10-12"
-    visible: false
+    docs: false
+    downloadable: false
+    jdk: 1.5

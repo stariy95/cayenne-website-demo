@@ -1,0 +1,50 @@
+{{ partial "head.html" . }}
+{{ partial "header.html" . }}
+
+{{ $baseurl := .Site.BaseURL }}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <article>
+                <header>
+                    <h1>{{ .Title }}</h1>
+                </header>
+                <section>
+                    {{- range where $.Site.Data.cayenne.releases "downloadable" true -}}
+                    {{- if eq .customLink nil -}}
+                        {{- $.Scratch.Set "link" (printf "%s/cayenne-%s" .latestRevision .latestRevision) -}}
+                    {{- else -}}
+                        {{- $.Scratch.Set "link" .customLink -}}
+                    {{- end -}}
+                    {{- $link := $.Scratch.Get "link" -}}
+                    {{- $revision := .latestRevision -}}
+                    <h3>{{ .description }} - {{ .latestRevision }} ({{ .type }})</h3>
+                    <p>
+                    Requires Java {{ .jdk }} or above.
+                    </p>
+                    <p>
+                    <ul>
+                        {{- range $.Site.Data.download.extensions -}}
+                        <li>
+                            <a href="http://www.apache.org/dyn/closer.lua/cayenne/{{ $link }}{{ .ext }}">Cayenne {{ $revision }}</a>
+                            {{ .description }}
+                            (<a href="http://www.apache.org/dist/cayenne/{{ $link }}{{ .ext }}.asc">pgp</a>,
+                            <a href="http://www.apache.org/dist/cayenne/{{ $link }}{{ .ext }}.md5">md5</a>)
+                        </li>
+                        {{- end -}}
+                        <li>
+                            <a href="https://raw.githubusercontent.com/apache/cayenne/{{ .latestRevision }}/docs/doc/src/main/resources/RELEASE-NOTES.txt">Release Notes</a>
+                        </li>
+                    </ul>
+                    </p>
+                    {{- end -}}
+                    {{ .Content }}
+                </section>
+            </article>
+        </div>
+    </div>
+</div>
+
+{{ partial "footer.html" . }}
+{{ partial "tail.html" . }}

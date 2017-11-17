@@ -11,10 +11,10 @@
         <div class="row">
             <div class="col">
                 <ul>
-                    {{- range where $.Site.Data.cayenne.releases "visible" true -}}
+                    {{- range where $.Site.Data.cayenne.releases "docs" true -}}
                     {{- $ver := .version -}}
                     <li>
-                        <h2>Version {{ $ver }}</h2>
+                        <h2>Version {{ $ver }} <small>({{ .type }})</small></h2>
                         <ul>
                             {{- range $.Data.Pages -}}
                             {{- if eq .Params.cayenneVersion $ver -}}
@@ -23,6 +23,9 @@
                             </li>
                             {{- end -}}
                             {{- end -}}
+                            <li>
+                                <h4><a href="/docs/{{ $ver }}/api/">JavaDoc</a></h4>
+                            </li>
                         </ul>
                     </li>
                     {{- end -}}
