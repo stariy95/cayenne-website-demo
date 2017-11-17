@@ -1,22 +1,23 @@
-var gulp         = require('gulp');
-var childProcess = require('child_process');
-var path         = require('path');
-var hugo         = require('hugo-bin');
+const gulp = require('gulp');
+const childProcess = require('child_process');
+const path = require('path');
+const hugo = require('hugo-bin');
 
 function runHugo(publish) {
-    var src = global.hugoConfig.srcDir;
-    var dst = global.hugoConfig.publicDir;
-    var conf = '../site/config.toml';
+    const src = global.hugoConfig.srcDir;
+    const dst = global.hugoConfig.publicDir;
+    const conf = global.hugoConfig.srcDir + '/config.toml';
 
-    var cmd = hugo + ' --config=' + conf + ' -s ' + src + ' -d ' + dst;
+    let cmd = hugo + ' --config=' + conf + ' -s ' + src + ' -d ' + dst;
 
     if (publish) {
         cmd += ' --baseUrl="http://cayenne.apache.org/" ';
     } else {
-        cmd += ' --buildDrafts=true --verbose=true --baseUrl="http://localhost:3000/" ';
+        cmd += ' --baseUrl="http://' + global.hugoConfig.localhost + ':' + global.hugoConfig.debugPort + '/" '
+            + ' --buildDrafts=true --verbose=true';
     }
 
-    var result = childProcess.execSync(cmd, {encoding: 'utf-8'});
+    const result = childProcess.execSync(cmd, {encoding: 'utf-8'});
     console.log('hugo out: \n' + result);
 }
 

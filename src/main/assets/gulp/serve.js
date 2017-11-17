@@ -1,6 +1,6 @@
-var gulp        = require("gulp");
-var browserSync = require("browser-sync");
-var watch 		= require("gulp-watch");
+const gulp        = require("gulp");
+const browserSync = require("browser-sync");
+const watch       = require("gulp-watch");
 
 gulp.task('serve', ['build:all'], function() {
 
@@ -18,7 +18,7 @@ gulp.task('serve', ['build:all'], function() {
             global.hugoConfig.srcDir + '/archetypes/**/*'
         ], {},
         function handle() {
-		    gulp.start('build:content');
+		    gulp.start('build:all');
 	    }
     );
 

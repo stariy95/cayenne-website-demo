@@ -1,9 +1,19 @@
-var gulp = require('gulp');
-var rev = require('gulp-rev');
-var del = require('rev-del');
-var path = require('path');
+const gulp  = require('gulp');
+const rev   = require('gulp-rev');
+const del   = require('rev-del');
+const path  = require('path');
+const clean = require('gulp-clean');
 
-gulp.task('revision', ['styles','scripts', 'images'], function() {
+gulp.task('clean-static', function() {
+    return gulp.src(
+        [
+            global.hugoConfig.srcDir + '/static/css/**/*.css',
+            global.hugoConfig.srcDir + '/static/js/**/*.js'
+        ],{base: global.hugoConfig.srcDir, read: false})
+        .pipe(clean({force: true}));
+});
+
+gulp.task('revision', ['clean-static', 'styles','scripts', 'images'], function() {
     return gulp.src(
         [
             global.hugoConfig.stagingDir + '/css/**/*.css',
