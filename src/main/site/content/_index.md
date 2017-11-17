@@ -35,7 +35,7 @@ services.
 
 ## Cayenne Modeler
 <span style="float: right">
-    <img style="border: 0px solid black" src="/images/modeler-thumb-4.0.jpg">
+    <img style="border: 0px solid black" src="/img/modeler-thumb-4.0.jpg">
 </span>
 Cayenne is distributed with CayenneModeler - a complete GUI mapping tool 
 that supports reverse-engineering of RDBMS schemas, working with database mappings 
