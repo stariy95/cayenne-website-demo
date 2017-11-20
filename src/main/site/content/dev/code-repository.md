@@ -1,6 +1,12 @@
 ---
 title: Code Repository
 weight: 20
+menu:  
+    footer:
+        weight: 30
+        identifier: code-repo
+        parent: collaboration
+url: /dev/code-repository.html
 ---
 
 ## Git Repository

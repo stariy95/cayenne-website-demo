@@ -1,0 +1,70 @@
+{{ partial "head.html" . }}
+{{ partial "header.html" . }}
+
+{{ $baseurl := .Site.BaseURL }}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <article>
+                <header>
+                    <h1>{{ .Title }}</h1>
+                </header>
+                <section>
+                    {{ .Content }}
+                </section>
+                <section>
+                    <h3>Committers and Project Management Committee</h3>
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>Email</th>
+                            <th>Website</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{- range where $.Site.Data.commiters.commiters "active" true -}}
+                        <tr>
+                            <td>{{ .name }}</td>
+                            <td>{{ .role }}</td>
+                            <td>{{ .email }}</td>
+                            <td>{{ if .website }}{{ .website | markdownify }}{{ end }}</td>
+                        </tr>
+                        {{- end -}}
+                        </tbody>
+                    </table>
+                </section>
+                <section>
+                    <h3>Emeritus Committers</h3>
+                    <p>
+                        Committers who are no longer active in the community. We wish them well and
+                        hope to see them return.
+                    </p>
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Website</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{- range where $.Site.Data.commiters.commiters "active" false -}}
+                        <tr>
+                            <td>{{ .name }}</td>
+                            <td>{{ .email }}</td>
+                            <td>{{ if .website }}{{ .website | markdownify }}{{ end }}</td>
+                        </tr>
+                        {{- end -}}
+                        </tbody>
+                    </table>
+                </section>
+            </article>
+        </div>
+    </div>
+</div>
+
+{{ partial "footer.html" . }}
+{{ partial "tail.html" . }}

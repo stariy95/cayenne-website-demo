@@ -2,7 +2,7 @@
 title: Developer Guide
 menu:  
     footer:
-        weight: 20
+        weight: 40
         parent: collaboration
 ---
 
