@@ -2,18 +2,15 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <!-- script>applyHighlightJs(); </script-->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-144-precomposed.png" sizes="144x144" />
-        <link rel="alternate" href="{{ .RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}" />
         <link rel="stylesheet" href="{{ "css/styles.css" | absURL }}"/>
         <script src="{{ "js/bundle.js" | absURL }}"></script>
-
-        {{ if .Title}}
+        {{ if .Title -}}
         <title>{{ .Title }} &middot; {{ .Site.Title }}</title>
-        {{ else }}
+        {{- else -}}
         <title>{{ .Site.Title }}</title>
-        {{ end}}
+        {{- end }}
     </head>
     <body>

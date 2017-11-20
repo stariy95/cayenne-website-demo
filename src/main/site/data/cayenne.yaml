@@ -1,17 +1,16 @@
 #
-# This file used both to generate cayenne.rdf file
-# and to form Documentation section (where only visible version are used).
-# It may also be used in Downloads section.
+# This file used both to generate cayenne.rdf file,
+# to form Documentation and Downloads sections (docs and downloadable flags).
 #
 releases:
-  - version: "4.1"
-    latestRevision: "4.1.M1"
-    type: "Alpha"
-    description: "Latest development release"
-    date: "2017-10-13"
-    docs: true
-    downloadable: true
-    jdk: 1.8
+  - version: "4.1"  # Visible major version
+    latestRevision: "4.1.M1" # exact latest version
+    type: "Alpha" # arbitrary type (Alpha for milestones, Beta, Stable and Legacy)
+    description: "Latest development release" # some general comment
+    date: "2017-10-13" # release date
+    docs: true  # is this version visible in Docs
+    downloadable: true # is this version visible in Download section, also see "customLink" attribute
+    jdk: 1.8 # min supported Java version
 
   - version: "4.0"
     latestRevision: "4.0.B2"
@@ -29,7 +28,8 @@ releases:
     date: "2016-05-16"
     docs: true
     downloadable: true
-    customLink: "cayenne-parent-3.1.1/cayenne-3.1.1"
+    customLink: "cayenne-parent-3.1.1/cayenne-3.1.1" # custom download link, full link will be like:
+                                                     # http://www.apache.org/dyn/closer.lua/cayenne/{{ customLink }}.-src.tar.gz
     jdk: 1.5
 
   - version: "3.0"

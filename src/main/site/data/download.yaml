@@ -1,5 +1,8 @@
+#
+# List of downloadable assemblies' variants
+#
 extensions:
-  - ext: ".tar.gz"
+  - ext: ".tar.gz" # file extension
     description: "binary distribution with cross-platform Java CayenneModeler"
 
   - ext: "-macosx.dmg"
