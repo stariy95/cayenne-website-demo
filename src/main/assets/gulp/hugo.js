@@ -6,7 +6,7 @@ const hugo = require('hugo-bin');
 function runHugo(publish) {
     const src = global.hugoConfig.srcDir;
     const dst = global.hugoConfig.publicDir;
-    const conf = global.hugoConfig.srcDir + '/config.toml';
+    const conf = global.hugoConfig.srcDir + 'config.toml';
 
     let cmd = hugo + ' --config=' + conf + ' -s ' + src + ' -d ' + dst;
 

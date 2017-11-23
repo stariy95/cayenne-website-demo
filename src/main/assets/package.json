@@ -25,6 +25,7 @@
     "gulp-clean": "^0.3.2",
     "webpack": "^3.8.1",
     "webpack-stream": "^4.0.0",
+    "exports-loader": "^0.6.4",
     "jshint": "^2.9.4",
     "browser-sync": "^2.18.13",
     "merge-stream": "^1.0.1",

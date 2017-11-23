@@ -8,12 +8,18 @@ gulp.task('clean-static', function() {
     return gulp.src(
         [
             global.hugoConfig.srcDir + '/static/css/**/*.css',
-            global.hugoConfig.srcDir + '/static/js/**/*.js'
+            global.hugoConfig.srcDir + '/static/js/**/*.js',
+            global.hugoConfig.srcDir + '/static/js/**/*.js.map'
         ],{base: global.hugoConfig.srcDir, read: false})
         .pipe(clean({force: true}));
 });
 
-gulp.task('revision', ['clean-static', 'styles','scripts', 'images'], function() {
+gulp.task('copy-source-map', ['clean-static'], function() {
+    gulp.src(global.hugoConfig.stagingDir + '/js/**/*.js.map')
+        .pipe(gulp.dest(global.hugoConfig.srcDir + '/static/js'));
+});
+
+gulp.task('revision', ['styles', 'scripts', 'images', 'copy-source-map'], function() {
     return gulp.src(
         [
             global.hugoConfig.stagingDir + '/css/**/*.css',

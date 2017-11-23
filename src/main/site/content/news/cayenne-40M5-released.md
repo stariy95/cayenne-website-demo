@@ -66,38 +66,38 @@ The plugin itself has changed it's name to *"cayenne-maven-plugin"*, so now you 
 
 ### A full list of changes in this release:
 
-* CAY-2139 Upgrade HSQLDB dependency to the most recent version (2.3.4)
-* CAY-2150 Refactoring: ParameterBinding to contain ExtendedType property
-* CAY-2163 Property.path() , ExpressionFactory.pathExp()
-* CAY-2164 Relocate builder bootstrap methods from ServerRuntimeBuilder to ServerRuntime
-* CAY-2165 Explicit "contribution" API for easier expansion of DI collections and maps
-* CAY-2166 Auto-loading of Cayenne modules
-* CAY-2168 Split DbLoader to parts and clean it up
-* CAY-2169 Split DbMerger to parts and clean it up
-* CAY-2170 MergeToken sorting is highly unstable
-* CAY-2172 Cleanup Modeler import and migrate db actions
-* CAY-2176 Java 7 diamond class generation templates
-* CAY-2177 Sync auto generated state of PK between model and DB
-* CAY-2187 Support for the scalar and aggregate SQL functions in ObjectSelect API
-* CAY-2197 Update sqlite version and enable in-memory default config
-* CAY-2212 cdbimport cleanup and configuration schema refactoring
-* CAY-2223 JCacheQueryCache - a query cache provider to plug in JCache implementers
-* CAY-2225 Extensible CacheInvalidationFilter logic
-* CAY-2228 Deprecate multiple cache groups in caching and query API
-* CAY-2231 Support for collections in new functional expressions and old math expressions
-* CAY-2232 Proper conversion to String for new functional expressions
-* CAY-2235 Deprecate Query.getDataMap() method
+* {{% jira 2139 %}} Upgrade HSQLDB dependency to the most recent version (2.3.4)
+* {{% jira 2150 %}} Refactoring: ParameterBinding to contain ExtendedType property
+* {{% jira 2163 %}} Property.path() , ExpressionFactory.pathExp()
+* {{% jira 2164 %}} Relocate builder bootstrap methods from ServerRuntimeBuilder to ServerRuntime
+* {{% jira 2165 %}} Explicit "contribution" API for easier expansion of DI collections and maps
+* {{% jira 2166 %}} Auto-loading of Cayenne modules
+* {{% jira 2168 %}} Split DbLoader to parts and clean it up
+* {{% jira 2169 %}} Split DbMerger to parts and clean it up
+* {{% jira 2170 %}} MergeToken sorting is highly unstable
+* {{% jira 2172 %}} Cleanup Modeler import and migrate db actions
+* {{% jira 2176 %}} Java 7 diamond class generation templates
+* {{% jira 2177 %}} Sync auto generated state of PK between model and DB
+* {{% jira 2187 %}} Support for the scalar and aggregate SQL functions in ObjectSelect API
+* {{% jira 2197 %}} Update sqlite version and enable in-memory default config
+* {{% jira 2212 %}} cdbimport cleanup and configuration schema refactoring
+* {{% jira 2223 %}} JCacheQueryCache - a query cache provider to plug in JCache implementers
+* {{% jira 2225 %}} Extensible CacheInvalidationFilter logic
+* {{% jira 2228 %}} Deprecate multiple cache groups in caching and query API
+* {{% jira 2231 %}} Support for collections in new functional expressions and old math expressions
+* {{% jira 2232 %}} Proper conversion to String for new functional expressions
+* {{% jira 2235 %}} Deprecate Query.getDataMap() method
 
 ### Bug Fixes:
 
-* CAY-2032 SelectAction: DistinctResultIterator ignores flattened relationships
-* CAY-2137 When generating SQL from EJBQL, use "AND" to separate multiple join conditions
-* CAY-2174 Change FK attribute name cause ObjAttribute appear after Reverse Engineering
-* CAY-2175 AliasName used in EJBQLQuery is not working if it contains mixed case
-* CAY-2183 Newly created DbRelationship is unexpectedly renamed by the Modeler
-* CAY-2199 Modeler on Windows: The same project is displayed twice in "Recent Projects"
-* CAY-2207 Modeler: "Java Type" and "DbAttribute Path" are not saved with using TAB to move forward
-* CAY-2221 In-memory expression evaluation gives different result than select query
-* CAY-2236 Modeler Migrate DB Schema: unable to Reverse All Operations
-* CAY-2238 Modeler: Preserve manually set DbRelationship name when syncing with ObjEntity
-* CAY-2242 Vertical Inheritance: Cannot Insert Record For Implementing Class with Attribute And Relationship
+* {{% jira 2032 %}} SelectAction: DistinctResultIterator ignores flattened relationships
+* {{% jira 2137 %}} When generating SQL from EJBQL, use "AND" to separate multiple join conditions
+* {{% jira 2174 %}} Change FK attribute name cause ObjAttribute appear after Reverse Engineering
+* {{% jira 2175 %}} AliasName used in EJBQLQuery is not working if it contains mixed case
+* {{% jira 2183 %}} Newly created DbRelationship is unexpectedly renamed by the Modeler
+* {{% jira 2199 %}} Modeler on Windows: The same project is displayed twice in "Recent Projects"
+* {{% jira 2207 %}} Modeler: "Java Type" and "DbAttribute Path" are not saved with using TAB to move forward
+* {{% jira 2221 %}} In-memory expression evaluation gives different result than select query
+* {{% jira 2236 %}} Modeler Migrate DB Schema: unable to Reverse All Operations
+* {{% jira 2238 %}} Modeler: Preserve manually set DbRelationship name when syncing with ObjEntity
+* {{% jira 2242 %}} Vertical Inheritance: Cannot Insert Record For Implementing Class with Attribute And Relationship

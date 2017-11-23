@@ -22,14 +22,12 @@ releases:
     jdk: 1.7
 
   - version: "3.1"
-    latestRevision: "3.1.1"
+    latestRevision: "3.1.2"
     description: "Latest stable release"
     type: "Stable"
-    date: "2016-05-16"
+    date: "2017-11-20"
     docs: true
     downloadable: true
-    customLink: "cayenne-parent-3.1.1/cayenne-3.1.1" # custom download link, full link will be like:
-                                                     # http://www.apache.org/dyn/closer.lua/cayenne/{{ customLink }}.-src.tar.gz
     jdk: 1.5
 
   - version: "3.0"
@@ -37,9 +35,10 @@ releases:
     description: "Previous stable release"
     type: "Stable"
     date: "2011-06-21"
-    docs: false
+    docs: true
     downloadable: true
-    customLink: "cayenne-3.0.2"
+    customLink: "cayenne-3.0.2" # custom download link, full link will be like:
+                                # http://www.apache.org/dyn/closer.lua/cayenne/{{ customLink }}.-src.tar.gz
     jdk: 1.5
 
   - version: "2.0"
