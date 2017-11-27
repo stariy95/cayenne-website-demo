@@ -3,18 +3,14 @@
 
 {{ $urlComponents := split .URL "/" }}
 {{ if (isset $urlComponents 3) }}
-    {{ $.Scratch.Set "cayenneUrlVersion" (index $urlComponents 2) }}
+{{ $.Scratch.Set "cayenneUrlVersion" (index $urlComponents 2) }}
 {{ else }}
-    {{ $.Scratch.Set "cayenneUrlVersion" "4.1" }}
+{{ $.Scratch.Set "cayenneUrlVersion" "4.1" }}
 {{ end }}
 {{ $docVersion := ($.Scratch.Get "cayenneUrlVersion") }}
+{{ $currentPageURL := .URL }}
 
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <h1>{{ .Title }}</h1>
-            </div>
-        </div>
         <div class="row">
             <div class="col-3">
                 <div role="tabpanel">
@@ -40,7 +36,7 @@
                             {{ range where $.Site.Pages "Kind" "page" -}}
                             {{- if eq .Params.cayenneVersion $ver }}
                             <li>
-                                <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+                                <h4>{{ if eq $currentPageURL .URL }}{{ .Title }}{{ else }}<a href="{{ .URL }}">{{ .Title }}</a>{{ end }}</h4>
                             </li>
                             {{ end -}}
                             {{- end }}
@@ -53,7 +49,14 @@
                 </div>
             </div>
             <div class="col-9">
-                {{ .Content }}
+                <article>
+                    <header>
+                        <h1>{{ .Title }}</h1>
+                    </header>
+                    <section>
+                        {{ .Content }}
+                    </section>
+                </article>
             </div>
         </div>
     </div>

@@ -1,5 +1,6 @@
 require('bootstrap/js/dist/tab');
 require('bootstrap/js/dist/collapse');
+require('bootstrap/js/dist/dropdown');
 
 function initHljs() {
     var hljs    = require('highlight.js/lib/highlight.js');
