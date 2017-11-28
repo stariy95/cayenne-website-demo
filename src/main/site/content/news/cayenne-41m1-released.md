@@ -1,6 +1,7 @@
 ---
-Title: Cayenne 4.1 Milestone 1 Released
+title: Cayenne 4.1 Milestone 1 Released
 date: 2017-10-14T12:00:00+03:00
+url: /2017/10/cayenne-41m1-released.html
 --- 
 
 Apache Cayenne team is glad to announce the first milestone release of Cayenne 4.1. 

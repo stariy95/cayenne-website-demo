@@ -1,6 +1,7 @@
 ---
 title: How development happens
 weight: 10
+url: /dev/how_development_happens.html
 ---
 
 There are several levels of access to the Cayenne project and source.

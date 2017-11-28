@@ -1,6 +1,7 @@
 --- 
 title: Running Unit Tests
 weight: 70
+url: /dev/running-unit-tests.html
 ---
 
 Cayenne provides a comprehensive suite of unit tests. To execute unit tests

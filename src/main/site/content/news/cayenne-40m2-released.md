@@ -1,6 +1,7 @@
 ---
-Title: Cayenne 4.0 Milestone 2 Released
+title: Cayenne 4.0 Milestone 2 Released
 date: 2015-03-18T12:00:00+03:00
+url: /2015/03/cayenne-40m2-released.html
 --- 
 
 This is a big and important new milestone release of the development branch of Apache Cayenne. Existing users may have noticed that we renamed version 3.2 to 4.0 as the scope had been vastly expanded. So 4.0.M2 is a direct successor of 3.2M1. There are tons of new features and bug fixes included. Below are just the main highlights. For more details read upgrade-guide.pdf and check out the full release notes further down.

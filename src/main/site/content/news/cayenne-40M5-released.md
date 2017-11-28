@@ -1,6 +1,7 @@
 ---
-Title: Cayenne 4.0 Milestone 5 Released
+title: Cayenne 4.0 Milestone 5 Released
 date: 2017-03-07T12:00:00+03:00
+url: /2017/03/cayenne-40M5-released.html
 --- 
 
 Apache Cayenne team is glad to announce the latest milestone of Cayenne - 4.0.M5. 

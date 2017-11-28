@@ -1,6 +1,7 @@
 ---
-Title: Cayenne 4.0 Beta 2 Released
+title: Cayenne 4.0 Beta 2 Released
 date: 2017-10-06T17:38:42+03:00
+url: /2017/10/cayenne-40B2-released.html
 --- 
 
 Apache Cayenne team is glad to announce a beta 2 release of Cayenne 4.0. 

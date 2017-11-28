@@ -1,6 +1,7 @@
 ---
-Title: Cayenne 4.0 Milestone 3 Released
+title: Cayenne 4.0 Milestone 3 Released
 date: 2016-02-12T12:00:00+03:00
+url: /2016/02/cayenne-40m3-released.html
 --- 
 
 This new milestone release has plenty of new features, bug fixes and other improvements. Below are just the main highlights. For more details check out the full release notes further down, as well as [UPGRADE.txt](https://github.com/apache/cayenne/blob/4.0.M3/docs/doc/src/main/resources/UPGRADE.txt).

@@ -1,6 +1,7 @@
 ---
 title: Building Cayenne
 weight: 50
+url: /dev/building-cayenne.html
 ---
 
 ## Prerequisites

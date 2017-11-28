@@ -1,6 +1,7 @@
 ---
 title: Working with Cayenne code in Eclipse
 weight: 30
+url: /dev/eclipse.html
 ---
 
 * Get code from Git and [build it from command line](building-cayenne.html)

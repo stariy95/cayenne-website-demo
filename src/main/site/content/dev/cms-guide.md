@@ -1,6 +1,7 @@
 ---
 title: Guide to Cayenne CMS
 weight: 80
+url: /dev/cms-guide.html
 ---
 
 Cayenne CMS source code (content + styling + scriptos) can be obtained from SVN:

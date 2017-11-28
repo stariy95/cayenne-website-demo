@@ -1,8 +1,12 @@
-commiters:
+#
+# List of Cayenne contributors, used on /contributors.html page.
+#
+contributors:
   - name: "Andrus Adamchik"
     role: "PMC"
     email: "aadamchik at apache dot org"
-    website: "[http://adamchik.org](http://adamchik.org)(personal) [http://objectstyle.com](http://objectstyle.com) (business)"
+    # markdown can be used in "website" field
+    website: "[http://adamchik.org](http://adamchik.org) (personal) [http://objectstyle.com](http://objectstyle.com) (business)"
     active: true
 
   - name: "Cris Daniluk"

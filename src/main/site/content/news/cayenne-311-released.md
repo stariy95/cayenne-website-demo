@@ -1,6 +1,7 @@
 ---
-Title: Cayenne 3.1.1 Released
+title: Cayenne 3.1.1 Released
 date: 2016-05-16T12:00:00+03:00
+url: /2016/05/cayenne-311-released.html
 --- 
 
 This new maintenance release has a few major bug fixes and improvements.

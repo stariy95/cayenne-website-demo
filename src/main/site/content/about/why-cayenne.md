@@ -6,6 +6,7 @@ menu:
         parent: about
         weight: 10  
 weight: 10
+url: /why-cayenne.html
 ---
 
 Cayenne is a Java _object relational mapping (ORM) framework_.	In other

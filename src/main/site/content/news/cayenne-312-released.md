@@ -1,6 +1,7 @@
 ---
-Title: Cayenne 3.1.2 Released
+title: Cayenne 3.1.2 Released
 date: 2017-11-20T12:00:00+03:00
+url: /2017/11/cayenne-312-released.html
 --- 
 This is a maintenance release with a few bug fixes.
 It can be downloaded from [here](/download.html).

@@ -1,7 +1,6 @@
 ---
 title: Database Support
-aliases:
-    - /database-support.html
+url: /database-support.html
 ---
 
 This page provides useful information about JDBC driver settings for various database. All databases below have custom Cayenne DbAdapters and are automatically recognized by Cayenne AutoAdapter.

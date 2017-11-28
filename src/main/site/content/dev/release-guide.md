@@ -1,6 +1,7 @@
 ---
 title: Release Guide
 weight: 60
+url: /dev/release-guide.html
 ---
 
 This page describes the steps that a Cayenne Release Manager needs to

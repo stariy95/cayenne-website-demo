@@ -5,6 +5,7 @@ menu:
         weight: 30 
         parent: about
 weight: 30
+url: /success-stories.html
 ---
 
 Not the full list by any means, but here is a number of organizations and

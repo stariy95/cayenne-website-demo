@@ -1,6 +1,7 @@
 ---
-Title: Cayenne 4.0 Milestone 4 Released
+title: Cayenne 4.0 Milestone 4 Released
 date: 2016-12-31T12:00:00+03:00
+url: /2016/12/cayenne-40M4-released.html
 --- 
 
 Apache Cayenne team is glad to announce the latest milestone of Cayenne - 4.0.M. The new release features a number of important things:
