@@ -1,61 +1,14 @@
 {{ partial "head.html" . }}
 {{ partial "header.html" . }}
+{{ partial "docs_header.html" . }}
 
-{{ $urlComponents := split .URL "/" }}
-{{ if (isset $urlComponents 3) }}
-{{ $.Scratch.Set "cayenneUrlVersion" (index $urlComponents 2) }}
-{{ else }}
-{{ $.Scratch.Set "cayenneUrlVersion" "4.1" }}
-{{ end }}
-{{ $docVersion := ($.Scratch.Get "cayenneUrlVersion") }}
-{{ $currentPageURL := .URL }}
-
-<div class="container">
-    <div class="row">
-        <div class="col-3">
-            <div role="tabpanel">
-                <ul class="nav" role="tablist">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            Cayenne Version {{ $docVersion }}
-                        </a>
-                        <div class="dropdown-menu">
-                            {{ range where $.Site.Data.cayenne.releases "docs" true -}}
-                            {{- $ver := .version -}}
-                            {{- $urlFriendlyVersion := replace $ver "." "-" }}
-                            <a class="dropdown-item" id="cayenne-{{ $urlFriendlyVersion }}-tab" href="#cayenne-{{ $urlFriendlyVersion }}" role="tab" data-toggle="tab" aria-controls="cayenne-{{ $urlFriendlyVersion }}" aria-expanded="true">Version {{ $ver }} ({{ .type }})</a>
-                            {{- end }}
-                        </div>
-                    </li>
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    {{ range where $.Site.Data.cayenne.releases "docs" true -}}
-                    {{- $ver := .version -}}
-                    {{- $urlFriendlyVersion := replace $ver "." "-" }}
-                    <div class="tab-pane fade {{ if (eq $ver $docVersion) }}active show{{ end }}" id="cayenne-{{ $urlFriendlyVersion }}" role="tabpanel" aria-labelledby="cayenne-{{ $urlFriendlyVersion }}-tab" aria-expanded="{{ if (eq $ver $docVersion) }}true{{ else }}false{{ end }}">
-                        {{ range where $.Site.Pages "Kind" "page" -}}
-                        {{- if eq .Params.cayenneVersion $ver }}
-                        <li>
-                            <h4>{{ if eq $currentPageURL .URL }}{{ .Title }}{{ else }}<a href="{{ .URL }}">{{ .Title }}</a>{{ end }}</h4>
-                        </li>
-                        {{ end -}}
-                        {{- end }}
-                        <li>
-                            <h4><a href="/docs/{{ $ver }}/api/">JavaDoc</a></h4>
-                        </li>
-                    </div>
-                    {{- end }}
-                </div>
-            </div>
-        </div>
-        <div class="col-9">
+            <!-- Only difference from "normal" docs is that here is no title rendered as it's embedded into markup. -->
             <article>
                 <section>
                     {{ .Content }}
                 </section>
             </article>
-        </div>
-    </div>
-</div>
+
+{{ partial "docs_footer.html" . }}
 {{ partial "footer.html" . }}
 {{ partial "tail.html" . }}
