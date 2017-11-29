@@ -30,6 +30,6 @@ gulp.task('reference:publish', ['hugo:publish'], function() {
 });
 
 // live rebuild
-gulp.task('reference:content', ['revision', 'fonts'], function() {
+gulp.task('reference:content', ['revision'], function() {
     return updateResourceRefs();
 });

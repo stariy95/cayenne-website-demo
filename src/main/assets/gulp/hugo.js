@@ -21,10 +21,10 @@ function runHugo(publish) {
     console.log('hugo out: \n' + result);
 }
 
-gulp.task('hugo:all', ['revision', 'fonts'], function() {
+gulp.task('hugo:all', ['revision'], function() {
     runHugo(false);
 });
 
-gulp.task('hugo:publish', ['revision', 'fonts'], function() {
+gulp.task('hugo:publish', ['revision'], function() {
     runHugo(true);
 });

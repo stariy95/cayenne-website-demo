@@ -5,7 +5,7 @@ const cleancss 	 = require('gulp-clean-css');
 const merge 	 = require('merge-stream');
 const concat 	 = require('gulp-concat');
 
-gulp.task('styles', function() {
+gulp.task('styles', ['clean-static'], function() {
     const scssStream = gulp.src('styles/**/*.scss')
         .pipe(sass())
         .pipe(concat('scss-files.css'));

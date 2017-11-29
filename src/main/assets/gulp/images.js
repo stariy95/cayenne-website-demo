@@ -2,7 +2,7 @@ const gulp     = require('gulp');
 const imagemin = require('gulp-imagemin');
 const changed  = require('gulp-changed');
 
-gulp.task('images', function () {
+gulp.task('images', ['clean-static'], function () {
   return gulp.src('images/**/*.*')
     .pipe(changed(global.hugoConfig.stagingDir + '/img'))
     .pipe(imagemin())

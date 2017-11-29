@@ -4,6 +4,7 @@ const del   = require('rev-del');
 const path  = require('path');
 const clean = require('gulp-clean');
 
+// styles, scripts, images, fonts depends on this
 gulp.task('clean-static', function() {
     return gulp.src(
         [
@@ -14,12 +15,13 @@ gulp.task('clean-static', function() {
         .pipe(clean({force: true}));
 });
 
-gulp.task('copy-source-map', ['clean-static'], function() {
-    gulp.src(global.hugoConfig.stagingDir + '/js/**/*.js.map')
+// separately copy source maps
+gulp.task('copy-js-map', ['scripts'], function () {
+    return gulp.src(global.hugoConfig.stagingDir + '/js/**/*.js.map')
         .pipe(gulp.dest(global.hugoConfig.srcDir + '/static/js'));
 });
 
-gulp.task('revision', ['styles', 'scripts', 'images', 'copy-source-map'], function() {
+gulp.task('revision', ['styles', 'scripts', 'images', 'fonts', 'copy-js-map'], function() {
     return gulp.src(
         [
             global.hugoConfig.stagingDir + '/css/**/*.css',

@@ -3,9 +3,9 @@ const jshint  = require('gulp-jshint');
 const uglify  = require('gulp-uglify');
 const webpack = require('webpack'); // use newer version of webpack
 const gulpWebpack  = require('webpack-stream');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-gulp.task('scripts', function() {
+gulp.task('scripts', ['clean-static'], function() {
     return gulp.src('scripts/**/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter("default"))
