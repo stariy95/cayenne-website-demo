@@ -37,7 +37,7 @@
 
     <!--
     By default mvn will start gulp task dev build with live reload.
-    Use `mvn -Ppublish` to build production version of site (in src/main/site/public).
+    Use `mvn -Ppublish -Dmsg="commit message"` to build and publish production version of site.
     -->
     <profiles>
         <profile>
@@ -47,6 +47,7 @@
             </properties>
             <build>
                 <plugins>
+                    <!-- Require commit message parameter -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-enforcer-plugin</artifactId>
@@ -69,9 +70,18 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <!-- Push public content to "asf-site" branch -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-scm-publish-plugin</artifactId>
+                        <version>1.1</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <content>target/site/public</content>
+                            <checkinComment>${msg}</checkinComment>
+                            <pubScmUrl>scm:git:git@github.com:stariy95/cayenne-website-demo.git</pubScmUrl>
+                            <scmBranch>asf-site</scmBranch>
+                        </configuration>
                         <executions>
                             <execution>
                                 <id>publish-site</id>
@@ -133,18 +143,6 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-scm-publish-plugin</artifactId>
-                <version>1.1</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <content>target/site/public</content>
-                    <checkinComment>${msg}</checkinComment>
-                    <pubScmUrl>scm:git:git@github.com:stariy95/cayenne-website-demo.git</pubScmUrl>
-                    <scmBranch>asf-site</scmBranch>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 </project>
