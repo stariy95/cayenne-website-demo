@@ -45,12 +45,51 @@
             <properties>
                 <gulp.task>publish</gulp.task>
             </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <version>3.0.0-M1</version>
+                        <executions>
+                            <execution>
+                                <id>enforce-property</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+                                        <requireProperty>
+                                            <property>msg</property>
+                                            <message>Please specify a commit message for publishing the website (-Dmsg="...")</message>
+                                        </requireProperty>
+                                    </rules>
+                                    <fail>true</fail>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-scm-publish-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>publish-site</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>publish-scm</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 
     <build>
         <!-- dev version can be build by simple `mvn` command -->
-        <defaultGoal>clean compile</defaultGoal>
+        <defaultGoal>clean package</defaultGoal>
 
         <plugins>
             <plugin>
@@ -91,6 +130,19 @@
                     <nodeVersion>${node.version}</nodeVersion>
                     <yarnVersion>${yarn.version}</yarnVersion>
                     <workingDirectory>src/main/assets</workingDirectory>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-publish-plugin</artifactId>
+                <version>1.1</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <content>target/site/public</content>
+                    <checkinComment>${msg}</checkinComment>
+                    <pubScmUrl>scm:git:git@github.com:stariy95/cayenne-website-demo.git</pubScmUrl>
+                    <scmBranch>asf-site</scmBranch>
                 </configuration>
             </plugin>
         </plugins>
