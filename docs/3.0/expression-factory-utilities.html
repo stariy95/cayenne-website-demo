@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-144-precomposed.png" sizes="144x144" />
+        <link rel="stylesheet" href="http://cayenne.apache.org/css/styles-b770de6275.css"/>
+        <script src="http://cayenne.apache.org/js/bundle-736b99fdc1.js"></script>
+        <title>Expression Factory Utilities &middot; Apache Cayenne</title>
+    </head>
+    <body>
+<header class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-dark navbar-expand-lg">
+                    <a class="navbar-brand nav-link active" href="http://cayenne.apache.org/">Apache Cayenne</a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/download/">DOWNLOAD</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/docs/">DOCUMENTATION</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about/support/">SUPPORT</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div role="tabpanel">
+                <ul class="nav" role="tablist">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            Cayenne Version 3.0
+                        </a>
+                        <div class="dropdown-menu">
+                            
+                            <a class="dropdown-item" id="cayenne-4-1-tab" href="#cayenne-4-1" role="tab" data-toggle="tab" aria-controls="cayenne-4-1" aria-expanded="true">Version 4.1 (Alpha)</a>
+                            <a class="dropdown-item" id="cayenne-4-0-tab" href="#cayenne-4-0" role="tab" data-toggle="tab" aria-controls="cayenne-4-0" aria-expanded="true">Version 4.0 (Beta)</a>
+                            <a class="dropdown-item" id="cayenne-3-1-tab" href="#cayenne-3-1" role="tab" data-toggle="tab" aria-controls="cayenne-3-1" aria-expanded="true">Version 3.1 (Stable)</a>
+                            <a class="dropdown-item" id="cayenne-3-0-tab" href="#cayenne-3-0" role="tab" data-toggle="tab" aria-controls="cayenne-3-0" aria-expanded="true">Version 3.0 (Stable)</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    
+                    <div class="tab-pane fade " id="cayenne-4-1" role="tabpanel" aria-labelledby="cayenne-4-1-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/getting-started-db-first/">Cayenne Database First tutorial</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/getting-started/">Cayenne Getting Started Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade " id="cayenne-4-0" role="tabpanel" aria-labelledby="cayenne-4-0-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/4.0/getting-started/">Cayenne 4.0 Getting Started Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.0/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade " id="cayenne-3-1" role="tabpanel" aria-labelledby="cayenne-3-1-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/3.1/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade active show" id="cayenne-3-0" role="tabpanel" aria-labelledby="cayenne-3-0-tab" aria-expanded="true">
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/cayenne-guide.html">Cayenne Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/modeler-guide.html">Modeler Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/remote-object-persistence-guide.html">Remote Object Persistence Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+
+            
+            <article>
+                <section>
+                    <P>Sometimes there is a need to build an expression by combining other existing expressions. Also quiet often it is desirable to use strongly typed API instead of interpreted string expressions. The following sections describe <A href="http://cayenne.apache.org/doc/api/org/apache/cayenne/exp/ExpressionFactory.html" class="external-link" rel="nofollow">ExpressionFactory</A> and <A href="http://cayenne.apache.org/doc/api/org/apache/cayenne/exp/Expression.html" class="external-link" rel="nofollow">Expression</A> methods that allow to construct expressions step by step via API calls.</P>
+
+<H3><A name="ExpressionFactoryUtilities-Path%2FValueExpressions"></A>Path/Value Expressions</H3>
+
+<P>The most simple expressions are the ones that match an object property path with a value or a list of values. ExpressionFactory provides a set of methods to build such &quot;path/value&quot; expressions:</P>
+<UL>
+	<LI>public static Expression <B>matchExp</B>(String pathSpec, Object value)</LI>
+	<LI>public static Expression <B>noMatchExp</B>(String pathSpec, Object value),</LI>
+	<LI>etc.. <EM>(check JavaDocs of ExpressionFactory for all available factory methods)</EM></LI>
+</UL>
+
+
+<P>As was mentioned <A href="path-expressions.html" title="Path Expressions">earlier</A>, the type of a second Object argument depends on the type of property path points to. It is important to mention that paths that end with a relationship name (both to-one and to-many) can be matched against Persistent objects, thus absolving you from the need to know a PK or FK when building expressions. This behavior is not specific to ExpressionFactory, it works the same way with Expression.fromString(..) as well.</P>
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">
+<SPAN class="code-keyword">import</SPAN> org.apache.cayenne.exp.Expression;
+<SPAN class="code-keyword">import</SPAN> org.apache.cayenne.exp.ExpressionFactory;
+<SPAN class="code-keyword">import</SPAN> org.apache.cayenne.query.SelectQuery;
+...
+
+<SPAN class="code-comment">// find artist paintings (<SPAN class="code-keyword">if</SPAN> we don't want to use relationship <SPAN class="code-keyword">for</SPAN> whatever reason)
+</SPAN>
+Artist a = ...;
+Expression qual = ExpressionFactory.matchExp(<SPAN class="code-quote">&quot;toArtist&quot;</SPAN>, a);
+SelectQuery select = <SPAN class="code-keyword">new</SPAN> SelectQuery(Painting.class, qual);</PRE>
+</DIV></DIV>
+
+<H3><A name="ExpressionFactoryUtilities-ChainingExpressions"></A>Chaining Expressions</H3>
+
+<P>Expression class itself provides a set of convenience methods to chain expressions as they are built from smaller parts. Note that each of these methods does not modify the original expression, rather it builds and returns a new instance of the expression.</P>
+<UL>
+	<LI>public Expression <B>joinExp</B>(int type, Expression exp)<BR>
+ Creates and returns a new expression that joins this object with another expression, using specified join type. This is a shorter equivalent of ExpressionFactory.binaryExpression(type, this, exp).</LI>
+	<LI>public Expression <B>andExp</B>(Expression exp)<BR>
+ A shorter equivalent for joinExp(Expression.AND, exp).</LI>
+	<LI>public Expression <B>orExp</B>(Expression exp)<BR>
+ A shorter equivalent for joinExp(Expression.OR, exp).</LI>
+</UL>
+
+
+<P>Example of using chaining:</P>
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">
+<SPAN class="code-keyword">import</SPAN> org.apache.cayenne.exp.Expression;
+<SPAN class="code-keyword">import</SPAN> org.apache.cayenne.exp.ExpressionFactory;
+<SPAN class="code-keyword">import</SPAN> org.apache.cayenne.query.SelectQuery;
+...
+
+<SPAN class="code-comment">// find artists whose name starts with <SPAN class="code-quote">&quot;D&quot;</SPAN>
+</SPAN><SPAN class="code-comment">// with invalid or <SPAN class="code-keyword">null</SPAN> date of birth
+</SPAN>
+Expression qual = ExpressionFactory.greaterOrEqualExp(<SPAN class="code-quote">&quot;dateOfBirth&quot;</SPAN>, <SPAN class="code-keyword">new</SPAN> Date());
+
+<SPAN class="code-comment">// 1. chain expressions, note the assignment back to <SPAN class="code-quote">&quot;qual&quot;</SPAN>,
+</SPAN><SPAN class="code-comment">// since a <SPAN class="code-keyword">new</SPAN> instance is created
+</SPAN>qual = qual.orExp(ExpressionFactory.matchExp(<SPAN class="code-quote">&quot;dateOfBirth&quot;</SPAN>, <SPAN class="code-keyword">null</SPAN>));
+
+<SPAN class="code-comment">// 2. <SPAN class="code-quote">&quot;AND&quot;</SPAN> applies to a combined earlier criteria
+</SPAN>qual =
+   qual.andExp(ExpressionFactory.likeIgnoreCaseExp(<SPAN class="code-quote">&quot;artistName&quot;</SPAN>, <SPAN class="code-quote">&quot;D%&quot;</SPAN>));
+
+SelectQuery select = <SPAN class="code-keyword">new</SPAN> SelectQuery(Artist.class, qual);
+</PRE>
+</DIV></DIV>
+
+<H3><A name="ExpressionFactoryUtilities-CreatingComplexExpressions"></A>Creating Complex Expressions</H3>
+
+<P>There is a way to create complex expressions either from the Lists of expressions or from the Maps containing values using &quot;path&quot; Strings as keys. This approach significantly simplifies connecting Cayenne queries to the UI, and reduces the number of steps needed to create expressions in other cases. ExpressionFactory provides the following methods:</P>
+<UL>
+	<LI>public static Expression <B>joinExp</B>(int type, java.util.List expressions)<BR>
+ Joins all expressions into a single expression. type is used as an expression type for expressions joining each one of the items on the list. type is normally AND or OR.</LI>
+	<LI>public static Expression <B>matchAllExp</B>(java.util.Map map, int type)<BR>
+ Creates an expression that matches all path/value pairs in map. Path is OBJ_PATH.</LI>
+	<LI>public static Expression <B>matchAllDbExp</B>(java.util.Map map, int type)<BR>
+ Same as above, but path is interpreted to be DB_PATH.</LI>
+	<LI>public static Expression <B>matchAnyExp</B>(java.util.Map map, int type)<BR>
+ Creates an expression that matches any of the path/value pairs in map. Path is OBJ_PATH.</LI>
+	<LI>public static Expression <B>matchAnyDbExp</B>(java.util.Map map, int type)<BR>
+ Same as above, but path is interpreted to be DB_PATH.</LI>
+</UL>
+
+
+<P>Example of creating complex expressions:</P>
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">Map map = <SPAN class="code-keyword">new</SPAN> HashMap();
+map.put(<SPAN class="code-quote">&quot;login&quot;</SPAN>, <SPAN class="code-quote">&quot;joeuser&quot;</SPAN>);
+map.put(<SPAN class="code-quote">&quot;password&quot;</SPAN>, <SPAN class="code-quote">&quot;secret&quot;</SPAN>);
+
+<SPAN class="code-comment">// the last parameter refers to the operation inside each key/value pair. 
+</SPAN>
+Expression qual = ExpressionFactory.matchAllExp(map, Expression.EQUAL_TO);</PRE>
+</DIV></DIV>
+
+<H3><A name="ExpressionFactoryUtilities-SplitExpressionswith%7B%7BmatchAllExp%28%29%7D%7D"></A>Split Expressions with <TT>matchAllExp()</TT></H3>
+
+<P>As <A href="path-expressions.html" title="Path Expressions">discussed</A> earlier, Cayenne supports &quot;aliases&quot; in path Expressions, allowing to control how SQL joins are generated if the same path is encountered more than once in the same Expression. Two ExpressionFactory methods allow to implicitly generate aliases to &quot;split&quot; match paths into individual joins if needed:</P>
+
+<UL>
+	<LI>Expression <B>matchAllExp</B>(String path, Collection values)</LI>
+	<LI>Expression <B>matchAllExp</B>(String path, Object... values)</LI>
+</UL>
+
+
+<P>&quot;Path&quot; argument to both of these methods can use a split character (a pipe symbol '|') instead of dot to indicate that relationship following a path should be split into a separate set of joins, one per collection value. There can only be one split at most in any given path. Split must always precede a relationship. E.g. <TT>&quot;|exhibits.paintings&quot;</TT>, <TT>&quot;exhibits|paintings&quot;</TT>, etc. Internally Cayenne would generate distinct aliases for each of the split expressions, forcing separate joins.</P>
+
+
+
+                </section>
+            </article>
+
+        </div>
+    </div>
+</div>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col">
+                <h3 class="footer">About</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/why-cayenne.html" class="footer">Why Cayenne?</a>
+                    
+                    <li><a href="/download/" class="footer">Download</a>
+                    
+                    <li><a href="/success-stories.html" class="footer">Success Stories</a>
+                    
+                    <li><a href="/about/support/" class="footer">Support</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Documentation</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/docs/4.1/getting-started/" class="footer">Getting Started (4.1)</a>
+                    
+                    <li><a href="/docs/4.0/getting-started/" class="footer">Getting Started (4.0)</a>
+                    
+                    <li><a href="/docs/4.1/getting-started-db-first/" class="footer">Database First tutorial (4.1)</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Collaboration</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="https://issues.apache.org/jira/browse/CAY" class="footer">Bug/Feature Tracker</a>
+                    
+                    <li><a href="/mailing-lists.html" class="footer">Mailing Lists</a>
+                    
+                    <li><a href="/dev/code-repository.html" class="footer">Code Repository</a>
+                    
+                    <li><a href="/dev/" class="footer">Developer Guide</a>
+                    
+                    <li><a href="/how-can-i-help.html" class="footer">How can I help?</a>
+                    
+                    <li><a href="/contributors.html" class="footer">Contributors</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">News</h3>
+                <ul class="list-unstyled">
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Nov 20, 2017</small>
+                        </div>
+                        <a href="/2017/11/cayenne-312-released.html" class="footer">Cayenne 3.1.2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 14, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-41m1-released.html" class="footer">Cayenne 4.1 Milestone 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 06, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-40B2-released.html" class="footer">Cayenne 4.0 Beta 2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Jun 12, 2017</small>
+                        </div>
+                        <a href="/2017/06/cayenne-40B1-released.html" class="footer">Cayenne 4.0 Beta 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Mar 07, 2017</small>
+                        </div>
+                        <a href="/2017/03/cayenne-40M5-released.html" class="footer">Cayenne 4.0 Milestone 5 Released</a>
+                    </li>
+                    
+                    <li><a href="http://cayenne.apache.org/news" class="footer">More news</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-8">
+                <p class="text-center page-footer-copyright">
+                    Copyright © 2001-2017 Apache Software Foundation. Apache Cayenne, Cayenne, Apache,
+                    the Apache feather logo, and the Apache Cayenne project logo are trademarks of The Apache Software Foundation.
+                    <a href="http://cayenne.apache.org/privacy-policy.html">Privacy policy</a>
+                </p>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</footer>
+
+    
+    </body>
+</html>

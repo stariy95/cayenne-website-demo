@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-144-precomposed.png" sizes="144x144" />
+        <link rel="stylesheet" href="http://cayenne.apache.org/css/styles-b770de6275.css"/>
+        <script src="http://cayenne.apache.org/js/bundle-736b99fdc1.js"></script>
+        <title>Turning off Context Synchronization &middot; Apache Cayenne</title>
+    </head>
+    <body>
+<header class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-dark navbar-expand-lg">
+                    <a class="navbar-brand nav-link active" href="http://cayenne.apache.org/">Apache Cayenne</a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/download/">DOWNLOAD</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/docs/">DOCUMENTATION</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about/support/">SUPPORT</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div role="tabpanel">
+                <ul class="nav" role="tablist">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            Cayenne Version 3.0
+                        </a>
+                        <div class="dropdown-menu">
+                            
+                            <a class="dropdown-item" id="cayenne-4-1-tab" href="#cayenne-4-1" role="tab" data-toggle="tab" aria-controls="cayenne-4-1" aria-expanded="true">Version 4.1 (Alpha)</a>
+                            <a class="dropdown-item" id="cayenne-4-0-tab" href="#cayenne-4-0" role="tab" data-toggle="tab" aria-controls="cayenne-4-0" aria-expanded="true">Version 4.0 (Beta)</a>
+                            <a class="dropdown-item" id="cayenne-3-1-tab" href="#cayenne-3-1" role="tab" data-toggle="tab" aria-controls="cayenne-3-1" aria-expanded="true">Version 3.1 (Stable)</a>
+                            <a class="dropdown-item" id="cayenne-3-0-tab" href="#cayenne-3-0" role="tab" data-toggle="tab" aria-controls="cayenne-3-0" aria-expanded="true">Version 3.0 (Stable)</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    
+                    <div class="tab-pane fade " id="cayenne-4-1" role="tabpanel" aria-labelledby="cayenne-4-1-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/getting-started-db-first/">Cayenne Database First tutorial</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/getting-started/">Cayenne Getting Started Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade " id="cayenne-4-0" role="tabpanel" aria-labelledby="cayenne-4-0-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/4.0/getting-started/">Cayenne 4.0 Getting Started Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.0/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade " id="cayenne-3-1" role="tabpanel" aria-labelledby="cayenne-3-1-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/3.1/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade active show" id="cayenne-3-0" role="tabpanel" aria-labelledby="cayenne-3-0-tab" aria-expanded="true">
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/cayenne-guide.html">Cayenne Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/modeler-guide.html">Modeler Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/remote-object-persistence-guide.html">Remote Object Persistence Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+
+            
+            <article>
+                <section>
+                    <P>A big part of commit operation is updating peer DataContexts with the changes committed to the database. The conext synchronization operation has <TT>O(N)</TT> performance, where <TT>N</TT> is the number of peer DataContexts. In a web application <TT>N</TT> is often the number of concurrent sessions, which can be quite big. The throughout of high volume applications can be  improved by turning off peer synchronization. One possible way to do that is via a custom <A href="datacontextfactory.html" title="DataContextFactory">DataContextFactory</A>:</P>
+
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java"><SPAN class="code-keyword">public</SPAN> class IsolatedDataContextFactory <SPAN class="code-keyword">implements</SPAN> DataContextFactory {
+
+    <SPAN class="code-keyword">public</SPAN> DataContext createDataContext(DataChannel parent, ObjectStore objectStore) {
+
+        <SPAN class="code-comment">// stop listening <SPAN class="code-keyword">for</SPAN> peer events
+</SPAN>        parent.getEventManager().removeListener(objectStore);
+        <SPAN class="code-keyword">return</SPAN> <SPAN class="code-keyword">new</SPAN> DataContext(parent, objectStore);
+    }
+}</PRE>
+</DIV></DIV>
+
+<P>Of course doing this may result in some stale data in the peer DataContexts, so a decision whether to use this particular technique should be made based on the application specifics. Also a factory can have logic to selectively turn off synchronization for a subset of DataContexts based on some criteria.</P>
+
+<DIV class="panelMacro"><TABLE class="tipMacro"><COLGROUP><COL width="24"><COL></COLGROUP><TR><TD valign="top"><img src="/docs/3.0/images/check.gif" width="16" height="16" align="absmiddle" alt="" border="0"></TD><TD><B>Don't use this for idle applications</B><BR>Note that this optimization does not affect percieved user commit time, as synchronization is done in a separate thread. It only affects the overall throughput. So it only makes sense if your application already utilizes close to a 100% of CPU.</TD></TR></TABLE></DIV>
+
+<P><EM>Further improvements in this area are tracked via <A href="http://issues.apache.org/cayenne/browse/CAY-554" class="external-link" rel="nofollow">CAY-554 Jira issue</A>.</EM></P>
+
+                </section>
+            </article>
+
+        </div>
+    </div>
+</div>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col">
+                <h3 class="footer">About</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/why-cayenne.html" class="footer">Why Cayenne?</a>
+                    
+                    <li><a href="/download/" class="footer">Download</a>
+                    
+                    <li><a href="/success-stories.html" class="footer">Success Stories</a>
+                    
+                    <li><a href="/about/support/" class="footer">Support</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Documentation</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/docs/4.1/getting-started/" class="footer">Getting Started (4.1)</a>
+                    
+                    <li><a href="/docs/4.0/getting-started/" class="footer">Getting Started (4.0)</a>
+                    
+                    <li><a href="/docs/4.1/getting-started-db-first/" class="footer">Database First tutorial (4.1)</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Collaboration</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="https://issues.apache.org/jira/browse/CAY" class="footer">Bug/Feature Tracker</a>
+                    
+                    <li><a href="/mailing-lists.html" class="footer">Mailing Lists</a>
+                    
+                    <li><a href="/dev/code-repository.html" class="footer">Code Repository</a>
+                    
+                    <li><a href="/dev/" class="footer">Developer Guide</a>
+                    
+                    <li><a href="/how-can-i-help.html" class="footer">How can I help?</a>
+                    
+                    <li><a href="/contributors.html" class="footer">Contributors</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">News</h3>
+                <ul class="list-unstyled">
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Nov 20, 2017</small>
+                        </div>
+                        <a href="/2017/11/cayenne-312-released.html" class="footer">Cayenne 3.1.2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 14, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-41m1-released.html" class="footer">Cayenne 4.1 Milestone 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 06, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-40B2-released.html" class="footer">Cayenne 4.0 Beta 2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Jun 12, 2017</small>
+                        </div>
+                        <a href="/2017/06/cayenne-40B1-released.html" class="footer">Cayenne 4.0 Beta 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Mar 07, 2017</small>
+                        </div>
+                        <a href="/2017/03/cayenne-40M5-released.html" class="footer">Cayenne 4.0 Milestone 5 Released</a>
+                    </li>
+                    
+                    <li><a href="http://cayenne.apache.org/news" class="footer">More news</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-8">
+                <p class="text-center page-footer-copyright">
+                    Copyright © 2001-2017 Apache Software Foundation. Apache Cayenne, Cayenne, Apache,
+                    the Apache feather logo, and the Apache Cayenne project logo are trademarks of The Apache Software Foundation.
+                    <a href="http://cayenne.apache.org/privacy-policy.html">Privacy policy</a>
+                </p>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</footer>
+
+    
+    </body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-144-precomposed.png" sizes="144x144" />
+        <link rel="stylesheet" href="http://cayenne.apache.org/css/styles-b770de6275.css"/>
+        <script src="http://cayenne.apache.org/js/bundle-736b99fdc1.js"></script>
+        <title>DataObject Validation &middot; Apache Cayenne</title>
+    </head>
+    <body>
+<header class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-dark navbar-expand-lg">
+                    <a class="navbar-brand nav-link active" href="http://cayenne.apache.org/">Apache Cayenne</a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/download/">DOWNLOAD</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/docs/">DOCUMENTATION</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about/support/">SUPPORT</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div role="tabpanel">
+                <ul class="nav" role="tablist">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            Cayenne Version 3.0
+                        </a>
+                        <div class="dropdown-menu">
+                            
+                            <a class="dropdown-item" id="cayenne-4-1-tab" href="#cayenne-4-1" role="tab" data-toggle="tab" aria-controls="cayenne-4-1" aria-expanded="true">Version 4.1 (Alpha)</a>
+                            <a class="dropdown-item" id="cayenne-4-0-tab" href="#cayenne-4-0" role="tab" data-toggle="tab" aria-controls="cayenne-4-0" aria-expanded="true">Version 4.0 (Beta)</a>
+                            <a class="dropdown-item" id="cayenne-3-1-tab" href="#cayenne-3-1" role="tab" data-toggle="tab" aria-controls="cayenne-3-1" aria-expanded="true">Version 3.1 (Stable)</a>
+                            <a class="dropdown-item" id="cayenne-3-0-tab" href="#cayenne-3-0" role="tab" data-toggle="tab" aria-controls="cayenne-3-0" aria-expanded="true">Version 3.0 (Stable)</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    
+                    <div class="tab-pane fade " id="cayenne-4-1" role="tabpanel" aria-labelledby="cayenne-4-1-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/getting-started-db-first/">Cayenne Database First tutorial</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/getting-started/">Cayenne Getting Started Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade " id="cayenne-4-0" role="tabpanel" aria-labelledby="cayenne-4-0-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/4.0/getting-started/">Cayenne 4.0 Getting Started Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.0/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade " id="cayenne-3-1" role="tabpanel" aria-labelledby="cayenne-3-1-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/3.1/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade active show" id="cayenne-3-0" role="tabpanel" aria-labelledby="cayenne-3-0-tab" aria-expanded="true">
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/cayenne-guide.html">Cayenne Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/modeler-guide.html">Modeler Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/remote-object-persistence-guide.html">Remote Object Persistence Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+
+            
+            <article>
+                <section>
+                    <P>DataObject implements a set of methods to validate its state. DataContext calls these methods before performing a commit. If validation fails, the commit is aborted with ValidationException. There are a few clear benefits of validating DataObjects at the application level before committing them to the database:</P>
+
+<UL>
+	<LI>Cayenne can leverage ORM metadata (DataMap) to check for many standard error conditions.</LI>
+	<LI>Custom validation can be easily integrated into the business objects by overriding standard validation methods.</LI>
+	<LI>Validation failures can be tracked down to the individual objects and their properties, allowing creation of user-friendly, internationalized validation messages.</LI>
+	<LI>Relying on database validation for things like mandatory properties, etc., would result in errors that are meaningless or extremely hard to decode in the application context.</LI>
+	<LI>Application validation partially addresses shortcomings of databases that do not support real transactions (e.g. older MySQL). Validation would trap the whole class of errors that would otherwise result in failure halfway through the commit, leaving database in inconsistent state.</LI>
+	<LI>Automating of the business objects validation takes away some burden from the UI that now has fewer things to track.</LI>
+</UL>
+
+
+
+<H2><A name="DataObjectValidation-ValidationAPI"></A>Validation API</H2>
+<P>Each DataObject participating in commit operation (i.e. those in state NEW, DELETED or MODIFIED , in other words &quot;non-committed&quot;) will be validated by DataContext's ObjectStore during commit processing. Depending on the non-committed object state, ObjectStore calls one of the methods described below (description of method behavior is provided for CayenneDataObject implementation):</P>
+
+<UL>
+	<LI>public void <B>validateForInsert</B>(ValidationResult validationResult)<BR>
+      public void <B>validateForUpdate</B>(ValidationResult validationResult)<BR>
+      Implementation internally calls <TT>validateForSave(..)</TT>. When overriding, in most cases developers should invoke &quot;super&quot;.</LI>
+	<LI>public void <B>validateForDelete</B>(ValidationResult validationResult)<BR>
+      This method does nothing by default and exists merely for overriding.</LI>
+	<LI>protected void <B>validateForSave</B>(ValidationResult validationResult)<BR>
+      This method only exists in CayenneDataObject (and not in DataObject). It is invoked internally from <TT>validateForInsert(..)</TT> and <TT>validateForUpdate(..)</TT>, performing some generic validation based on the DataMap information. This includes checking for nulls and for values that exceed their database size limitations. When overriding this method to include custom validation, developers should call &quot;super&quot; in most cases.</LI>
+</UL>
+
+
+<P>Custom validation method implementation would normally append any failures to the provided ValidationResult instance. After validating all non-committed objects, DataContext (or rather its ObjectStore) will check if the ValidationResult is not empty, and throw an exception if there is at least one failure. Typical custom validation method would look like that:</P>
+
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">
+<SPAN class="code-keyword">public</SPAN> class Painting <SPAN class="code-keyword">extends</SPAN> _Painting {
+   ...
+   <SPAN class="code-keyword">protected</SPAN> void validateForSave(ValidationResult validationResult) {
+      <SPAN class="code-keyword">super</SPAN>.validateForSave(validationResult);
+     
+      <SPAN class="code-comment">// check business rules
+</SPAN>      <SPAN class="code-keyword">if</SPAN>(getEstimatedPrice().doubleValue() &lt;= 0.0) {
+         validationResult.addFailure(
+                <SPAN class="code-keyword">this</SPAN>, <SPAN class="code-comment">// source object of the failure
+</SPAN>                Painting.ESTIMATED_PRICE_PROPERTY, <SPAN class="code-comment">// failed property name
+</SPAN>                <SPAN class="code-quote">&quot;Painting price must be greater than zero.&quot;</SPAN>)); <SPAN class="code-comment">// error message  
+</SPAN>      }
+   }
+   ...
+}
+</PRE>
+</DIV></DIV>
+
+<H2><A name="DataObjectValidation-ValidationMethodswithSideEffects"></A>Validation Methods with Side Effects</H2>
+
+<P>Often validation methods are implemented to modify an object being validated and/or other persistent objects. Cayenne supports such behavior, however a few things should be taken into consideration:</P>
+
+<UL>
+	<LI>Since version 3.0 Cayenne supports <A href="lifecycle-callbacks.html" title="Lifecycle Callbacks">lifecycle callbacks</A> that may be a better alternative.</LI>
+	<LI>If a previously &quot;clean&quot; object becomes &quot;dirty&quot; as a result of the user logic in the &quot;validate&quot; method, such object is not validated.</LI>
+	<LI>There is no guarantee of a specific order in which dirty objects are validated.</LI>
+</UL>
+
+
+<H2><A name="DataObjectValidation-TurningValidationOn%2FOff"></A>Turning Validation On/Off</H2>
+<P>Whether DataContext performs validation at all depends on the value of its property <TT>validatingObjectsOnCommit</TT>. Calling <TT>isValidatingObjectsOnCommit()</TT> returns currently configured value. Default value (usually &quot;true&quot;) is propagated from the parent DataDomain when DataContext is created. This default value can be configured using CayenneModeler as described in <A href="configuring-object-validation.html" title="Configuring Object Validation">Configuring Object Validation</A> section.</P>
+
+                </section>
+            </article>
+
+        </div>
+    </div>
+</div>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col">
+                <h3 class="footer">About</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/why-cayenne.html" class="footer">Why Cayenne?</a>
+                    
+                    <li><a href="/download/" class="footer">Download</a>
+                    
+                    <li><a href="/success-stories.html" class="footer">Success Stories</a>
+                    
+                    <li><a href="/about/support/" class="footer">Support</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Documentation</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/docs/4.1/getting-started/" class="footer">Getting Started (4.1)</a>
+                    
+                    <li><a href="/docs/4.0/getting-started/" class="footer">Getting Started (4.0)</a>
+                    
+                    <li><a href="/docs/4.1/getting-started-db-first/" class="footer">Database First tutorial (4.1)</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Collaboration</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="https://issues.apache.org/jira/browse/CAY" class="footer">Bug/Feature Tracker</a>
+                    
+                    <li><a href="/mailing-lists.html" class="footer">Mailing Lists</a>
+                    
+                    <li><a href="/dev/code-repository.html" class="footer">Code Repository</a>
+                    
+                    <li><a href="/dev/" class="footer">Developer Guide</a>
+                    
+                    <li><a href="/how-can-i-help.html" class="footer">How can I help?</a>
+                    
+                    <li><a href="/contributors.html" class="footer">Contributors</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">News</h3>
+                <ul class="list-unstyled">
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Nov 20, 2017</small>
+                        </div>
+                        <a href="/2017/11/cayenne-312-released.html" class="footer">Cayenne 3.1.2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 14, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-41m1-released.html" class="footer">Cayenne 4.1 Milestone 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 06, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-40B2-released.html" class="footer">Cayenne 4.0 Beta 2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Jun 12, 2017</small>
+                        </div>
+                        <a href="/2017/06/cayenne-40B1-released.html" class="footer">Cayenne 4.0 Beta 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Mar 07, 2017</small>
+                        </div>
+                        <a href="/2017/03/cayenne-40M5-released.html" class="footer">Cayenne 4.0 Milestone 5 Released</a>
+                    </li>
+                    
+                    <li><a href="http://cayenne.apache.org/news" class="footer">More news</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-8">
+                <p class="text-center page-footer-copyright">
+                    Copyright © 2001-2017 Apache Software Foundation. Apache Cayenne, Cayenne, Apache,
+                    the Apache feather logo, and the Apache Cayenne project logo are trademarks of The Apache Software Foundation.
+                    <a href="http://cayenne.apache.org/privacy-policy.html">Privacy policy</a>
+                </p>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</footer>
+
+    
+    </body>
+</html>

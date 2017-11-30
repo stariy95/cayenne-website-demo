@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-144-precomposed.png" sizes="144x144" />
+        <link rel="stylesheet" href="http://cayenne.apache.org/css/styles-b770de6275.css"/>
+        <script src="http://cayenne.apache.org/js/bundle-736b99fdc1.js"></script>
+        <title>Remote Object Persistence Tutorial Client Code &middot; Apache Cayenne</title>
+    </head>
+    <body>
+<header class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-dark navbar-expand-lg">
+                    <a class="navbar-brand nav-link active" href="http://cayenne.apache.org/">Apache Cayenne</a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/download/">DOWNLOAD</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/docs/">DOCUMENTATION</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about/support/">SUPPORT</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div role="tabpanel">
+                <ul class="nav" role="tablist">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            Cayenne Version 3.0
+                        </a>
+                        <div class="dropdown-menu">
+                            
+                            <a class="dropdown-item" id="cayenne-4-1-tab" href="#cayenne-4-1" role="tab" data-toggle="tab" aria-controls="cayenne-4-1" aria-expanded="true">Version 4.1 (Alpha)</a>
+                            <a class="dropdown-item" id="cayenne-4-0-tab" href="#cayenne-4-0" role="tab" data-toggle="tab" aria-controls="cayenne-4-0" aria-expanded="true">Version 4.0 (Beta)</a>
+                            <a class="dropdown-item" id="cayenne-3-1-tab" href="#cayenne-3-1" role="tab" data-toggle="tab" aria-controls="cayenne-3-1" aria-expanded="true">Version 3.1 (Stable)</a>
+                            <a class="dropdown-item" id="cayenne-3-0-tab" href="#cayenne-3-0" role="tab" data-toggle="tab" aria-controls="cayenne-3-0" aria-expanded="true">Version 3.0 (Stable)</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    
+                    <div class="tab-pane fade " id="cayenne-4-1" role="tabpanel" aria-labelledby="cayenne-4-1-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/getting-started-db-first/">Cayenne Database First tutorial</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/getting-started/">Cayenne Getting Started Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade " id="cayenne-4-0" role="tabpanel" aria-labelledby="cayenne-4-0-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/4.0/getting-started/">Cayenne 4.0 Getting Started Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.0/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade " id="cayenne-3-1" role="tabpanel" aria-labelledby="cayenne-3-1-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/3.1/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade active show" id="cayenne-3-0" role="tabpanel" aria-labelledby="cayenne-3-0-tab" aria-expanded="true">
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/cayenne-guide.html">Cayenne Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/modeler-guide.html">Modeler Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/remote-object-persistence-guide.html">Remote Object Persistence Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+
+            
+            <article>
+                <section>
+                    <H2><A name="RemoteObjectPersistenceTutorialClientCode-StartingCommandLineClient"></A>Starting Command Line Client</H2>
+
+<P>One of the benefits of ROP is that the client code is no different from the server code - it uses the same ObjectContext interface for access, same query and commit API. So the code below will be similar to the code presented in the first <A href="tutorial-objectcontext.html" title="Tutorial ObjectContext">Cayenne tutorial</A>, although with a few ROP-specific parts required to bootstrap the ObjectContext.</P>
+
+<P>Let's start by creating an empty Main class with the standard main() method in the client project:</P>
+
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java"><SPAN class="code-keyword">package</SPAN> org.example.cayenne.persistent.client;
+
+<SPAN class="code-keyword">public</SPAN> class Main {
+
+	<SPAN class="code-keyword">public</SPAN> <SPAN class="code-keyword">static</SPAN> void main(<SPAN class="code-object">String</SPAN>[] args) {
+
+	}
+}</PRE>
+</DIV></DIV>
+
+<P>Now the part that is actually different from regular Cayenne - establishing the server connection and obtaining the ObjectContext:</P>
+
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">ClientConnection connection = <SPAN class="code-keyword">new</SPAN> HessianConnection(<SPAN class="code-quote">&quot;http:<SPAN class="code-comment">//localhost:8080/tutorial/cayenne-service&quot;</SPAN>);
+</SPAN>DataChannel channel = <SPAN class="code-keyword">new</SPAN> ClientChannel(connection);
+ObjectContext context = <SPAN class="code-keyword">new</SPAN> CayenneContext(channel);</PRE>
+</DIV></DIV>
+
+<P>Note that the &quot;channel&quot; can be used to create as many peer ObjectContexts as needed over the same connection, while ObjectContext is a kind of isolated &quot;persistence session&quot;, similar to the server-side context. A few more notes. Since we are using HTTP(S) to communicate with ROP server, there's no need to explicitly close the connection (or channel, or context).</P>
+
+<P>So now let's do the same persistent operaions that we did in the first tutorial &quot;Main&quot; class. Let's start by creating and saving some objects:</P>
+
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java"><SPAN class="code-comment">// creating <SPAN class="code-keyword">new</SPAN> Artist
+</SPAN>Artist picasso = context.newObject(Artist.class);
+picasso.setName(<SPAN class="code-quote">&quot;Pablo Picasso&quot;</SPAN>);
+
+<SPAN class="code-comment">// Creating other objects
+</SPAN>Gallery metropolitan = context.newObject(Gallery.class);
+metropolitan.setName(<SPAN class="code-quote">&quot;Metropolitan Museum of Art&quot;</SPAN>);
+
+Painting girl = context.newObject(Painting.class);
+girl.setName(<SPAN class="code-quote">&quot;Girl Reading at a Table&quot;</SPAN>);
+
+Painting stein = context.newObject(Painting.class);
+stein.setName(<SPAN class="code-quote">&quot;Gertrude Stein&quot;</SPAN>);
+
+<SPAN class="code-comment">// connecting objects together via relationships
+</SPAN>picasso.addToPaintings(girl);
+picasso.addToPaintings(stein);
+
+girl.setGallery(metropolitan);
+stein.setGallery(metropolitan);
+
+<SPAN class="code-comment">// saving all the changes above
+</SPAN>context.commitChanges();</PRE>
+</DIV></DIV>
+
+<P>Now let's select them back:</P>
+
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java"><SPAN class="code-comment">// SelectQuery examples
+</SPAN>SelectQuery select1 = <SPAN class="code-keyword">new</SPAN> SelectQuery(Painting.class);
+List&lt;Painting&gt; paintings1 = context.performQuery(select1);
+
+Expression qualifier2 = ExpressionFactory.likeIgnoreCaseExp(
+		Painting.NAME_PROPERTY, <SPAN class="code-quote">&quot;gi%&quot;</SPAN>);
+SelectQuery select2 = <SPAN class="code-keyword">new</SPAN> SelectQuery(Painting.class, qualifier2);
+List&lt;Painting&gt; paintings2 = context.performQuery(select2);</PRE>
+</DIV></DIV>
+
+<P>Now, delete:</P>
+
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">Expression qualifier = ExpressionFactory.matchExp(Artist.NAME_PROPERTY,
+				<SPAN class="code-quote">&quot;Pablo Picasso&quot;</SPAN>);
+SelectQuery selectToDelete = <SPAN class="code-keyword">new</SPAN> SelectQuery(Artist.class, qualifier);
+Artist picasso = (Artist) DataObjectUtils.objectForQuery(context,
+		selectToDelete);
+
+<SPAN class="code-keyword">if</SPAN> (picasso != <SPAN class="code-keyword">null</SPAN>) {
+	context.deleteObject(picasso);
+	context.commitChanges();
+}</PRE>
+</DIV></DIV>
+
+<P>This code is exactly the same as in the first tutorial. So now let's try running the client and see what happens. In Eclipse open main class and select <TT>&quot;Run &gt; Rus As &gt; Java Application&quot;</TT> from the menu (assuming the ROP server started in the previous step is still running). You will some output in both server and client process consoles. Client:</P>
+
+<DIV class="preformatted panel" style="border-width: 1px;"><DIV class="preformattedContent panelContent">
+<PRE>INFO: Connecting to [http://localhost:8080/tutorial/cayenne-service] - dedicated session.
+INFO: === Connected, session: org.apache.cayenne.remote.RemoteSession@9e09a4[sessionId=10qsakj1mj806] - took 219 ms.
+INFO: --- Message 0: Bootstrap
+INFO: === Message 0: Bootstrap done - took 71 ms.
+INFO: --- Message 1: flush-cascade-sync
+INFO: === Message 1: flush-cascade-sync done - took 1342 ms.
+INFO: --- Message 2: Query
+INFO: === Message 2: Query done - took 58 ms.
+INFO: --- Message 3: Query
+INFO: === Message 3: Query done - took 21 ms.
+INFO: --- Message 4: Query
+INFO: === Message 4: Query done - took 22 ms.
+INFO: --- Message 5: Query
+INFO: === Message 5: Query done - took 16 ms.
+INFO: --- Message 6: Query
+INFO: === Message 6: Query done - took 2 ms.
+INFO: --- Message 7: Query
+INFO: === Message 7: Query done - took 2 ms.
+INFO: --- Message 8: Query
+INFO: === Message 8: Query done - took 2 ms.
+INFO: --- Message 9: flush-cascade-sync
+INFO: === Message 9: flush-cascade-sync done - took 30 ms.</PRE>
+</DIV></DIV>
+
+<P>As you see client prints no SQL statmenets, just a bunch of query and flush messages sent to the server. The server side is more verbose, showing the actual client queries executed against the database:</P>
+
+<DIV class="preformatted panel" style="border-width: 1px;"><DIV class="preformattedContent panelContent">
+<PRE>...
+INFO: SELECT NEXT_ID FROM AUTO_PK_SUPPORT WHERE TABLE_NAME = ? FOR UPDATE [bind: 1:'GALLERY']
+INFO: SELECT NEXT_ID FROM AUTO_PK_SUPPORT WHERE TABLE_NAME = ? FOR UPDATE [bind: 1:'ARTIST']
+INFO: SELECT NEXT_ID FROM AUTO_PK_SUPPORT WHERE TABLE_NAME = ? FOR UPDATE [bind: 1:'PAINTING']
+INFO: --- will run 3 queries.
+INFO: INSERT INTO GALLERY (ID, NAME) VALUES (?, ?)
+INFO: [batch bind: 1-&gt;ID:200, 2-&gt;NAME:'Metropolitan Museum of Art']
+INFO: === updated 1 row.
+INFO: INSERT INTO ARTIST (DATE_OF_BIRTH, ID, NAME) VALUES (?, ?, ?)
+INFO: [batch bind: 1-&gt;DATE_OF_BIRTH:NULL, 2-&gt;ID:200, 3-&gt;NAME:'Pablo Picasso']
+INFO: === updated 1 row.
+INFO: INSERT INTO PAINTING (ARTIST_ID, GALLERY_ID, ID, NAME) VALUES (?, ?, ?, ?)
+INFO: [batch bind: 1-&gt;ARTIST_ID:200, 2-&gt;GALLERY_ID:200, 3-&gt;ID:200, 4-&gt;NAME:'Girl Reading at a Table']
+INFO: [batch bind: 1-&gt;ARTIST_ID:200, 2-&gt;GALLERY_ID:200, 3-&gt;ID:201, 4-&gt;NAME:'Gertrude Stein']
+INFO: === updated 2 rows.
+INFO: +++ transaction committed.
+INFO: --- will run 1 query.
+INFO: --- transaction started.
+INFO: SELECT t0.GALLERY_ID, t0.ARTIST_ID, t0.NAME, t0.ID FROM PAINTING t0
+INFO: === returned 2 rows. - took 15 ms.
+INFO: +++ transaction committed.
+INFO: --- will run 1 query.
+INFO: --- transaction started.
+INFO: SELECT t0.GALLERY_ID, t0.ARTIST_ID, t0.NAME, t0.ID FROM PAINTING t0 WHERE UPPER(t0.NAME) LIKE UPPER(?) [bind: 1-&gt;NAME:'gi%']
+INFO: === returned 1 row. - took 9 ms.
+INFO: +++ transaction committed.
+INFO: --- will run 1 query.
+INFO: --- transaction started.
+INFO: SELECT t0.DATE_OF_BIRTH, t0.ID, t0.NAME FROM ARTIST t0 WHERE t0.NAME = ? [bind: 1-&gt;NAME:'Pablo Picasso']
+INFO: === returned 1 row. - took 7 ms.
+INFO: +++ transaction committed.
+INFO: --- will run 2 queries.
+INFO: --- transaction started.
+INFO: DELETE FROM PAINTING WHERE ID = ?
+INFO: [batch bind: 1-&gt;ID:200]
+INFO: [batch bind: 1-&gt;ID:201]
+INFO: === updated 2 rows.
+INFO: DELETE FROM ARTIST WHERE ID = ?
+INFO: [batch bind: 1-&gt;ID:200]
+INFO: === updated 1 row.
+INFO: +++ transaction committed.</PRE>
+</DIV></DIV>
+
+<P>You are done with the basic ROP client!</P>
+
+<HR>
+<P><B>Next Step: <A href="remote-object-persistence-tutorial-authentication.html" title="Remote Object Persistence Tutorial Authentication">Remote Object Persistence Tutorial Authentication</A></B></P>
+<HR>
+
+
+                </section>
+            </article>
+
+        </div>
+    </div>
+</div>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col">
+                <h3 class="footer">About</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/why-cayenne.html" class="footer">Why Cayenne?</a>
+                    
+                    <li><a href="/download/" class="footer">Download</a>
+                    
+                    <li><a href="/success-stories.html" class="footer">Success Stories</a>
+                    
+                    <li><a href="/about/support/" class="footer">Support</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Documentation</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/docs/4.1/getting-started/" class="footer">Getting Started (4.1)</a>
+                    
+                    <li><a href="/docs/4.0/getting-started/" class="footer">Getting Started (4.0)</a>
+                    
+                    <li><a href="/docs/4.1/getting-started-db-first/" class="footer">Database First tutorial (4.1)</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Collaboration</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="https://issues.apache.org/jira/browse/CAY" class="footer">Bug/Feature Tracker</a>
+                    
+                    <li><a href="/mailing-lists.html" class="footer">Mailing Lists</a>
+                    
+                    <li><a href="/dev/code-repository.html" class="footer">Code Repository</a>
+                    
+                    <li><a href="/dev/" class="footer">Developer Guide</a>
+                    
+                    <li><a href="/how-can-i-help.html" class="footer">How can I help?</a>
+                    
+                    <li><a href="/contributors.html" class="footer">Contributors</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">News</h3>
+                <ul class="list-unstyled">
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Nov 20, 2017</small>
+                        </div>
+                        <a href="/2017/11/cayenne-312-released.html" class="footer">Cayenne 3.1.2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 14, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-41m1-released.html" class="footer">Cayenne 4.1 Milestone 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 06, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-40B2-released.html" class="footer">Cayenne 4.0 Beta 2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Jun 12, 2017</small>
+                        </div>
+                        <a href="/2017/06/cayenne-40B1-released.html" class="footer">Cayenne 4.0 Beta 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Mar 07, 2017</small>
+                        </div>
+                        <a href="/2017/03/cayenne-40M5-released.html" class="footer">Cayenne 4.0 Milestone 5 Released</a>
+                    </li>
+                    
+                    <li><a href="http://cayenne.apache.org/news" class="footer">More news</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-8">
+                <p class="text-center page-footer-copyright">
+                    Copyright © 2001-2017 Apache Software Foundation. Apache Cayenne, Cayenne, Apache,
+                    the Apache feather logo, and the Apache Cayenne project logo are trademarks of The Apache Software Foundation.
+                    <a href="http://cayenne.apache.org/privacy-policy.html">Privacy policy</a>
+                </p>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</footer>
+
+    
+    </body>
+</html>

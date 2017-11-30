@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-144-precomposed.png" sizes="144x144" />
+        <link rel="stylesheet" href="http://cayenne.apache.org/css/styles-b770de6275.css"/>
+        <script src="http://cayenne.apache.org/js/bundle-736b99fdc1.js"></script>
+        <title>Individual Object Caching &middot; Apache Cayenne</title>
+    </head>
+    <body>
+<header class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-dark navbar-expand-lg">
+                    <a class="navbar-brand nav-link active" href="http://cayenne.apache.org/">Apache Cayenne</a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/download/">DOWNLOAD</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/docs/">DOCUMENTATION</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about/support/">SUPPORT</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div role="tabpanel">
+                <ul class="nav" role="tablist">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            Cayenne Version 3.0
+                        </a>
+                        <div class="dropdown-menu">
+                            
+                            <a class="dropdown-item" id="cayenne-4-1-tab" href="#cayenne-4-1" role="tab" data-toggle="tab" aria-controls="cayenne-4-1" aria-expanded="true">Version 4.1 (Alpha)</a>
+                            <a class="dropdown-item" id="cayenne-4-0-tab" href="#cayenne-4-0" role="tab" data-toggle="tab" aria-controls="cayenne-4-0" aria-expanded="true">Version 4.0 (Beta)</a>
+                            <a class="dropdown-item" id="cayenne-3-1-tab" href="#cayenne-3-1" role="tab" data-toggle="tab" aria-controls="cayenne-3-1" aria-expanded="true">Version 3.1 (Stable)</a>
+                            <a class="dropdown-item" id="cayenne-3-0-tab" href="#cayenne-3-0" role="tab" data-toggle="tab" aria-controls="cayenne-3-0" aria-expanded="true">Version 3.0 (Stable)</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    
+                    <div class="tab-pane fade " id="cayenne-4-1" role="tabpanel" aria-labelledby="cayenne-4-1-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/getting-started-db-first/">Cayenne Database First tutorial</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/getting-started/">Cayenne Getting Started Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade " id="cayenne-4-0" role="tabpanel" aria-labelledby="cayenne-4-0-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/4.0/getting-started/">Cayenne 4.0 Getting Started Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.0/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade " id="cayenne-3-1" role="tabpanel" aria-labelledby="cayenne-3-1-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/3.1/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade active show" id="cayenne-3-0" role="tabpanel" aria-labelledby="cayenne-3-0-tab" aria-expanded="true">
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/cayenne-guide.html">Cayenne Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/modeler-guide.html">Modeler Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/remote-object-persistence-guide.html">Remote Object Persistence Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+
+            
+            <article>
+                <section>
+                    <H2><A name="IndividualObjectCaching-IndividualObjectCaching"></A>Individual Object Caching</H2>
+
+<P>Whenever an object is fetched from the database or created by the user and registered with Cayenne, it is automatically cached. Accessing this object later (e.g. when traversing a relationship from another object, or doing a lookup by primary key via DataObjectUtils) will not incur an overhead of extra database access. </P>
+
+<H3><A name="IndividualObjectCaching-SynchronizingObjectsonCommit"></A>Synchronizing Objects on Commit</H3>
+
+<P>Very often there's more than one ObjectContext working over the same Cayenne stack. E.g. in a web application each user session may have its own ObjectContext. If one of the contexts commits its changes, Cayenne automatically updates copies of each modified object across all contexts (&quot;copies&quot; mean context-specific instances of objects with the same ObjectId). So all committed object changes become immediately visible to all contexts. If there's more than one Cayenne stack running (e.g. if the application is clustered across multiple JVMs), there are ways to notify other stacks about the object changes. This can be set up in the Modeler. However full synchronization of every change often results in excessive network traffic and CPU consumption, and is usually avoided in favor of the query cache approach <A href="query-result-caching.html" title="Query Result Caching">described elsewhere</A> in this chapter.</P>
+
+<H3><A name="IndividualObjectCaching-MemoryManagement"></A>Memory Management</H3>
+
+<P>Cayenne ensures that the memory allocated to caching does not grow indefinitely. A cache shared between ObjectContexts has a fixed upper limit. 10000 is the default maximum number of entries, which can be changed in the Modeler. A cache attached to each ObjectContext (also referred to as &quot;local cache&quot; elsewhere in this chapter), which only stores the objects that were accessed via this context, has no upper limit. However it uses weak references to the cached <B>committed</B> objects, so they are automatically purged from cache when the application runs low on memory.</P>
+
+<H3><A name="IndividualObjectCaching-Refreshing"></A>Refreshing</H3>
+
+<P>Object caching happens behind the scenes, so the only case when users need to worry about object cache is when an object gets stale and needs to get refreshed. Here are the strategies for refreshing a single stale object:</P>
+
+<UL>
+	<LI><EM>Perform a query to refetch one or more objects.</EM> Any of the Cayenne selecting queries would refresh previously cached objects:
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">
+Artist a = ...;
+<SPAN class="code-comment">// <SPAN class="code-quote">&quot;a&quot;</SPAN> gets stale, we need to refresh it
+</SPAN>SelectQuery query = <SPAN class="code-keyword">new</SPAN> SelectQuery(Artist.class, ...);
+List&lt;Artist&gt; artists = context.performQuery(query);
+<SPAN class="code-comment">// <SPAN class="code-keyword">if</SPAN> the query result includes <SPAN class="code-quote">&quot;a&quot;</SPAN>, object <SPAN class="code-quote">&quot;a&quot;</SPAN> is now refreshed</SPAN>
+</PRE>
+</DIV></DIV> </LI>
+</UL>
+
+
+<UL>
+	<LI><EM>Use <A href="prefetching.html" title="Prefetching">prefetching</A> to refresh to-many relationships and related objects</EM>. Cayenne selecting query would only refresh the &quot;root&quot; objects (objects of type &quot;Artist&quot; in the example above), including their &quot;simple&quot; properties and to-one relationships. To refresh to-many relationships, including to-many collection contents, and each of the related objects, a user must specify a prefetch on a given relationship. E.g.:
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">
+<SPAN class="code-comment">// to refresh a list of paintings attached to the Artist, use a prefetch:
+</SPAN>query.addPrefetch(Artist.PAINTINGS_PROPERTY);
+</PRE>
+</DIV></DIV></LI>
+</UL>
+
+
+<UL>
+	<LI><EM>Use <A href="objectidquery.html" title="ObjectIdQuery">ObjectIdQuery</A> to refresh a single object.</EM> There is a special query that allows to refresh a single object - ObjectIdQuery. Specify &quot;CACHE_REFRESH&quot; caching strategy to ensure a DB fetch is performed. This requires manually creating an ObjectId:
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">
+ObjectId id = <SPAN class="code-keyword">new</SPAN> ObjectId(<SPAN class="code-quote">&quot;Artist&quot;</SPAN>, Artist.ID_PK_COLUMN, 5);
+ObjectIdQuery query = <SPAN class="code-keyword">new</SPAN> ObjectIdQuery(id, <SPAN class="code-keyword">false</SPAN>, ObjectIdQuery.CACHE_REFRESH);
+Artist a = (Artist) DataObjectUtils.objectForQuery(query);
+</PRE>
+</DIV></DIV></LI>
+</UL>
+
+
+                </section>
+            </article>
+
+        </div>
+    </div>
+</div>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col">
+                <h3 class="footer">About</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/why-cayenne.html" class="footer">Why Cayenne?</a>
+                    
+                    <li><a href="/download/" class="footer">Download</a>
+                    
+                    <li><a href="/success-stories.html" class="footer">Success Stories</a>
+                    
+                    <li><a href="/about/support/" class="footer">Support</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Documentation</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/docs/4.1/getting-started/" class="footer">Getting Started (4.1)</a>
+                    
+                    <li><a href="/docs/4.0/getting-started/" class="footer">Getting Started (4.0)</a>
+                    
+                    <li><a href="/docs/4.1/getting-started-db-first/" class="footer">Database First tutorial (4.1)</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Collaboration</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="https://issues.apache.org/jira/browse/CAY" class="footer">Bug/Feature Tracker</a>
+                    
+                    <li><a href="/mailing-lists.html" class="footer">Mailing Lists</a>
+                    
+                    <li><a href="/dev/code-repository.html" class="footer">Code Repository</a>
+                    
+                    <li><a href="/dev/" class="footer">Developer Guide</a>
+                    
+                    <li><a href="/how-can-i-help.html" class="footer">How can I help?</a>
+                    
+                    <li><a href="/contributors.html" class="footer">Contributors</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">News</h3>
+                <ul class="list-unstyled">
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Nov 20, 2017</small>
+                        </div>
+                        <a href="/2017/11/cayenne-312-released.html" class="footer">Cayenne 3.1.2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 14, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-41m1-released.html" class="footer">Cayenne 4.1 Milestone 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 06, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-40B2-released.html" class="footer">Cayenne 4.0 Beta 2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Jun 12, 2017</small>
+                        </div>
+                        <a href="/2017/06/cayenne-40B1-released.html" class="footer">Cayenne 4.0 Beta 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Mar 07, 2017</small>
+                        </div>
+                        <a href="/2017/03/cayenne-40M5-released.html" class="footer">Cayenne 4.0 Milestone 5 Released</a>
+                    </li>
+                    
+                    <li><a href="http://cayenne.apache.org/news" class="footer">More news</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-8">
+                <p class="text-center page-footer-copyright">
+                    Copyright © 2001-2017 Apache Software Foundation. Apache Cayenne, Cayenne, Apache,
+                    the Apache feather logo, and the Apache Cayenne project logo are trademarks of The Apache Software Foundation.
+                    <a href="http://cayenne.apache.org/privacy-policy.html">Privacy policy</a>
+                </p>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</footer>
+
+    
+    </body>
+</html>

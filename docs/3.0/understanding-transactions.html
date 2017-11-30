@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-144-precomposed.png" sizes="144x144" />
+        <link rel="stylesheet" href="http://cayenne.apache.org/css/styles-b770de6275.css"/>
+        <script src="http://cayenne.apache.org/js/bundle-736b99fdc1.js"></script>
+        <title>Understanding Transactions &middot; Apache Cayenne</title>
+    </head>
+    <body>
+<header class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-dark navbar-expand-lg">
+                    <a class="navbar-brand nav-link active" href="http://cayenne.apache.org/">Apache Cayenne</a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/download/">DOWNLOAD</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/docs/">DOCUMENTATION</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about/support/">SUPPORT</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div role="tabpanel">
+                <ul class="nav" role="tablist">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            Cayenne Version 3.0
+                        </a>
+                        <div class="dropdown-menu">
+                            
+                            <a class="dropdown-item" id="cayenne-4-1-tab" href="#cayenne-4-1" role="tab" data-toggle="tab" aria-controls="cayenne-4-1" aria-expanded="true">Version 4.1 (Alpha)</a>
+                            <a class="dropdown-item" id="cayenne-4-0-tab" href="#cayenne-4-0" role="tab" data-toggle="tab" aria-controls="cayenne-4-0" aria-expanded="true">Version 4.0 (Beta)</a>
+                            <a class="dropdown-item" id="cayenne-3-1-tab" href="#cayenne-3-1" role="tab" data-toggle="tab" aria-controls="cayenne-3-1" aria-expanded="true">Version 3.1 (Stable)</a>
+                            <a class="dropdown-item" id="cayenne-3-0-tab" href="#cayenne-3-0" role="tab" data-toggle="tab" aria-controls="cayenne-3-0" aria-expanded="true">Version 3.0 (Stable)</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    
+                    <div class="tab-pane fade " id="cayenne-4-1" role="tabpanel" aria-labelledby="cayenne-4-1-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/getting-started-db-first/">Cayenne Database First tutorial</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/getting-started/">Cayenne Getting Started Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade " id="cayenne-4-0" role="tabpanel" aria-labelledby="cayenne-4-0-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/4.0/getting-started/">Cayenne 4.0 Getting Started Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.0/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade " id="cayenne-3-1" role="tabpanel" aria-labelledby="cayenne-3-1-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/3.1/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade active show" id="cayenne-3-0" role="tabpanel" aria-labelledby="cayenne-3-0-tab" aria-expanded="true">
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/cayenne-guide.html">Cayenne Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/modeler-guide.html">Modeler Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/remote-object-persistence-guide.html">Remote Object Persistence Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+
+            
+            <article>
+                <section>
+                    <P>Cayenne has its own simple transaction API centered around <TT>org.apache.cayenne.access.Transaction</TT> class. Its goal is to ensure consistency of the DataContext database operations. It works either as a standalone mechanism, or in conjunction with another transaction framework, such as JTA or Spring. To switch between the two modes of operation, use &quot;Container-Managed Transactions&quot; checkbox in the DataDomain editing panel in CayenneModeler:</P>
+
+<P><SPAN class="image-wrap" style=""><img src="/docs/3.0/images/transactions-types.png" style="border: 0px solid black"></SPAN></P>
+
+<P>If this box is unchecked (default), standalone mode is used and Cayenne will take care of transactional resources management on its own. If it is checked, Cayenne won't commit or rollback transactional resources, relying on the external transaction manager to do that.</P>
+
+<P>In both cases Transaction API works implicitly behind the scenes, so the application doesn't need to interact with it directly. In that Cayenne Transactions are fully declarative.</P>
+
+<H3><A name="UnderstandingTransactions-HowTransactionsWork"></A>How Transactions Work</H3>
+
+<P>Similar to the Java EE approach, Cayenne transactions are bound to the current thread for the duration of the execution. For instance this is how Cayenne does an internal check of whether there is a transaction in progress:</P>
+
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java"><SPAN class="code-keyword">import</SPAN> org.apache.cayenne.access.Transaction;
+...
+Transaction currentTx = Transaction.getThreadTransaction();
+<SPAN class="code-keyword">if</SPAN>(currentTx != <SPAN class="code-keyword">null</SPAN>) {
+  <SPAN class="code-comment">// transaction in process...
+</SPAN>}
+</PRE>
+</DIV></DIV>
+
+<P>When a Transaction is created inside Cayenne, it is immediately bound to the thread:</P>
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">Transaction tx = ...;
+Transaction.bindThreadTransaction(tx);</PRE>
+</DIV></DIV>
+
+<P>Now let's revisit the flow of a typical operation that requires a transaction:</P>
+<OL>
+	<LI>A DataContext sends a query or a commit request to the underlying <TT>org.apache.cayenne.DataChannel</TT>.</LI>
+	<LI>The request travels the chain of DataChannels until it reaches one that is a <TT>org.apache.cayenne.access.DataDomain</TT>.</LI>
+	<LI>DataDomain analyzes context request and dispatches data queries to one or more <TT>org.apache.cayenne.access.DataNodes</TT>.</LI>
+	<LI>Each DataNode opens a JDBC Connection and executes queries.</LI>
+</OL>
+
+
+<P>Transactions come into play in <B>step 3</B>. DataDomain checks whether there is an existing Transaction in process and if not - creates and starts a new one (standalone or container, depending on the preconfigured type). In that Cayenne transaction policy is similar to Java EE <TT>&quot;REQUIRE&quot;</TT> policy.</P>
+
+<P>Later in <B>step 4</B> DataNodes will attach any of the Connections they obtains to the ongoing transaction:</P>
+
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java"><SPAN class="code-keyword">import</SPAN> java.sql.Connection;
+...
+Connection connection = ...
+currentTx.addConnection(<SPAN class="code-quote">&quot;someKey&quot;</SPAN>, connection);</PRE>
+</DIV></DIV>
+
+<H3><A name="UnderstandingTransactions-TransactionLifecycleCallbacks%3ATransactionDelegate"></A>Transaction Lifecycle Callbacks: TransactionDelegate</H3>
+
+<P>If you want to execute some custom code, such as Cayenne queries or raw JDBC queries at certain points in transaction lifecycle, you need to implement a <TT>org.apache.cayenne.access.TransactionDelegate</TT> callback interface:</P>
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java"><SPAN class="code-keyword">public</SPAN> class MyTxCallback <SPAN class="code-keyword">implements</SPAN> TransactionDelegate {
+
+    <SPAN class="code-keyword">public</SPAN> <SPAN class="code-object">boolean</SPAN> willCommit(Transaction transaction) {
+        <SPAN class="code-comment">// run extra query before transaction is committed
+</SPAN>
+        <SPAN class="code-comment">// The results of it will be committed or rolled back together with the current Transaction. 
+</SPAN>
+        DataContext context = DataContext.getThreadDataContext();
+        context.performGenericQuery(<SPAN class="code-keyword">new</SPAN> SQLTemplate(X.class, <SPAN class="code-quote">&quot;...&quot;</SPAN>));
+
+        <SPAN class="code-comment">// <SPAN class="code-keyword">return</SPAN> <SPAN class="code-keyword">true</SPAN>, letting Cayenne know it should <SPAN class="code-keyword">continue</SPAN> with commit
+</SPAN>        <SPAN class="code-keyword">return</SPAN> <SPAN class="code-keyword">true</SPAN>;
+    }
+
+    <SPAN class="code-keyword">public</SPAN> <SPAN class="code-object">boolean</SPAN> willMarkAsRollbackOnly(Transaction transaction) {
+        <SPAN class="code-keyword">return</SPAN> <SPAN class="code-keyword">true</SPAN>;
+    }
+
+    <SPAN class="code-keyword">public</SPAN> <SPAN class="code-object">boolean</SPAN> willRollback(Transaction transaction) {
+        <SPAN class="code-keyword">return</SPAN> <SPAN class="code-keyword">true</SPAN>;
+    }
+
+    <SPAN class="code-keyword">public</SPAN> void didCommit(Transaction transaction) {
+    }
+
+    <SPAN class="code-keyword">public</SPAN> void didRollback(Transaction transaction) {
+    }
+
+    <SPAN class="code-keyword">public</SPAN> <SPAN class="code-object">boolean</SPAN> willAddConnection(Transaction transaction, Connection connection) {
+        <SPAN class="code-keyword">return</SPAN> <SPAN class="code-keyword">true</SPAN>;
+    }
+}
+</PRE>
+</DIV></DIV>
+
+<P>Then an instance can be registered with the DataDomain. </P>
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">
+DataDomain domain = Configuration.getSharedConfiguration().getDomain();
+domain.setTransactionDelegate(<SPAN class="code-keyword">new</SPAN> MyTxCallback());
+</PRE>
+</DIV></DIV>
+
+<P>The delegate is shared by all DataContexts.</P>
+
+<H3><A name="UnderstandingTransactions-UserDefinedTransactionScope"></A>User-Defined Transaction Scope</H3>
+
+<P>If the application needs to define its own transactional scope (e.g. wrap more than one <TT>DataContext.commitChanges()</TT> in a single database transaction), an explict <TT>org.apache.cayenne.access.Transaction</TT> can be started. It will serve as a simple substitute for the JTA transactions (of course JTA UserTransaction can be used instead if desired).</P>
+
+<DIV class="panelMacro"><TABLE class="noteMacro"><COLGROUP><COL width="24"><COL></COLGROUP><TR><TD valign="top"><img src="/docs/3.0/images/warning.gif" width="16" height="16" align="absmiddle" alt="" border="0"></TD><TD>If the user code starts a Transaction, it <B>must</B> explicitly invoke &quot;commit/rollback&quot; methods and unbind the Transaction from the current thread when it is finished. Failure to do that may result in connection leaks. Of course if Cayenne starts an implicit transaction, it does the cleanup internally on its own.</TD></TR></TABLE></DIV>
+
+<P>Below is an example of user-controlled Transaction code. First it obtains a new transaction from the DataDomain (alternatively users can create Transaction subclasses of their own):</P>
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">DataDomain domain = Configuration.getSharedConfiguration().getDomain();
+Transaction tx = domain.createTransaction();
+</PRE>
+</DIV></DIV>
+
+<P>As we must finish transaction regardless of the outcome, wrap the rest of the code in try/catch/finally. Don't foget to bind/unbind the transaction, so that Cayenne stack is aware of it:</P>
+
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">Transaction.bindThreadTransaction(tx);
+
+<SPAN class="code-keyword">try</SPAN> {
+    <SPAN class="code-comment">// <SPAN class="code-keyword">do</SPAN> something...
+</SPAN>    ....
+    <SPAN class="code-comment">// <SPAN class="code-keyword">if</SPAN> no failures, commit
+</SPAN>    tx.commit();
+}
+<SPAN class="code-keyword">catch</SPAN> (Exception ex) {
+    tx.setRollbackOnly();
+}
+<SPAN class="code-keyword">finally</SPAN> {
+    Transaction.bindThreadTransaction(<SPAN class="code-keyword">null</SPAN>);
+ 
+    <SPAN class="code-keyword">if</SPAN> (tx.getStatus() == Transaction.STATUS_MARKED_ROLLEDBACK) {
+        <SPAN class="code-keyword">try</SPAN> {
+           tx.rollback();
+        }
+        <SPAN class="code-keyword">catch</SPAN> (Exception rollbackEx) {
+        }
+    }
+}
+</PRE>
+</DIV></DIV>
+
+                </section>
+            </article>
+
+        </div>
+    </div>
+</div>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col">
+                <h3 class="footer">About</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/why-cayenne.html" class="footer">Why Cayenne?</a>
+                    
+                    <li><a href="/download/" class="footer">Download</a>
+                    
+                    <li><a href="/success-stories.html" class="footer">Success Stories</a>
+                    
+                    <li><a href="/about/support/" class="footer">Support</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Documentation</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/docs/4.1/getting-started/" class="footer">Getting Started (4.1)</a>
+                    
+                    <li><a href="/docs/4.0/getting-started/" class="footer">Getting Started (4.0)</a>
+                    
+                    <li><a href="/docs/4.1/getting-started-db-first/" class="footer">Database First tutorial (4.1)</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Collaboration</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="https://issues.apache.org/jira/browse/CAY" class="footer">Bug/Feature Tracker</a>
+                    
+                    <li><a href="/mailing-lists.html" class="footer">Mailing Lists</a>
+                    
+                    <li><a href="/dev/code-repository.html" class="footer">Code Repository</a>
+                    
+                    <li><a href="/dev/" class="footer">Developer Guide</a>
+                    
+                    <li><a href="/how-can-i-help.html" class="footer">How can I help?</a>
+                    
+                    <li><a href="/contributors.html" class="footer">Contributors</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">News</h3>
+                <ul class="list-unstyled">
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Nov 20, 2017</small>
+                        </div>
+                        <a href="/2017/11/cayenne-312-released.html" class="footer">Cayenne 3.1.2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 14, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-41m1-released.html" class="footer">Cayenne 4.1 Milestone 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 06, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-40B2-released.html" class="footer">Cayenne 4.0 Beta 2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Jun 12, 2017</small>
+                        </div>
+                        <a href="/2017/06/cayenne-40B1-released.html" class="footer">Cayenne 4.0 Beta 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Mar 07, 2017</small>
+                        </div>
+                        <a href="/2017/03/cayenne-40M5-released.html" class="footer">Cayenne 4.0 Milestone 5 Released</a>
+                    </li>
+                    
+                    <li><a href="http://cayenne.apache.org/news" class="footer">More news</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-8">
+                <p class="text-center page-footer-copyright">
+                    Copyright © 2001-2017 Apache Software Foundation. Apache Cayenne, Cayenne, Apache,
+                    the Apache feather logo, and the Apache Cayenne project logo are trademarks of The Apache Software Foundation.
+                    <a href="http://cayenne.apache.org/privacy-policy.html">Privacy policy</a>
+                </p>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</footer>
+
+    
+    </body>
+</html>

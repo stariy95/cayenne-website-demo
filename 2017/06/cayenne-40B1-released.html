@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-144-precomposed.png" sizes="144x144" />
+        <link rel="stylesheet" href="http://cayenne.apache.org/css/styles-b770de6275.css"/>
+        <script src="http://cayenne.apache.org/js/bundle-736b99fdc1.js"></script>
+        <title>Cayenne 4.0 Beta 1 Released &middot; Apache Cayenne</title>
+    </head>
+    <body>
+<header class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-dark navbar-expand-lg">
+                    <a class="navbar-brand nav-link active" href="http://cayenne.apache.org/">Apache Cayenne</a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/download/">DOWNLOAD</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/docs/">DOCUMENTATION</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about/support/">SUPPORT</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <article>
+                    <header>
+                        <h1>Cayenne 4.0 Beta 1 Released</h1>
+                        <small class="text-muted">Jun 12, 2017</small>
+                    </header>
+                    <section>
+                        
+
+<p>Apache Cayenne team is glad to announce a beta release of Cayenne 4.0. What this means for our users is
+that now the API is frozen and it is safe to try it out even if you are not usually confortable living
+on the bleeding edge of unstable releases. We&rsquo;d like to hear from you about your upgrade experiences.
+And of course we&rsquo;ll strive to fix any remaining bugs before 4.0 goes final. To give you more confidence,
+we&rsquo;d like to mention that most of the Cayenne developers have been using 4.0 in production for years.</p>
+
+<p>From now on the 4.0 branch will concentrate on bug fixes, Modeler improvements, documentation, web site
+and other such things.</p>
+
+<p>We are planning to publish a more detailed 4.0 comparision with 3.1 shortly. For now let&rsquo;s take a look at
+things that have changed since the late milestone - M5:</p>
+
+<ul>
+<li>A native <strong>Gradle Plugin</strong>.</li>
+<li>Fresh <strong>Modeler design</strong> (along with many small UI improvements and bug fixes).</li>
+<li>A switch from <em>commons-logging</em> to <strong><em>SLF4J</em></strong> API</li>
+<li>Optional <strong>HMAC</strong> in crypto module</li>
+<li>Numerous bug fixes, updated docs, etc.</li>
+</ul>
+
+<p>Cayenne can be downloaded from <a href="http://cayenne.apache.org/download/">here</a>. Make sure to consult <a href="https://github.com/apache/cayenne/blob/4.0.B1/docs/doc/src/main/resources/UPGRADE.txt">UPGRADE.txt</a> file before updating.</p>
+
+<p>BTW, here is an example of the Gradle plugin use :</p>
+
+<pre><code>buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'org.apache.cayenne.plugins', name: 'cayenne-gradle-plugin', version: '4.0.B1'
+    }
+}
+
+apply plugin: 'org.apache.cayenne'
+
+cayenne.defaultDataMap 'datamap.map.xml'
+
+dependencies {
+    compile cayenne.dependency('server')
+    compile cayenne.dependency('java8')
+}
+</code></pre>
+
+<h3 id="a-full-list-of-changes-in-this-release">A full list of changes in this release:</h3>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/CAY-1873">CAY-1873</a> Move DataDomain cache configuration from the Modeler and into DI</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-1891">CAY-1891</a> Modeler: Add To-Many Warning</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-1892">CAY-1892</a> Modeler: Add Relationship Data Type Warning</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2057">CAY-2057</a> Modeler: Clean up OS X version</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2109">CAY-2109</a> cayenne-crypto: add value authentication (HMAC)</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2210">CAY-2210</a> Query cache: incorrect cache key for queries with custom value objects</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2255">CAY-2255</a> ObjectSelect improvement: columns as full entities</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2258">CAY-2258</a> DI: type-safe binding of List and Map</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2259">CAY-2259</a> QueryCache: support for referencing type-safe caches</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2261">CAY-2261</a> Replace NamedQuery with MappedXYZ in *datamap.vm</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2262">CAY-2262</a> Module auto-loading</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2266">CAY-2266</a> Move EventBridge implementations into autoloadable modules</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2267">CAY-2267</a> Contribute lifecycle events listeners via DI</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2268">CAY-2268</a> DI: Refactor ListBuilder API ambiguities for before() / after() bindings</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2269">CAY-2269</a> Add support for date/time components extraction in expression functions</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2270">CAY-2270</a> Update function support in expression parser</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2271">CAY-2271</a> ColumnSelect: support for prefetch and limit</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2272">CAY-2272</a> ColumnSelect: methods to manually control DISTINCT clause</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2274">CAY-2274</a> Modeler: Validate case when dependent PK is marked as “generated”</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2277">CAY-2277</a> Create ClientRuntime with ClientRuntimeBuilder just like ServerRuntime</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2278">CAY-2278</a> Extract cayenne-postcommit module from cayenne-lifecycle</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2280">CAY-2280</a> Switch from commons-logging to slf4j</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2295">CAY-2295</a> &ldquo;Sync ObjEntity with DbEntity&rdquo; and &ldquo;View related DbEntity&rdquo; buttons aren&rsquo;t disabled, if DbEntity doesn&rsquo;t have ObjEntity</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2296">CAY-2296</a> cayenne-crypto: Get java type for DbAttribute bound to ObjAttributes with the same type</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2300">CAY-2300</a> Modeler: New icons and design improvements</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2302">CAY-2302</a> Rename postcommit module and its content to commitlog</li>
+</ul>
+
+<h3 id="bug-fixes">Bug Fixes:</h3>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2021">CAY-2021</a> cdbimport: detect when same FK constraint is defined twice</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2077">CAY-2077</a> Bug in CayenneRuntimeException using wrong specified string in Formatter</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2094">CAY-2094</a> SelectById query doesn&rsquo;t work from ROP client</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2161">CAY-2161</a> &lsquo;Not for Client Use&rsquo; option is ignored at Class Generation</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2171">CAY-2171</a> Modeler: Undo db Entity Sync throws error</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2208">CAY-2208</a> SQLTemplate: LEFT JOIN to a subset of a table returns nulls for entries that don&rsquo;t have a match in the subset</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2230">CAY-2230</a> Error using connection to postgresql with db schema in DB URL</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2240">CAY-2240</a> Modeler: issue with cursor rendering for EJBQL query</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2243">CAY-2243</a> ObjectContext.getGraphManager().unregisterObject() inconsistencies</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2250">CAY-2250</a> Remove: Incorrect text in Confirm Remove message when cursor is set on attribute row</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2256">CAY-2256</a> Cannot Save/Insert an Object With null Flattened (complex) toOne Relationship (see also <a href="https://issues.apache.org/jira/browse/CAY-2146">CAY-2146</a>)</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2265">CAY-2265</a> ServerRuntime.builder() fails to set default runtime name when a the project file doesn&rsquo;t follow recognized pattern</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2273">CAY-2273</a> Modeler: default suggested cgen location is rooted in subpackage</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2275">CAY-2275</a> Documentation: tutorial is out of sync with 4.0.M5 version</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2276">CAY-2276</a> PrePersist listener registered as PostPersist in LifecycleCallbackRegistry.addListener(Class&lt;?&gt;, LifecycleListener)</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2279">CAY-2279</a> cdbimport: skip PK comparison for VIEWs</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2281">CAY-2281</a> ObjEntity attribute overrides are never deleted</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2284">CAY-2284</a> Expression likeIgnoreCase can&rsquo;t handle unicode chars in in-memory evaluation</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2286">CAY-2286</a> Filter out inherited ObjEntities from sync with DbEntity</li>
+<li><a href="https://issues.apache.org/jira/browse/CAY-2326">CAY-2326</a> DI: can&rsquo;t override List/Map elements from another Module</li>
+</ul>
+
+                    </section>
+                </article>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-left">
+                
+                Next: <a href='/2017/10/cayenne-40B2-released.html'>Cayenne 4.0 Beta 2 Released</a>
+                
+            </div>
+            <div class="col text-right">
+                
+                Previous: <a href='/2017/03/cayenne-40M5-released.html'>Cayenne 4.0 Milestone 5 Released</a>
+                
+            </div>
+        </div>
+    </div>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col">
+                <h3 class="footer">About</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/why-cayenne.html" class="footer">Why Cayenne?</a>
+                    
+                    <li><a href="/download/" class="footer">Download</a>
+                    
+                    <li><a href="/success-stories.html" class="footer">Success Stories</a>
+                    
+                    <li><a href="/about/support/" class="footer">Support</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Documentation</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/docs/4.1/getting-started/" class="footer">Getting Started (4.1)</a>
+                    
+                    <li><a href="/docs/4.0/getting-started/" class="footer">Getting Started (4.0)</a>
+                    
+                    <li><a href="/docs/4.1/getting-started-db-first/" class="footer">Database First tutorial (4.1)</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Collaboration</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="https://issues.apache.org/jira/browse/CAY" class="footer">Bug/Feature Tracker</a>
+                    
+                    <li><a href="/mailing-lists.html" class="footer">Mailing Lists</a>
+                    
+                    <li><a href="/dev/code-repository.html" class="footer">Code Repository</a>
+                    
+                    <li><a href="/dev/" class="footer">Developer Guide</a>
+                    
+                    <li><a href="/how-can-i-help.html" class="footer">How can I help?</a>
+                    
+                    <li><a href="/contributors.html" class="footer">Contributors</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">News</h3>
+                <ul class="list-unstyled">
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Nov 20, 2017</small>
+                        </div>
+                        <a href="/2017/11/cayenne-312-released.html" class="footer">Cayenne 3.1.2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 14, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-41m1-released.html" class="footer">Cayenne 4.1 Milestone 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 06, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-40B2-released.html" class="footer">Cayenne 4.0 Beta 2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Jun 12, 2017</small>
+                        </div>
+                        <a href="/2017/06/cayenne-40B1-released.html" class="footer">Cayenne 4.0 Beta 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Mar 07, 2017</small>
+                        </div>
+                        <a href="/2017/03/cayenne-40M5-released.html" class="footer">Cayenne 4.0 Milestone 5 Released</a>
+                    </li>
+                    
+                    <li><a href="http://cayenne.apache.org/news" class="footer">More news</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-8">
+                <p class="text-center page-footer-copyright">
+                    Copyright © 2001-2017 Apache Software Foundation. Apache Cayenne, Cayenne, Apache,
+                    the Apache feather logo, and the Apache Cayenne project logo are trademarks of The Apache Software Foundation.
+                    <a href="http://cayenne.apache.org/privacy-policy.html">Privacy policy</a>
+                </p>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</footer>
+
+    
+    </body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-144-precomposed.png" sizes="144x144" />
+        <link rel="stylesheet" href="http://cayenne.apache.org/css/styles-b770de6275.css"/>
+        <script src="http://cayenne.apache.org/js/bundle-736b99fdc1.js"></script>
+        <title>Remote Object Persistence Tutorial Authentication &middot; Apache Cayenne</title>
+    </head>
+    <body>
+<header class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-dark navbar-expand-lg">
+                    <a class="navbar-brand nav-link active" href="http://cayenne.apache.org/">Apache Cayenne</a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/download/">DOWNLOAD</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/docs/">DOCUMENTATION</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about/support/">SUPPORT</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div role="tabpanel">
+                <ul class="nav" role="tablist">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            Cayenne Version 3.0
+                        </a>
+                        <div class="dropdown-menu">
+                            
+                            <a class="dropdown-item" id="cayenne-4-1-tab" href="#cayenne-4-1" role="tab" data-toggle="tab" aria-controls="cayenne-4-1" aria-expanded="true">Version 4.1 (Alpha)</a>
+                            <a class="dropdown-item" id="cayenne-4-0-tab" href="#cayenne-4-0" role="tab" data-toggle="tab" aria-controls="cayenne-4-0" aria-expanded="true">Version 4.0 (Beta)</a>
+                            <a class="dropdown-item" id="cayenne-3-1-tab" href="#cayenne-3-1" role="tab" data-toggle="tab" aria-controls="cayenne-3-1" aria-expanded="true">Version 3.1 (Stable)</a>
+                            <a class="dropdown-item" id="cayenne-3-0-tab" href="#cayenne-3-0" role="tab" data-toggle="tab" aria-controls="cayenne-3-0" aria-expanded="true">Version 3.0 (Stable)</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    
+                    <div class="tab-pane fade " id="cayenne-4-1" role="tabpanel" aria-labelledby="cayenne-4-1-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/getting-started-db-first/">Cayenne Database First tutorial</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/getting-started/">Cayenne Getting Started Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade " id="cayenne-4-0" role="tabpanel" aria-labelledby="cayenne-4-0-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/4.0/getting-started/">Cayenne 4.0 Getting Started Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.0/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade " id="cayenne-3-1" role="tabpanel" aria-labelledby="cayenne-3-1-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/3.1/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade active show" id="cayenne-3-0" role="tabpanel" aria-labelledby="cayenne-3-0-tab" aria-expanded="true">
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/cayenne-guide.html">Cayenne Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/modeler-guide.html">Modeler Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/remote-object-persistence-guide.html">Remote Object Persistence Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+
+            
+            <article>
+                <section>
+                    <P>You probably don't want everybody in the world to connect to your service and access (and update!) arbitrary data in the database. The first step in securing Cayenne service is implementing client authentication. The easiest way to do it is to delegate the authentication task to the web container that is running the service. HessianConnection used in the previous chapter supports BASIC authentication on the client side, so we'll demonstrate how to set it up here.</P>
+
+<H2><A name="RemoteObjectPersistenceTutorialAuthentication-SecuringROPServerApplication"></A>Securing ROP Server Application</H2>
+
+<P>Open <TT>web.xml</TT> file in the server project and setup security constraints with BASIC authentication for the ROP service:</P>
+
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">&lt;security-constraint&gt;
+    &lt;web-resource-collection&gt;
+        &lt;web-resource-name&gt;CayenneService&lt;/web-resource-name&gt;
+        &lt;url-pattern&gt;/cayenne-service&lt;/url-pattern&gt;
+    &lt;/web-resource-collection&gt;
+    &lt;auth-constraint&gt;
+        &lt;role-name&gt;cayenne-service-user&lt;/role-name&gt;
+    &lt;/auth-constraint&gt;
+&lt;/security-constraint&gt;
+    
+&lt;login-config&gt;
+    &lt;auth-method&gt;BASIC&lt;/auth-method&gt;
+    &lt;realm-name&gt;Cayenne Realm&lt;/realm-name&gt;
+&lt;/login-config&gt;
+	
+&lt;security-role&gt;
+    &lt;role-name&gt;cayenne-service-user&lt;/role-name&gt;
+&lt;/security-role&gt;</PRE>
+</DIV></DIV>
+
+<H2><A name="RemoteObjectPersistenceTutorialAuthentication-ConfiguringJettyforBASICAuthentication"></A>Configuring Jetty for BASIC Authentication</H2>
+
+<DIV class="panelMacro"><TABLE class="noteMacro"><COLGROUP><COL width="24"><COL></COLGROUP><TR><TD valign="top"><img src="/docs/3.0/images/warning.gif" width="16" height="16" align="absmiddle" alt="" border="0"></TD><TD>These instructions are specific to Jetty 6. Other containers (and versions of Jetty) will have different mechansims to achieve the same thing.</TD></TR></TABLE></DIV>
+
+<P>Open <TT>pom.xml</TT> in the server project and configure a &quot;userRealm&quot; for the Jetty plugin:</P>
+
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">&lt;plugin&gt;
+	&lt;groupId&gt;org.mortbay.jetty&lt;/groupId&gt;
+		&lt;artifactId&gt;maven-jetty-plugin&lt;/artifactId&gt;
+		&lt;version&gt;6.1.22&lt;/version&gt;
+		&lt;!-- adding configuration below: --&gt;
+		&lt;configuration&gt;
+			&lt;userRealms&gt;
+				&lt;userRealm implementation=<SPAN class="code-quote">&quot;org.mortbay.jetty.security.HashUserRealm&quot;</SPAN>&gt;
+					&lt;!-- <SPAN class="code-keyword">this</SPAN> name must match the realm-name in web.xml --&gt;
+					&lt;name&gt;Cayenne Realm&lt;/name&gt;
+					&lt;config&gt;realm.properties&lt;/config&gt;
+				&lt;/userRealm&gt;
+			&lt;/userRealms&gt;
+		&lt;/configuration&gt;
+	&lt;/plugin&gt;
+&lt;/plugins&gt;</PRE>
+</DIV></DIV>
+
+<P>Now create a new file called {[&quot;realm.properties&quot;}} <EM>at the root of the server project</EM> and put user login/password in there:</P>
+
+<DIV class="preformatted panel" style="border-width: 1px;"><DIV class="preformattedContent panelContent">
+<PRE>cayenne-user: secret,cayenne-service-user</PRE>
+</DIV></DIV>
+<P>.</P>
+
+<P>Now let's stop the server and start it again. Everything should start as before, but if you go to <A href="http://localhost:8080/tutorial/cayenne-service" class="external-link" rel="nofollow">http://localhost:8080/tutorial/cayenne-service</A>, your browser should pop up authentication dialog. Enter &quot;cayenne-user/secret&quot; for user name / password, and you should see &quot;Hessian Requires POST&quot; message. So the server is now secured.</P>
+
+<H2><A name="RemoteObjectPersistenceTutorialAuthentication-RunningClientwithBasicAuthentication"></A>Running Client with Basic Authentication</H2>
+
+<P>If you run the client without any changes, you'll get the following error:</P>
+
+<DIV class="preformatted panel" style="border-width: 1px;"><DIV class="preformattedContent panelContent">
+<PRE>Jan 16, 2010 6:09:03 PM org.apache.cayenne.remote.hessian.HessianConnection connect
+INFO: Connecting to [http://localhost:8080/tutorial/cayenne-service] - dedicated session.
+Jan 16, 2010 6:09:03 PM org.apache.cayenne.remote.hessian.HessianConnection connect
+INFO: Error establishing remote session. URL - http://localhost:8080/tutorial/cayenne-service; 
+CAUSE - cannot retry due to server authentication, in streaming mode
+java.net.HttpRetryException: cannot retry due to server authentication, in streaming mode
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1034)
+	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:367)
+	at com.caucho.hessian.client.HessianProxy.invoke(HessianProxy.java:168)
+	at $Proxy0.establishSession(Unknown Source)
+	at org.apache.cayenne.remote.hessian.HessianConnection.connect(HessianConnection.java:210)
+	at org.apache.cayenne.remote.hessian.HessianConnection.getServerEventBridge(HessianConnection.java:114)
+	at org.apache.cayenne.remote.ClientChannel.setupRemoteChannelListener(ClientChannel.java:256)
+	at org.apache.cayenne.remote.ClientChannel.&lt;init&gt;(ClientChannel.java:94)
+	at org.apache.cayenne.remote.ClientChannel.&lt;init&gt;(ClientChannel.java:76)
+	at org.apache.cayenne.remote.ClientChannel.&lt;init&gt;(ClientChannel.java:71)
+	at org.apache.cayenne.remote.ClientChannel.&lt;init&gt;(ClientChannel.java:67)
+	at org.example.cayenne.persistent.client.Main.main(Main.java:25)
+Exception in thread &quot;main&quot; org.apache.cayenne.CayenneRuntimeException: [v.3.0RC1 Jan 05 2010 14:44:59] Error 
+establishing remote session. URL - http://localhost:8080/tutorial/cayenne-service; 
+CAUSE - cannot retry due to server authentication, in streaming mode
+	at org.apache.cayenne.remote.hessian.HessianConnection.connect(HessianConnection.java:229)
+	at org.apache.cayenne.remote.hessian.HessianConnection.getServerEventBridge(HessianConnection.java:114)
+	at org.apache.cayenne.remote.ClientChannel.setupRemoteChannelListener(ClientChannel.java:256)
+	at org.apache.cayenne.remote.ClientChannel.&lt;init&gt;(ClientChannel.java:94)
+	at org.apache.cayenne.remote.ClientChannel.&lt;init&gt;(ClientChannel.java:76)
+	at org.apache.cayenne.remote.ClientChannel.&lt;init&gt;(ClientChannel.java:71)
+	at org.apache.cayenne.remote.ClientChannel.&lt;init&gt;(ClientChannel.java:67)
+	at org.example.cayenne.persistent.client.Main.main(Main.java:25)
+Caused by: java.net.HttpRetryException: cannot retry due to server authentication, in streaming mode
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1034)
+	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:367)
+	at com.caucho.hessian.client.HessianProxy.invoke(HessianProxy.java:168)
+	at $Proxy0.establishSession(Unknown Source)
+	at org.apache.cayenne.remote.hessian.HessianConnection.connect(HessianConnection.java:210)
+	... 7 more</PRE>
+</DIV></DIV>
+
+<P>Which is exactly what you'd expect, as the client is not authenticating itself. So change the line in Main.java where we obtained an ROP connection to this:</P>
+
+<DIV class="code panel" style="border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">ClientConnection connection = <SPAN class="code-keyword">new</SPAN> HessianConnection(
+		<SPAN class="code-quote">&quot;http:<SPAN class="code-comment">//localhost:8080/tutorial/cayenne-service&quot;</SPAN>,
+</SPAN>		<SPAN class="code-quote">&quot;cayenne-user&quot;</SPAN>, <SPAN class="code-quote">&quot;secret&quot;</SPAN>, <SPAN class="code-keyword">null</SPAN>);</PRE>
+</DIV></DIV>
+
+<P>Try running again, and everything should work as before. Obviously in production environment, in addition to authentication you'll need to use HTTPS to access the server to prevent third-party evesdropping on your password and data.</P>
+
+<P>Congratulations, you are done with the ROP tutorial!</P>
+
+
+
+                </section>
+            </article>
+
+        </div>
+    </div>
+</div>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col">
+                <h3 class="footer">About</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/why-cayenne.html" class="footer">Why Cayenne?</a>
+                    
+                    <li><a href="/download/" class="footer">Download</a>
+                    
+                    <li><a href="/success-stories.html" class="footer">Success Stories</a>
+                    
+                    <li><a href="/about/support/" class="footer">Support</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Documentation</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/docs/4.1/getting-started/" class="footer">Getting Started (4.1)</a>
+                    
+                    <li><a href="/docs/4.0/getting-started/" class="footer">Getting Started (4.0)</a>
+                    
+                    <li><a href="/docs/4.1/getting-started-db-first/" class="footer">Database First tutorial (4.1)</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Collaboration</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="https://issues.apache.org/jira/browse/CAY" class="footer">Bug/Feature Tracker</a>
+                    
+                    <li><a href="/mailing-lists.html" class="footer">Mailing Lists</a>
+                    
+                    <li><a href="/dev/code-repository.html" class="footer">Code Repository</a>
+                    
+                    <li><a href="/dev/" class="footer">Developer Guide</a>
+                    
+                    <li><a href="/how-can-i-help.html" class="footer">How can I help?</a>
+                    
+                    <li><a href="/contributors.html" class="footer">Contributors</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">News</h3>
+                <ul class="list-unstyled">
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Nov 20, 2017</small>
+                        </div>
+                        <a href="/2017/11/cayenne-312-released.html" class="footer">Cayenne 3.1.2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 14, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-41m1-released.html" class="footer">Cayenne 4.1 Milestone 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 06, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-40B2-released.html" class="footer">Cayenne 4.0 Beta 2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Jun 12, 2017</small>
+                        </div>
+                        <a href="/2017/06/cayenne-40B1-released.html" class="footer">Cayenne 4.0 Beta 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Mar 07, 2017</small>
+                        </div>
+                        <a href="/2017/03/cayenne-40M5-released.html" class="footer">Cayenne 4.0 Milestone 5 Released</a>
+                    </li>
+                    
+                    <li><a href="http://cayenne.apache.org/news" class="footer">More news</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-8">
+                <p class="text-center page-footer-copyright">
+                    Copyright © 2001-2017 Apache Software Foundation. Apache Cayenne, Cayenne, Apache,
+                    the Apache feather logo, and the Apache Cayenne project logo are trademarks of The Apache Software Foundation.
+                    <a href="http://cayenne.apache.org/privacy-policy.html">Privacy policy</a>
+                </p>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</footer>
+
+    
+    </body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-144-precomposed.png" sizes="144x144" />
+        <link rel="stylesheet" href="http://cayenne.apache.org/css/styles-b770de6275.css"/>
+        <script src="http://cayenne.apache.org/js/bundle-736b99fdc1.js"></script>
+        <title>Inheritance Overview &middot; Apache Cayenne</title>
+    </head>
+    <body>
+<header class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-dark navbar-expand-lg">
+                    <a class="navbar-brand nav-link active" href="http://cayenne.apache.org/">Apache Cayenne</a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/download/">DOWNLOAD</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/docs/">DOCUMENTATION</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about/support/">SUPPORT</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div role="tabpanel">
+                <ul class="nav" role="tablist">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            Cayenne Version 3.0
+                        </a>
+                        <div class="dropdown-menu">
+                            
+                            <a class="dropdown-item" id="cayenne-4-1-tab" href="#cayenne-4-1" role="tab" data-toggle="tab" aria-controls="cayenne-4-1" aria-expanded="true">Version 4.1 (Alpha)</a>
+                            <a class="dropdown-item" id="cayenne-4-0-tab" href="#cayenne-4-0" role="tab" data-toggle="tab" aria-controls="cayenne-4-0" aria-expanded="true">Version 4.0 (Beta)</a>
+                            <a class="dropdown-item" id="cayenne-3-1-tab" href="#cayenne-3-1" role="tab" data-toggle="tab" aria-controls="cayenne-3-1" aria-expanded="true">Version 3.1 (Stable)</a>
+                            <a class="dropdown-item" id="cayenne-3-0-tab" href="#cayenne-3-0" role="tab" data-toggle="tab" aria-controls="cayenne-3-0" aria-expanded="true">Version 3.0 (Stable)</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    
+                    <div class="tab-pane fade " id="cayenne-4-1" role="tabpanel" aria-labelledby="cayenne-4-1-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/getting-started-db-first/">Cayenne Database First tutorial</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/getting-started/">Cayenne Getting Started Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.1/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade " id="cayenne-4-0" role="tabpanel" aria-labelledby="cayenne-4-0-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/4.0/getting-started/">Cayenne 4.0 Getting Started Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/4.0/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade " id="cayenne-3-1" role="tabpanel" aria-labelledby="cayenne-3-1-tab" aria-expanded="false">
+                        
+                        <li>
+                            <h6><a href="/docs/3.1/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                    <div class="tab-pane fade active show" id="cayenne-3-0" role="tabpanel" aria-labelledby="cayenne-3-0-tab" aria-expanded="true">
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/cayenne-guide.html">Cayenne Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/modeler-guide.html">Modeler Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/remote-object-persistence-guide.html">Remote Object Persistence Guide</a></h6>
+                        </li>
+                        
+                        <li>
+                            <h6><a href="/docs/3.0/api/">JavaDoc</a></h6>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+
+            
+            <article>
+                <section>
+                    <H2><A name="InheritanceOverview-Overview"></A>Overview</H2>
+
+<P>Inheritance is a familiar and a very useful concept to any Java developer. There are three common ways of mapping it to a relational schema. In Cayenne we are calling them &quot;single table&quot;, &quot;vertical&quot; and &quot;horizontal&quot;. Other ORM frameworks may use different terms for those (e.g. in JPA &quot;single table&quot; is called &quot;single table per class&quot;, &quot;vertical&quot; - &quot;joined subclass&quot;, and &quot;horizontal&quot; - &quot;table per concrete class&quot;, still they are referring to the same types of mapping). The picture below is a high-level representation of these three strategies. We'll discuss them in general terms in this chapter and provide Cayenne-specific details in dedicated chapters. </P>
+
+<DIV class="panelMacro"><TABLE class="noteMacro"><COLGROUP><COL width="24"><COL></COLGROUP><TR><TD valign="top"><img src="/docs/3.0/images/warning.gif" width="16" height="16" align="absmiddle" alt="" border="0"></TD><TD>As of this writing Cayenne does not support horizontal inheritance. It may in the future.</TD></TR></TABLE></DIV>
+
+
+<H2><A name="InheritanceOverview-TypesofInheritance"></A>Types of Inheritance</H2>
+
+<P><SPAN class="image-wrap" style=""><img src="/docs/3.0/images/inheritance-overview.png" style="border: 0px solid black"></SPAN></P>
+
+
+<H3><A name="InheritanceOverview-SingleTableInheritance"></A>Single Table Inheritance</H3>
+
+<P>One database table is used to map all the subclasses and the superclass. So Superclass, Subclass1 and Subclass2 are all mapped to a single table. Such table has to contain columns to store the attributes of an entire class hierarchy. One or more columns are used as &quot;discriminator columns&quot; that tell Cayenne what type of record is stored in a given row. Single table inheritance provides good select performance, however the storage of data is not optimized.</P>
+
+<H3><A name="InheritanceOverview-VerticalInheritance"></A>Vertical Inheritance</H3>
+
+<P>One database table is used to map superclass columns, additionally one table per subclass is joined via a 1..1 relationship with the superclass table. So &quot;Superclass&quot; will have its own table, and extra attributes found in Subclass1 and Subclass2 will be stored in two separate tables joined with the superclass table. Discriminator columns are required for the same reason as with Single Table Inheritance. Vertical inheritance optimizes the data storage and provides a view of data very close to that of the Java classes. However that comes at a cost of doing one or more joins in every query, which may not scale into deep and wide inheritance hierarchies.</P>
+
+<H3><A name="InheritanceOverview-HorizontalInheritance"></A>Horizontal Inheritance</H3>
+
+<P><EM>(Currently unsupported by Cayenne)</EM></P>
+
+<P>With horizontal inheritance a superclass is usually abstract, and each subclass is mapped to its own independent database table. In our example &quot;Superclass&quot; will not have a table, all attributes, including inherited, of Subclass1 and Subclass2 will be stored in separate tables. Discriminator column is not required. Select performance of the horizontal inheritance mapping is not very good, as a union or a separate query per subclass is used to get the data.</P>
+
+<H3><A name="InheritanceOverview-ComparingORMInheritanceTypes"></A>Comparing ORM Inheritance Types</H3>
+
+<DIV class="table-wrap">
+<TABLE class="confluenceTable"><TBODY>
+<TR>
+<TH class="confluenceTh">Inheritance Type</TH>
+<TH class="confluenceTh">Discriminator Column</TH>
+<TH class="confluenceTh">Primary Key</TH>
+<TH class="confluenceTh">Pros and Cons</TH>
+</TR>
+<TR>
+<TD class="confluenceTd"><A href="modeling-single-table-inheritance.html" title="Modeling Single Table Inheritance">Single Table</A></TD>
+<TD class="confluenceTd">required</TD>
+<TD class="confluenceTd">shared by superclasses and subclasses</TD>
+<TD class="confluenceTd">good select performance (no joins). Storage is not optimized.</TD>
+</TR>
+<TR>
+<TD class="confluenceTd"><A href="modeling-vertical-inheritance.html" title="Modeling Vertical Inheritance">Vertical</A></TD>
+<TD class="confluenceTd">required</TD>
+<TD class="confluenceTd">propagated from superclass to subclasses via a join</TD>
+<TD class="confluenceTd">optimized data storage and a data view close to object oriented one. Adds (N - 1) joins to select, where N is the number of classes in the hierarchy</TD>
+</TR>
+<TR>
+<TD class="confluenceTd">Horizontal <EM>(unsupported)</EM></TD>
+<TD class="confluenceTd">not needed</TD>
+<TD class="confluenceTd">independent in each table</TD>
+<TD class="confluenceTd">selects normally require a UNION across tables</TD>
+</TR>
+</TBODY></TABLE>
+</DIV>
+
+
+<H2><A name="InheritanceOverview-MappingInheritanceinCayenne"></A>Mapping Inheritance in Cayenne</H2>
+
+<P>Now that we discussed various types of inheritance, it should be noted that the type of inheritance <EM>is not specified explicitly</EM>. Instead Cayenne guesses it from the mapping. This allows for mixing multiple types in a single hierarchy. The following chapters will explain how the mapping is done in each case:</P>
+
+
+<OL>
+	<LI><A href="modeling-single-table-inheritance.html" title="Modeling Single Table Inheritance">Modeling Single Table Inheritance</A></LI>
+	<LI><A href="modeling-vertical-inheritance.html" title="Modeling Vertical Inheritance">Modeling Vertical Inheritance</A></LI>
+</OL>
+
+
+
+
+	<HR>
+	<P id="footer">Copyright &copy; 2001-2010 Apache Software Foundation. <A href="http://cayenne.apache.org/privacy-policy.html">Privacy policy.</A></P>
+</DIV>
+
+</DIV>
+
+</DIV></DIV>
+<SCRIPT type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</SCRIPT>
+<SCRIPT type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7036673-1");
+pageTracker._trackPageview();
+} catch(err) {}</SCRIPT>
+</BODY>
+</HTML>
+
+                </section>
+            </article>
+
+        </div>
+    </div>
+</div>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col">
+                <h3 class="footer">About</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/why-cayenne.html" class="footer">Why Cayenne?</a>
+                    
+                    <li><a href="/download/" class="footer">Download</a>
+                    
+                    <li><a href="/success-stories.html" class="footer">Success Stories</a>
+                    
+                    <li><a href="/about/support/" class="footer">Support</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Documentation</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="/docs/4.1/getting-started/" class="footer">Getting Started (4.1)</a>
+                    
+                    <li><a href="/docs/4.0/getting-started/" class="footer">Getting Started (4.0)</a>
+                    
+                    <li><a href="/docs/4.1/getting-started-db-first/" class="footer">Database First tutorial (4.1)</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">Collaboration</h3>
+                <ul class="list-unstyled">
+                    
+                    <li><a href="https://issues.apache.org/jira/browse/CAY" class="footer">Bug/Feature Tracker</a>
+                    
+                    <li><a href="/mailing-lists.html" class="footer">Mailing Lists</a>
+                    
+                    <li><a href="/dev/code-repository.html" class="footer">Code Repository</a>
+                    
+                    <li><a href="/dev/" class="footer">Developer Guide</a>
+                    
+                    <li><a href="/how-can-i-help.html" class="footer">How can I help?</a>
+                    
+                    <li><a href="/contributors.html" class="footer">Contributors</a>
+                    
+                </ul>
+            </div>
+            
+            <div class="col">
+                <h3 class="footer">News</h3>
+                <ul class="list-unstyled">
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Nov 20, 2017</small>
+                        </div>
+                        <a href="/2017/11/cayenne-312-released.html" class="footer">Cayenne 3.1.2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 14, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-41m1-released.html" class="footer">Cayenne 4.1 Milestone 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Oct 06, 2017</small>
+                        </div>
+                        <a href="/2017/10/cayenne-40B2-released.html" class="footer">Cayenne 4.0 Beta 2 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Jun 12, 2017</small>
+                        </div>
+                        <a href="/2017/06/cayenne-40B1-released.html" class="footer">Cayenne 4.0 Beta 1 Released</a>
+                    </li>
+                    
+                    <li>
+                        <div>
+                            <small class="text-muted">Mar 07, 2017</small>
+                        </div>
+                        <a href="/2017/03/cayenne-40M5-released.html" class="footer">Cayenne 4.0 Milestone 5 Released</a>
+                    </li>
+                    
+                    <li><a href="http://cayenne.apache.org/news" class="footer">More news</a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-8">
+                <p class="text-center page-footer-copyright">
+                    Copyright © 2001-2017 Apache Software Foundation. Apache Cayenne, Cayenne, Apache,
+                    the Apache feather logo, and the Apache Cayenne project logo are trademarks of The Apache Software Foundation.
+                    <a href="http://cayenne.apache.org/privacy-policy.html">Privacy policy</a>
+                </p>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</footer>
+
+    
+    </body>
+</html>
