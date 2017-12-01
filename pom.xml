@@ -35,6 +35,55 @@
         <gulp.task>serve</gulp.task>
     </properties>
 
+    <build>
+        <!-- dev version can be build by simple `mvn` command -->
+        <defaultGoal>clean package</defaultGoal>
+
+        <plugins>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>${frontend.plugin.version}</version>
+
+                <executions>
+                    <!-- check and install node and yarn -->
+                    <execution>
+                        <id>install node and yarn</id>
+                        <goals>
+                            <goal>install-node-and-yarn</goal>
+                        </goals>
+                    </execution>
+
+                    <!-- check and install project dependencies -->
+                    <execution>
+                        <id>yarn install</id>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
+                    </execution>
+
+                    <!-- launch gulp tasks execution -->
+                    <execution>
+                        <id>gulp</id>
+                        <goals>
+                            <goal>gulp</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>${gulp.task}</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+
+                <configuration>
+                    <nodeVersion>${node.version}</nodeVersion>
+                    <yarnVersion>${yarn.version}</yarnVersion>
+                    <workingDirectory>src/main/assets</workingDirectory>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
     <!--
     By default mvn will start gulp task dev build with live reload.
     Use `mvn -Ppublish -Dmsg="commit message"` to build and publish production version of site.
@@ -97,52 +146,4 @@
         </profile>
     </profiles>
 
-    <build>
-        <!-- dev version can be build by simple `mvn` command -->
-        <defaultGoal>clean package</defaultGoal>
-
-        <plugins>
-            <plugin>
-                <groupId>com.github.eirslett</groupId>
-                <artifactId>frontend-maven-plugin</artifactId>
-                <version>${frontend.plugin.version}</version>
-
-                <executions>
-                    <!-- check and install node and yarn -->
-                    <execution>
-                        <id>install node and yarn</id>
-                        <goals>
-                            <goal>install-node-and-yarn</goal>
-                        </goals>
-                    </execution>
-
-                    <!-- check and install project dependencies -->
-                    <execution>
-                        <id>yarn install</id>
-                        <goals>
-                            <goal>yarn</goal>
-                        </goals>
-                    </execution>
-
-                    <!-- launch gulp tasks execution -->
-                    <execution>
-                        <id>gulp</id>
-                        <goals>
-                            <goal>gulp</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>${gulp.task}</arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-
-                <configuration>
-                    <nodeVersion>${node.version}</nodeVersion>
-                    <yarnVersion>${yarn.version}</yarnVersion>
-                    <workingDirectory>src/main/assets</workingDirectory>
-                </configuration>
-            </plugin>
-
-        </plugins>
-    </build>
 </project>

@@ -17,11 +17,12 @@ Open http://localhost:3000 in your browser. In dev mode site supports live-reloa
 
 ### Publish
 
-To create version for publishing, use `publish` Maven profile:
+To publish site all you need is just to commit update version into `asf-site` GIT branch.
+This is done automatically by `publish` Maven profile:
     
-    mvn -Ppublish
+    mvn -Ppublish -Dmsg="commit message"
     
-And grab content from `target/site/public` directory.
+**TODO**: apache `gitpubsub` should be setup to sync this branch with real site content location. 
 
 ## CMS guide
 
@@ -33,14 +34,14 @@ To publish news simply add new file at `src/main/site/content/news/` folder.
 You can use following template: 
 
 `some-good-news.md`
-```
+
     ---
     title: Good news everyone!
     date: 2017-01-01T00:00:00+03:00
     --- 
     
     Content goes here
-```
+
 
 #### Releasing new cayenne version
 
