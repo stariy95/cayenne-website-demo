@@ -17,12 +17,17 @@ Open http://localhost:3000 in your browser. In dev mode site supports live-reloa
 
 ### Publish
 
-To publish site all you need is just to commit update version into `asf-site` GIT branch.
-This is done automatically by `publish` Maven profile:
+To publish new version just run Maven with `publish` profile. This will build production version of the site (with cayenne.apache.org base URL) and push commit into `asf-site` branch that will be synced with actual site content location:
     
-    mvn -Ppublish -Dmsg="commit message"
+    mvn -Ppublish -Dmsg="commit message describing site changes"
     
-**TODO**: apache `gitpubsub` should be setup to sync this branch with real site content location. 
+That's all, so be carefull and review your changes before publishing (also don't forget to check them after).
+
+Don't forget to push you source's changes so others won't rewrite them.
+    
+**TODO**: apache `gitpubsub` should be setup in order actual content sync to happen. 
+
+*NOTE*: This process can be automated by Jenkins. It can run publish on every commit to `master`. But at first better prefer manual publishing.
 
 ## CMS guide
 
