@@ -15,6 +15,10 @@ Just clone and run maven, nothing else required.
 
 Open http://localhost:3000 in your browser. In dev mode site supports live-reloading.
 
+:grey_exclamation: _You can change host and port by setting `dev.host` and `dev.port` properties:_
+   
+    mvn -Ddev.host="my.local" -Ddev.port="8080"
+
 ### Publish
 
 To publish new version just run Maven with `publish` profile. This will build production version of the site (with cayenne.apache.org base URL) and push commit into `asf-site` branch that will be synced with actual site content location:
