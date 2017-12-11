@@ -98,3 +98,4 @@ There is two main parts of site src:
     * `/static/` - files that will be copied as is to the final site content, note that `js`, `img` and `css` directories
     are processed via Gulp tasks, and shouldn't be used directly, instead use coresponding directories in `assets`.     
     * `config.yaml` - Hugo configuration
+
