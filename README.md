@@ -29,9 +29,9 @@ That's all, so be carefull and review your changes before publishing (also don't
 
 Don't forget to push you source's changes so others won't rewrite them.
     
-**TODO**: apache `gitpubsub` should be setup in order actual content sync to happen. 
+:grey_exclamation: apache `gitpubsub` should be setup in order actual content sync to happen. 
 
-*NOTE*: This process can be automated by Jenkins. It can run publish on every commit to `master`. But at first is is better to use manual publishing.
+*NOTE*: This process can be automated by Jenkins. It can run publish on every commit to `master`. But at first it is better to use manual publishing.
 
 ## CMS guide
 

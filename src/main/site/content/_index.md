@@ -18,7 +18,7 @@
 
     <!-- CTA Btn -->        
     <div class="text-center">
-        <a href="#" class="btn btn-xlg btn-primary  text-uppercase  round-corners1">Download latest</a>
+        <a href="/download/" class="btn btn-xlg btn-primary  text-uppercase  round-corners1">Download latest</a>
     </div>
 
 </section>
