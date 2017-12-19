@@ -1,20 +1,9 @@
 {{ partial "head.html" . }}
 {{ partial "header.html" . }}
-
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <article class="article">
-                    <header>
-                        <h1>{{ .Title }}</h1>
-                    </header>
-                    <section>
-                        {{ .Content }}
-                    </section>
-                </article>
-            </div>
-        </div>
-    </div>
+    
+<main class="container  py-5">
+    {{ .Content }}
+</main>
 
 {{ partial "footer.html" . }}
 {{ partial "tail.html" . }}

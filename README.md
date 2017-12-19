@@ -99,3 +99,9 @@ There is two main parts of site src:
     are processed via Gulp tasks, and shouldn't be used directly, instead use coresponding directories in `assets`.     
     * `config.yaml` - Hugo configuration
 
+
+## ToDo
+
+* Add fontawesome as dependency
+* Dockbook ToC into docs aside
+* $small-font-size-rem - https://davidwalsh.name/rem-px-browser-function-sass

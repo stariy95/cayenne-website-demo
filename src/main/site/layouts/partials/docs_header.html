@@ -7,42 +7,114 @@
 {{ $docVersion := ($.Scratch.Get "cayenneUrlVersion") }}
 {{ $currentPageURL := .URL }}
 
-<div class="container">
-    <div class="row">
-        <div class="col-3">
-            <div role="tabpanel">
-                <ul class="nav" role="tablist">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            Cayenne Version {{ $docVersion }}
-                        </a>
-                        <div class="dropdown-menu">
-                            {{ range where $.Site.Data.cayenne.releases "docs" true -}}
-                            {{- $ver := .version -}}
-                            {{- $urlFriendlyVersion := replace $ver "." "-" }}
-                            <a class="dropdown-item" id="cayenne-{{ $urlFriendlyVersion }}-tab" href="#cayenne-{{ $urlFriendlyVersion }}" role="tab" data-toggle="tab" aria-controls="cayenne-{{ $urlFriendlyVersion }}" aria-expanded="true">Version {{ $ver }} ({{ .type }})</a>
-                            {{- end }}
-                        </div>
-                    </li>
-                </ul>
-                <div class="tab-content" id="myTabContent">
+<main>
+    <div class="cd-top-sidebar  bb">
+        <div class="container">
+            <div class="row no-gutters">
+                <!-- Sidebar -->
+                <div class="col-12 col-lg-4 col-xl-3  br  cd-sidebar1">
+                    <ul class="nav" role="tablist">
+                        <li class="nav-item dropdown mw-100">
+                            <a class="nav-link dropdown-toggle text-truncate" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                Cayenne Version {{ $docVersion }}
+                            </a>
+                            <div class="dropdown-menu">
+                                {{ range where $.Site.Data.cayenne.releases "docs" true -}}
+                                {{- $ver := .version -}}
+                                {{- $urlFriendlyVersion := replace $ver "." "-" }}
+                                <a class="dropdown-item" id="cayenne-{{ $urlFriendlyVersion }}-tab" href="#cayenne-{{ $urlFriendlyVersion }}" role="tab" data-toggle="tab" aria-controls="cayenne-{{ $urlFriendlyVersion }}" aria-expanded="true">Version {{ $ver }} ({{ .type }})</a>
+                                {{- end }}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-lg-8 col-xl-9"> <!-- Search planned here, but ToC-toggler will be --> </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row no-gutters  ">
+            <div class="col-12 col-lg-4 col-xl-3  br  py-2  bg-gray-100  cd-sidebar">
+                <div class="tab-content" id="cd-docs-nav">
                     {{ range where $.Site.Data.cayenne.releases "docs" true -}}
                     {{- $ver := .version -}}
                     {{- $urlFriendlyVersion := replace $ver "." "-" }}
                     <div class="tab-pane fade {{ if (eq $ver $docVersion) }}active show{{ end }}" id="cayenne-{{ $urlFriendlyVersion }}" role="tabpanel" aria-labelledby="cayenne-{{ $urlFriendlyVersion }}-tab" aria-expanded="{{ if (eq $ver $docVersion) }}true{{ else }}false{{ end }}">
                         {{ range where $.Site.Pages "Kind" "page" -}}
                         {{- if eq .Params.cayenneVersion $ver }}
-                        <li>
-                            <h6>{{ if eq $currentPageURL .URL }}{{ .Title }}{{ else }}<a href="{{ .URL }}">{{ .Title }}</a>{{ end }}</h6>
-                        </li>
+                        <div class="cd-toc-item">
+                            {{ if eq $currentPageURL .URL }}
+                            <span class="cd-toc-link active">{{ .Title }}</span>
+                            <!-- ToC -->
+                            <div id="toc" class="toc toc-side">
+                                <div id="toctitle">Table of Contents</div>
+                                <ul class="sectlevel1">
+                                    <li>
+                                        <a href="#setting-up-the-environment">1. Setting up the environment</a>
+                                        <ul class="sectlevel2">
+                                            <li>
+                                                <a href="#install-java">1.1. Install Java</a>
+                                            </li>
+                                            <li>
+                                                <a href="#install-intellij-idea">1.2. Install IntelliJ IDEA</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#learning-mapping-basics">2. Learning mapping basics</a>
+                                        <ul class="sectlevel2">
+                                            <li>
+                                                <a href="#starting-a-project">2.1. Starting a project</a>
+                                            </li>
+                                            <li>
+                                                <a href="#getting-started-with-object-relational-mapping-orm">2.2. Getting started with Object Relational Mapping (ORM)</a>
+                                            </li>
+                                            <li>
+                                                <a href="#creating-java-classes">2.3. Creating Java Classes</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#learning-cayenne-api">3. Learning Cayenne API</a>
+                                        <ul class="sectlevel2">
+                                            <li>
+                                                <a href="#getting-started-with-objectcontext">3.1. Getting started with ObjectContext</a>
+                                            </li>
+                                            <li>
+                                                <a href="#getting-started-with-persistent-objects">3.2. Getting started with persistent objects</a>
+                                            </li>
+                                            <li>
+                                                <a href="#selecting-objects">3.3. Selecting Objects</a>
+                                            </li>
+                                            <li>
+                                                <a href="#deleting-objects">3.4. Deleting Objects</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#converting-to-web-application">4. Converting to Web Application</a>
+                                        <ul class="sectlevel2">
+                                            <li>
+                                                <a href="#converting-tutorial-to-a-web-application">4.1. Converting Tutorial to a Web Application</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /.ToC -->
+                            {{ else }}
+                            <a class="cd-toc-link" href="{{ .URL }}">{{ .Title }}</a>
+                            {{ end }}
+                                
+                        </div>
                         {{ end -}}
                         {{- end }}
-                        <li>
-                            <h6><a href="/docs/{{ $ver }}/api/">JavaDoc</a></h6>
-                        </li>
+                        <div class="cd-toc-item">
+                            <a class="cd-toc-link" href="/docs/{{ $ver }}/api/">JavaDoc</a>
+                        </div>
                     </div>
                     {{- end }}
                 </div>
             </div>
-        </div>
-        <div class="col-9">
+            <!-- Main -->
+            <div class="col-12 col-lg-8 col-xl-9  py-3 pl-lg-5  cd-content">

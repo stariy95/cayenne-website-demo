@@ -1,47 +1,168 @@
 ---
 # content for index page of the site
 ---
-## Object Relational Mapping, Persistence and Caching for Java
- 
-Apache Cayenne(tm) is an open source persistence framework licensed
-under the Apache License, providing object-relational mapping (ORM) and remoting services. 
-With a wealth of unique and powerful features, Cayenne can address a wide
-range of persistence needs. Cayenne seamlessly binds one or more database
-schemas directly to Java objects, managing atomic commit and rollbacks, SQL
-generation, joins, sequences, and more. With Cayenne's Remote Object
-Persistence, those Java objects can even be persisted out to clients via
-Web Services.
+<!-- Intro -->
+<section id="intro" class="pb-5">
+    <div class="row align-items-center justify-content-center  mb-3">
+        <div class="col-md-6  text-center">
+            <img class="img-fluid  mb-2" src="img/cayenne_illustr.png" alt="Cayenne Illustration" />
+            <h1 class="display-2  font-weight-normal">
+                ORM
+                <span class="font-weight-xlight">with</span>
+                <span class="font-weight-semibold">character</span>
+            </h1>
+            <p class="small  font-italic">Apache Cayenne™ is an open source persistence framework providing object-relational mapping (ORM) and remoting services</p>
+        </div>
+        <div class="col-md  d-none">Video</div>
+    </div>
 
-Cayenne is designed to be easy to use,	without sacrificing flexibility or
-design. To that end, Cayenne supports database reverse engineering and
-generation, as well as a Velocity-based class generation engine. All of
-these functions can be controlled directly through the CayenneModeler, a
-fully functional GUI tool. No cryptic XML or annotation based configuration
-is required\! An entire database schema can be mapped directly to Java
-objects within minutes, all from the comfort of the GUI-based
-CayenneModeler.
+    <!-- CTA Btn -->        
+    <div class="text-center">
+        <a href="#" class="btn btn-xlg btn-primary  text-uppercase  round-corners1">Download latest</a>
+    </div>
 
-Cayenne supports numerous other features, including caching, a complete
-object query syntax, relationship pre-fetching, on-demand object and
-relationship faulting, object inheritance, database auto-detection, and
-generic persisted objects. Most importantly, Cayenne can scale up or down
-to virtually any project size. With a mature, 100% open source framework,
-an energetic user community, and a track record of solid performance in
-high-volume  environments, Cayenne is an exceptional choice for persistence
-services.
+</section>
 
-## News
-
-{{% news %}}
-
-## Cayenne Modeler
-<span style="float: right">
-    <img style="border: 0px solid black" src="/img/modeler-thumb-4.0.jpg">
-</span>
-Cayenne is distributed with CayenneModeler - a complete GUI mapping tool 
-that supports reverse-engineering of RDBMS schemas, working with database mappings 
-and generation of Java source code for the persistent objects.
-
-Persistent Java classes are generated and synchronized with the mapping
-using the Modeler or alternatively with Maven or Ant. A database SQL schema
-can be generated from the Modeler and also with simple API calls.
+<!-- Features -->
+<section id="key-features"  class="mt-3 mb-5">
+	<div class="solid-heading  mb-5">
+		<h3 class="text-center  mx-3l2">Key <span class="font-weight-medium">features</span>
+		</h3>
+	</div>
+	<div class="row no-gutters  pt-2">
+		<!-- Features list -->
+		<div class="col-lg-4  border border-left-0 border-top-0 border-bottom-0  mb-2">
+			<ul class="nav nav-pills  justify-content-between flex-lg-column flex-nowrap">
+				<li class="nav-item">
+					<a class="nav-link active" data-toggle="tab" href="#modeler">
+						<div class="media">
+							<img class="align-self-center  mr-lg-3l2" src="img/icon_modeler.svg" alt="Modeler">
+							<span class="align-self-center  d-none d-lg-block">Modeler</span>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#db-first-flow">
+						<div class="media">
+							<img class="align-self-center  mr-lg-3l2" src="img/icon_dbfirst_flow.svg" alt="Modeler">
+							<span class="align-self-center  d-none d-lg-block">DB-first flow</span>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#transparent-transactions">
+						<div class="media">
+							<img class="align-self-center  mr-lg-3l2" src="img/icon_transp_trans.svg" alt="Modeler">
+							<span class="align-self-center  d-none d-lg-block">Transparent transactions</span>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#objectcontext">
+						<div class="media">
+							<img class="align-self-center  mr-lg-3l2" src="img/icon_object_context.svg" alt="Modeler">
+							<span class="align-self-center  d-none d-lg-block">ObjectContext</span>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#extension-api">
+						<div class="media">
+							<img class="align-self-center  mr-lg-3l2" src="img/icon_extensions.svg" alt="Modeler">
+							<span class="align-self-center  d-none d-lg-block">Extension API</span>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#generic-objects">
+						<div class="media">
+							<img class="align-self-center  mr-lg-3l2" src="img/icon_generic_objects.svg" alt="Modeler">
+							<span class="align-self-center  d-none d-lg-block">Generic objects</span>
+						</div>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#data-encryption">
+						<div class="media">
+							<img class="align-self-center  mr-lg-3l2" src="img/icon_data_encrypt.svg" alt="Modeler">
+							<span class="align-self-center  d-none d-lg-block">Data Encryption</span>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-lg-8">
+			<!-- Features Desc -->
+			<div class="tab-content  px-lg-5" id="myTabContent">
+				<div class="tab-pane fade show active" id="modeler" role="tabpanel" aria-labelledby="modeler-tab">
+					<h4>Modeler</h4>
+					<p>Cayenne is distributed with CayenneModeler - a complete GUI mapping tool that supports reverse-engineering of RDBMS schemas, working with database mappings and generation of Java source code for the persistent objects.</p>
+					<figure class="highlight">
+						<pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;!DOCTYPE web-app
+   PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+   "http://java.sun.com/dtd/web-app_2_3.dtd"&gt;
+&lt;web-app&gt;
+    &lt;display-name&gt;Cayenne Tutorial&lt;/display-name&gt;
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;cayenne-project&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;org.apache.cayenne.rop.ROPServlet&lt;/servlet-class&gt;
+        &lt;load-on-startup&gt;0&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;cayenne-project&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/cayenne-service&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;</code></pre>
+					</figure>
+					<p>Persistent Java classes are generated and synchronized with the mapping using the Modeler or alternatively with Maven or Ant. A database SQL schema can be generated from the Modeler and also with simple API calls.</p>
+				</div>
+				<div class="tab-pane fade" id="db-first-flow" role="tabpanel" aria-labelledby="db-first-flow-tab">
+					<h4>DB-first-flow</h4>
+					<p>
+						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+					</p>
+				</div>
+				<div class="tab-pane fade" id="transparent-transactions" role="tabpanel" aria-labelledby="transparent-transactions-tab">
+					<h4>Transparent transactions</h4>
+					<p>
+						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+					</p>
+				</div>
+				<div class="tab-pane fade" id="objectcontext" role="tabpanel" aria-labelledby="objectcontext-tab">
+					<h4>Object Context</h4>
+					<p>
+						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+					</p>
+				</div>
+				<div class="tab-pane fade" id="extension-api" role="tabpanel" aria-labelledby="extension-api-tab">
+					<h4>Extension API</h4>
+					<p>
+						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+					</p>
+				</div>
+				<div class="tab-pane fade" id="generic-objects" role="tabpanel" aria-labelledby="generic-objects-tab">
+					<h4>Generic Objects</h4>
+					<p>
+						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+					</p>
+				</div>
+				<div class="tab-pane fade" id="data-encryption" role="tabpanel" aria-labelledby="data-encryption-tab">
+					<h4>Data Encryption</h4>
+					<p>
+						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

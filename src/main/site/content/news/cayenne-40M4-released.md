@@ -20,6 +20,9 @@ Before we start discussing individual features, a few words on the future develo
 
 Now the new things in a bit more detail:
 
+<div class="pb-3"><!-- gap 3rem --></div>
+
+
 ### Fluent query API
 These fluent queries are new in M4:
 
@@ -63,22 +66,36 @@ These fluent queries are new in M4:
                     .param("name", "Artist")
                     .call(context).getOutParam("artist_out");
 
+<div class="pb-3"><!-- gap 3rem --></div>
+
+
 ### Reverse Engineering Improvements
 
 There are a lot of improvements and bug fixes covering reverse engineering functionality (aka "DB-first flow"). There's still more work to do to make it perfect, but the API is starting to stabilize and the tools have already become very usable (as in actually used in production on many projects). Follow this [link](/docs/4.0/cayenne-guide/cayenne-guide-part4.html) to learn what DB-First flow is all about and how to use it.
+
+<div class="pb-3"><!-- gap 3rem --></div>
+
 
 ### Cayenne Crypto Improvements
 
 We've aded support for mapping encrypted columns to numbers, Strings, etc.
 
+<div class="pb-3"><!-- gap 3rem --></div>
+
+
 ### Transaction control
 
 Added TransactionListener to allow for better control of manual transactions. 
 
+<div class="pb-3"><!-- gap 3rem --></div>
+
+
 ### ROP Improvements
 With M4 it's much easier to plug external tools for ROP connectivity and serialization purposes. Jetty HTTP/1.1 and HTTP/2 Client and Protostuff have been already added to the Cayenne and are supported out of the box.
 
-### A full list of changes in this release:
+<div class="pb-3"><!-- gap 3rem --></div>
+<h2 class="text-center">A full list of changes in this release:</h2>
+<div class="pb-2"><!-- gap 2rem --></div>
 
 * CAY-2051 Applying new Reverse Engineering to the Modeler
 * CAY-2053 SQLExec fluent query API
@@ -111,7 +128,10 @@ With M4 it's much easier to plug external tools for ROP connectivity and seriali
 * CAY-2136 Allow Ordering.orderedList(…) methods to accept a Collection rather than only a List
 * CAY-2160 Modeler: new welcome screen
 
-### Bug Fixes:
+<div class="pb-2"><!-- gap 2rem --></div>
+
+
+#### Bug Fixes:
 
 * CAY-2016 cdbimport: Rename table with toMany relationship causes migration error
 * CAY-2064 Issue with BeanAccessor for classes with complex inheritance

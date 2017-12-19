@@ -9,6 +9,10 @@ url: /dev/building-cayenne.html
 * Make sure [Maven](http://maven.apache.org/) is installed.
 * [Get the source code](/dev/code-repository.html).
 
+
+<div class="pb-3"><!-- gap 3rem --></div>
+
+
 ## Recommended Maven Settings
 
 Here are the MAVEN_OPTS that should be used for the build. MAVEN_OPTS variable can either be exported in a shell, 
@@ -16,6 +20,10 @@ or placed in *$HOME/.mavenrc*. Optimal values vary from platform to platform and
 but these should probably work for everyone:
 
     MAVEN_OPTS="-Djava.net.preferIPv4Stack=true -Xms512m -Xmx512m -XX:MaxPermSize=128m"
+
+
+<div class="pb-3"><!-- gap 3rem --></div>
+
 
 ## Building with Maven
 

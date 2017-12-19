@@ -8,6 +8,9 @@ This is a big and important new milestone release of the development branch of A
 
 Cayenne can be downloaded from [here](/download.html).
 
+<div class="pb-3"><!-- gap 3rem --></div>
+
+
 ### Fluent Type-Safe Query API
 
 Cayenne now provides a set of new fluent query classes: ObjectSelect, SQLSelect, SelectById. More will be coming in the future releases. Here is a simple example of a query selecting a single object by a given criteria:
@@ -21,9 +24,15 @@ Artist a = ObjectSelect
 
  A related addition is positional bindings in Expression, SQLTemplate and the new query classes. Using the new API you'll avoid boilerplate in the most-commonly written Cayenne code, all this with full support for generics and type safety. The "old" style of bean-like queries (SelectQuery) is still supported.
 
+<div class="pb-3"><!-- gap 3rem --></div>
+
+
 ### Powerful Automated Workflow with 'cdbimport'
 
 'cdbimport' (a Maven/Ant task that generates DataMap from DB) was always there in Cayenne, just not very usable. In this release it was reworked to become a cornerstone of an automated workflow that allows you to keep mapping and Java classes always in sync with the underlying DB, and yet provide arbitrary customizations to the object layer.
+
+<div class="pb-3"><!-- gap 3rem --></div>
+
 
 ### OSGI Support
 
@@ -31,6 +40,9 @@ All Cayenne runtime jars have proper OSGi manifests and can be used as OSGi bund
 
     Module osgiModule = 
        OsgiModuleBuilder.forProject(Activator.class).withDriver(Driver.class).module();
+
+<div class="pb-3"><!-- gap 3rem --></div>
+
 
 ### ServerRuntimeBuilder and Mapping-Free Runtime
 
@@ -44,6 +56,9 @@ We found that customizing ServerRuntime is a frequent task in most applications.
 
  While we are on the topic of ServerRuntime, we now also have an ability to start a mapping-free runtime, which turns Cayenne into a powerful SQL execution stack without the ORM part (e.g. useful for unit tests).
 
+<div class="pb-3"><!-- gap 3rem --></div>
+
+
 ### Transparent Database Cryptography with 'cayenne-crypto'
 
 Cayenne now includes [cayenne-crypto.jar](http://search.maven.org/#artifactdetails|org.apache.cayenne|cayenne-crypto|4.0.M2|jar), that allows you to implement seamless data encryption. With a bit of extra configuration (as you may have guessed - another DI module) you get automatic encryption/decryption of data in certain columns:
@@ -54,6 +69,8 @@ Cayenne now includes [cayenne-crypto.jar](http://search.maven.org/#artifactdetai
        .build();
 
  By default columns that start with 'CRYPTO_' are designated as encrypted, but this is [fully customizable](https://github.com/apache/cayenne/blob/master/cayenne-crypto/src/main/java/org/apache/cayenne/crypto/map/ColumnMapper.java). The rest of your application code doesn't need to worry about cryptography, and would look like a regular Cayenne application.
+
+<div class="pb-3"><!-- gap 3rem --></div>
 
 
 ### DI Container Decorators
@@ -82,12 +99,17 @@ In addition to overriding services in DI container, now Cayenne would allow to s
 	    }
 	};
 
+<div class="pb-3"><!-- gap 3rem --></div>
+
+
 ### Stability Improvements
 
 We got rid of the hated "runtime" ObjRelationships that caused random issues, and fixed more than 30 other bugs.
 
 
-### A full list of changes in this release:
+<div class="pb-3"><!-- gap 3rem --></div>
+<h2 class="text-center">A full list of changes in this release:</h2>
+<div class="pb-2"><!-- gap 2rem --></div>
 
 * CAY-1267 Some changes to LogDialog
 * CAY-1826 Merge Entity Attributes and Relationships tabs together with one toolbar.
@@ -155,6 +177,9 @@ We got rid of the hated "runtime" ObjRelationships that caused random issues, an
 * CAY-1972 A property to override DataSources of multi-module projects 
 * CAY-1981 Add support of JDBC 4.0 N-types (nchar, nvarchar, longnvarchar, nclob)
 * CAY-1984 cdbimport doesn't flatten many to many relationships
+
+<div class="pb-2"><!-- gap 2rem --></div>
+
 
 ### Bug Fixes:
 

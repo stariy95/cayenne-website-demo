@@ -1,44 +1,39 @@
-<footer class="page-footer">
-    <div class="container">
-        <div class="row">
+<!-- Footer -->
+<footer class="bg-dark">
+    <div class="footer-nav container  text-center text-lg-left  pb-3">
+        <div class="row  pt-5 pb-3">
             {{ range .Site.Menus.footer}}
-            <div class="col">
-                <h3 class="footer">{{ .Name }}</h3>
+            <div class="col-sm-6 col-lg-3">
+                <h4>{{ .Name }}</h4>
                 <ul class="list-unstyled">
                     {{ range .Children }}
-                    <li><a href="{{ .URL }}" class="footer">{{ .Name }}</a>
+                    <li>
+                        <a href="{{ .URL }}">{{ .Name }}</a>
+                    </li>
                     {{ end }}
                 </ul>
             </div>
             {{ end }}
-            <div class="col">
-                <h3 class="footer">News</h3>
-                <ul class="list-unstyled">
-                    {{ range first 5 (where (where $.Page.Site.Pages "Type" "news") "Kind" "page") }}
+            <div class="col-sm-6 col-lg-3">
+                <h4>News</h4>
+                <ul class="list-multiline-items list-unstyled  mb-0">
+                    {{ range first 3 (where (where $.Page.Site.Pages "Type" "news") "Kind" "page") }}
                     <li>
-                        <div>
-                            <small class="text-muted">{{ .Date.Format "Jan 02, 2006" }}</small>
-                        </div>
-                        <a href="{{ .URL }}" class="footer">{{ .Title }}</a>
+                        <time datetime="{{ .Date }}" class="xsmall d-block">{{ .Date.Format "Jan 02, 2006" }}</time>
+                        <a href="{{ .URL }}">{{ .Title }}</a>
                     </li>
                     {{ end }}
-                    <li><a href="{{ .Site.BaseURL }}news" class="footer">More news</a>
                 </ul>
+                <a class="btn-link text-uppercase xsmall" href="{{ .Site.BaseURL }}news">
+                    More news
+                    <span class="symbol">&#8594;</span>
+                </a>
             </div>
         </div>
-    </div>
-    <hr class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col"></div>
-            <div class="col-8">
-                <p class="text-center page-footer-copyright">
-                    Copyright © 2001-{{ now.Year }} Apache Software Foundation. Apache Cayenne, Cayenne, Apache,
-                    the Apache feather logo, and the Apache Cayenne project logo are trademarks of The Apache Software Foundation.
-                    <a href="{{ .Ref "privacy-policy.md" | safeURL }}">Privacy policy</a>
-                </p>
-            </div>
-            <div class="col"></div>
-        </div>
+        <hr class="mt-0 mb-3" />
+        <p class="copy xsmall text-center  mw-75 mx-auto mb-0">
+            Copyright © 2001-{{ now.Year }} Apache Software Foundation. Apache Cayenne, Cayenne, Apache, the Apache feather logo, and the Apache Cayenne project logo are trademarks of The Apache Software Foundation. <a href="{{ .Ref "privacy-policy.md" | safeURL }}">Privacy policy</a>.
+            <img class="d-block  mx-auto mt-2" src="/img/logo_mono.svg" alt="Apache Cayenne" />
+        </p>
     </div>
 </footer>

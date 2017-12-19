@@ -45,7 +45,9 @@ BTW, here is an example of the Gradle plugin use :
     }
     
     
-### A full list of changes in this release:
+<div class="pb-3"><!-- gap 3rem --></div>
+<h2 class="text-center">A full list of changes in this release:</h2>
+<div class="pb-2"><!-- gap 2rem --></div>
 
 * {{% jira 1873 %}} Move DataDomain cache configuration from the Modeler and into DI
 * {{% jira 1891 %}} Modeler: Add To-Many Warning
@@ -73,6 +75,9 @@ BTW, here is an example of the Gradle plugin use :
 * {{% jira 2296 %}} cayenne-crypto: Get java type for DbAttribute bound to ObjAttributes with the same type
 * {{% jira 2300 %}} Modeler: New icons and design improvements
 * {{% jira 2302 %}} Rename postcommit module and its content to commitlog
+
+<div class="pb-2"><!-- gap 2rem --></div>
+
 
 ### Bug Fixes:
 

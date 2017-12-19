@@ -3,32 +3,40 @@
 
 {{ $baseurl := .Site.BaseURL }}
 
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <article>
-                    <header>
-                        <h1>{{- .Title -}}</h1>
-                    </header>
-                    <section>
+    <main class="container  py-5">
+        <!-- <div class="row">
+            <div class="col"> -->
+                <section>
+                    <article>
+                        <h1 class="text-center">{{- .Title -}}</h1>
                         {{ .Content }}
-                    </section>
-                </article>
-            </div>
-        </div>
+                    </article>
+                </section>
+            <!-- </div>
+        </div> -->
+        <!-- <hr class="mt-0 mb-5" /> -->
+        <div class="pb-3"><!-- gap 3rem --></div>
         <div class="row">
-            <div class="col text-left">
+            <div class="col-12 col-md-6  text-center text-md-left">
                 {{ with .NextInSection}}
-                Previous: <a href='{{ .Permalink | relURL }}'>{{ .Title }}</a>
+                <a class="btn btn-link" href='{{ .Permalink | relURL }}'>
+                    <span class="d-block d-md-none  text-muted">Prev: </span>
+                    <i class="small  fa fa-chevron-left  mr-3l2  d-none d-md-inline"></i>
+                    {{ .Title }}
+                </a>
                 {{ end }}
             </div>
-            <div class="col text-right">
+            <div class="col-12 col-md-6  text-center text-md-right">
                 {{ with .PrevInSection}}
-                Next: <a href='{{ .Permalink | relURL }}'>{{ .Title }}</a>
+                <a class="btn btn-link" href='{{ .Permalink | relURL }}'>
+                    <span class="d-block d-md-none  text-muted">Next: </span>
+                    {{ .Title }}
+                    <i class="small  fa fa-chevron-right  ml-3l2  d-none d-md-inline"></i>
+                </a>
                 {{ end }}
             </div>
         </div>
-    </div>
+    </main>
 
 {{ partial "footer.html" . }}
 {{ partial "tail.html" . }}

@@ -7,10 +7,14 @@ url: /2016/05/cayenne-311-released.html
 This new maintenance release has a few major bug fixes and improvements.
 It can be downloaded from [here](/download.html).
 
-### A full list of changes in this release:
+<div class="pb-3"><!-- gap 3rem --></div>
+<h2 class="text-center">A full list of changes in this release:</h2>
+<div class="pb-2"><!-- gap 2rem --></div>
 
 * CAY-1862 MySQL - allow specifying a length for TIMESTAMP and TIME columns
 * CAY-2042 Remove an arbitrary limitation on 1000 runtime DbRelationships
+
+<div class="pb-2"><!-- gap 2rem --></div>
 
 ### Bug Fixes:
 

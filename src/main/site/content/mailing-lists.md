@@ -7,7 +7,7 @@ menu:
         parent: collaboration
 url: mailing-lists.html
 ---
-### User Mailing List
+## User Mailing List
 
 This is a general discussion and support list for Cayenne users. It is the
 primary source of free Cayenne support. It is also a place for general
@@ -21,7 +21,10 @@ To post a message use the following address: user@cayenne.apache.org
 * [Apache Message Archive - Old Style](http://mail-archives.apache.org/mod_mbox/cayenne-user/)
 * [ObjectStyle.org Archive](http://objectstyle.org/cayenne/lists/cayenne-user/) (legacy, does not store new messages, but has very old messages not available elsewhere)
 
-### Developer Mailing List
+<div class="pb-3"><!-- gap 3rem --></div>
+
+
+## Developer Mailing List
 
 'dev' is a mailing list where Cayenne design issues are discussed. This
 includes current and future features, release schedules, and simply
@@ -38,7 +41,10 @@ To post a message use the following address: dev@cayenne.apache.org
 * [Apache Message Archive - Old Style](http://mail-archives.apache.org/mod_mbox/cayenne-dev/)
 * [ObjectStyle.org Archive](http://objectstyle.org/cayenne/lists/cayenne-devel/) (legacy, does not store new messages, but has very old messages not available elsewhere)
 
-### Commits Mailing List
+<div class="pb-2"><!-- gap 2rem --></div>
+
+
+## Commits Mailing List
 
 'commits' is a mailing list that receives all of the Cayenne SVN commit
 messages. You can subscribe to this list to keep track of changes to the

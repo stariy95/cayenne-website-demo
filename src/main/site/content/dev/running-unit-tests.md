@@ -1,4 +1,4 @@
---- 
+---
 title: Running Unit Tests
 weight: 70
 url: /dev/running-unit-tests.html
@@ -23,6 +23,9 @@ or
 
     $ cd cayenne
     $ mvn clean verify
+
+<div class="pb-3"><!-- gap 3rem --></div>
+
     
 ## Running Against In-memory Database
  
@@ -37,6 +40,9 @@ For this databases you can run tests without any additional configuration by onl
 *cayenneTestConnection* property that will activate required Maven profile:
  
     $ mvn verify -DcayenneTestConnection=derby    
+
+<div class="pb-3"><!-- gap 3rem --></div>
+
     
 ## Running Against Database in Docker (only on Linux)
 
@@ -49,12 +55,18 @@ You can run tests with following *cayenneTestConnection* properties:
 or
     
     $ mvn verify -DcayenneTestConnection=postgres-docker    
+
+<div class="pb-3"><!-- gap 3rem --></div>
+
     
 ## Running Against a Specific Database
 
 Final option to run tests against any supported database is with manual configuration. 
+
+<div class="pb-1l2"><!-- gap .5rem --></div>
+
     
-### Step 1. Install JDBC Driver Jars in a Local Maven Repo
+##### Step 1. Install JDBC Driver Jars in a Local Maven Repo
     
 Most commercial drivers are not present in the public Maven repositories.
 So they have to be installed by the tester locally. The group and artifact
@@ -85,8 +97,11 @@ the POM or the examples below.
 
     $ mvn install:install-file -Dfile=jconn3.jar -DgroupId=com.sybase \
            -DartifactId=sybase-driver -Dversion=12 -Dpackaging=jar -DgeneratePom=true
+
+<div class="pb-3l2"><!-- gap 1.5rem --></div>
+
     
-### Step 2. Run Tests Against Configured Data Source
+##### Step 2. Run Tests Against Configured Data Source
     
 Database type and connection information can be specified either on the
 command line or via a configuration file. First let's look at the command

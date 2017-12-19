@@ -4,17 +4,21 @@ weight: 80
 url: /dev/cms-guide.html
 ---
 
-Cayenne CMS source code (content + styling + scriptos) can be obtained from SVN:
-
+Cayenne CMS source code (content + styling + scriptos) can be obtained from SVN:  
 [https://svn.apache.org/repos/asf/cayenne/site/cms/trunk/](https://svn.apache.org/repos/asf/cayenne/site/cms/trunk/)
 
-Any Cayenne committer can change it and commit. On commit, it is automatically getting published in the CMS staging environment:
-
+Any Cayenne committer can change it and commit. On commit, it is automatically getting published in the CMS staging environment:  
 [http://cayenne.staging.apache.org/](http://cayenne.staging.apache.org/)
+
+<div class="pb-3"><!-- gap 3rem --></div>
+
 
 ## Publishing
 
 To publish staged content go [here](https://cms.apache.org/cayenne/), login with your Apache ID, and click on "publish cayenne site".
+
+<div class="pb-3"><!-- gap 3rem --></div>
+
 
 ## Synchronizing Docs
 
@@ -32,4 +36,3 @@ Assuming Cayenne checkout is under "~work/cayenne" and CMS sources checkout - un
             ~/work/cms/cms/content/docs/4.0/upgrade-guide/
         rsync -av --delete ~/work/cayenne/docs/doc/target/site/apidocs/doc/api/ \
             ~/work/cms/cms/content/docs/4.0/api/
-

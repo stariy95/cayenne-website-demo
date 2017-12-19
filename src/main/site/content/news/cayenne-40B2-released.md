@@ -9,7 +9,9 @@ While API is frozen it includes only bug fixes and documentation updates.
 
 Cayenne can be downloaded from [here](/download.html).
 
-### A full list of bug fixes in this release:
+<div class="pb-3"><!-- gap 3rem --></div>
+<h2 class="text-center">A full list of changes in this release:</h2>
+<div class="pb-2"><!-- gap 2rem --></div>
 
 * {{% jira 2319 %}} Modeler: Embeddable > Attributes. Undo does not cancel pasted objects
 * {{% jira 2321 %}} cdbimport: Reverse relationship is not created after adding and rev engineeering new db table

@@ -10,5 +10,3 @@ url: /dev/eclipse.html
 * Install [Maven2 Eclipse plugin](http://www.sonatype.org/m2eclipse/)
 * Install any other plugins that you would normally use. 
 * Go to "File > Import ... > Existing Maven Projects", and import the projects that you want.
-
-

@@ -15,7 +15,10 @@ This is a development release that introduces a number of nice new major feature
 
 Cayenne can be downloaded from [here](/download.html).
 
-### A full list of changes in this release:
+<div class="pb-3"><!-- gap 3rem --></div>
+<h2 class="text-center">A full list of changes in this release:</h2>
+<div class="pb-2"><!-- gap 2rem --></div>
+
 
 #### Changes/New Features:
 
@@ -29,6 +32,9 @@ Cayenne can be downloaded from [here](/download.html).
 - {{% jira 2345 %}} Own template renderer as a replacement for Velocity
 - {{% jira 2346 %}} Field-based data object with Map-based storage fallback
 - {{% jira 2351 %}} Remove commons-collections usage completely
+
+<div class="pb-2"><!-- gap 2rem --></div>
+
 
 #### Bug Fixes:
 

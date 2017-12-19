@@ -1,5 +1,7 @@
 .idea
 *.iml
+*.cloud
+*.cloudf
 .DS_Store
 target
 src/main/assets/node

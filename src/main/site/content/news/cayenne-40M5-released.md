@@ -21,7 +21,12 @@ feature-complete and we will enter "beta" and associated code freeze of the runt
 
 Now the new things in a bit more detail:
 
+<div class="pb-3"><!-- gap 3rem --></div>
+
+
 ### Fluent query API
+
+
 These great additions to Fluent API are new in M5:
 
 *ColumnSelect*
@@ -51,6 +56,8 @@ These great additions to Fluent API are new in M5:
     Property<Integer> nameLength = Artist.ARTIST_NAME.length();
     List<Artist> artists = ObjectSelect.query(Artist.class, nameLength.gt(5))
                             .select(context);
+
+<div class="pb-3"><!-- gap 3rem --></div>
     
 
 ### Reverse Engineering Improvements
@@ -65,7 +72,9 @@ The plugin itself has changed it's name to *"cayenne-maven-plugin"*, so now you 
 **_Important note_**: please refer to [UPGRADE.txt](https://github.com/apache/cayenne/blob/4.0.M5/docs/doc/src/main/resources/UPGRADE.txt) for detailed changes in _cdbimport_ configuration.
 
 
-### A full list of changes in this release:
+<div class="pb-3"><!-- gap 3rem --></div>
+<h2 class="text-center">A full list of changes in this release:</h2>
+<div class="pb-2"><!-- gap 2rem --></div>
 
 * {{% jira 2139 %}} Upgrade HSQLDB dependency to the most recent version (2.3.4)
 * {{% jira 2150 %}} Refactoring: ParameterBinding to contain ExtendedType property
@@ -89,7 +98,10 @@ The plugin itself has changed it's name to *"cayenne-maven-plugin"*, so now you 
 * {{% jira 2232 %}} Proper conversion to String for new functional expressions
 * {{% jira 2235 %}} Deprecate Query.getDataMap() method
 
-### Bug Fixes:
+<div class="pb-2"><!-- gap 2rem --></div>
+
+
+#### Bug Fixes:
 
 * {{% jira 2032 %}} SelectAction: DistinctResultIterator ignores flattened relationships
 * {{% jira 2137 %}} When generating SQL from EJBQL, use "AND" to separate multiple join conditions

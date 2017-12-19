@@ -20,6 +20,7 @@
 require('bootstrap/js/dist/tab');
 require('bootstrap/js/dist/collapse');
 require('bootstrap/js/dist/dropdown');
+require('bootstrap/js/dist/scrollspy');
 
 function initHljs() {
     var hljs    = require('highlight.js/lib/highlight.js');
@@ -35,12 +36,14 @@ function initHljs() {
     hljs.initHighlightingOnLoad();
 }
 
-function fixUpDom() {
-    $('img').addClass('img-fluid');
-}
-
 $(document).ready(function () {
     initHljs();
-    fixUpDom();
+
+    // add scrollspy classes
+    if ($('#cd-docs-nav #toc').length) {
+        $('#cd-docs-nav #toc ul').addClass('nav');
+        $('#cd-docs-nav #toc ul a').addClass('nav-link');
+    }
+
 });
 

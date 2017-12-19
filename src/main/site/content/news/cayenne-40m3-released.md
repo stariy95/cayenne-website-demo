@@ -8,9 +8,15 @@ This new milestone release has plenty of new features, bug fixes and other impro
 
 Cayenne can be downloaded from [here](/download.html).
 
+<div class="pb-3"><!-- gap 3rem --></div>
+
+
 ### Java 7
 
 Since this milestone minimal Java version is 1.7. If you still need Java 1.6, you can use Cayenne 3.1 or 4.0.M2 until your application is able to upgrade.
+
+<div class="pb-3"><!-- gap 3rem --></div>
+
 
 ### Java 8 Date/Time and Joda-Time Support
 
@@ -18,6 +24,9 @@ Cayenne now has two additional modules that contain ExtendedTypes for Java 8 Dat
 
     Module java8Module = new CayenneJava8Module();
     this.runtime = new ServerRuntime("cayenne-project.xml", java8Module);
+
+<div class="pb-3"><!-- gap 3rem --></div>
+
 
 ### Improvements in Query API
 
@@ -34,19 +43,30 @@ The "old" style SelectQuery is still supported and also includes these methods.
 
 Also ResultIterator and ResultBatchIterator are both AutoCloseable now. So you will be able to use try-with-resources with them.
 
+<div class="pb-3"><!-- gap 3rem --></div>
+
+
 ### Non-blocking DataSource
 
 Default Cayenne DataSource provider is switched to a non-blocking implementation that has a much better concurrency compared to the old version.
+
+<div class="pb-3"><!-- gap 3rem --></div>
+
 
 ### DBCP2
 
 DBCPDataSourceFactory is now based on DBCP2 (which is required under Java 1.7 and newer). If you are using it, you will need to take a few steps to upgrade. For more details see [UPGRADE.txt](https://github.com/apache/cayenne/blob/4.0.M3/docs/doc/src/main/resources/UPGRADE.txt).
 
+<div class="pb-3"><!-- gap 3rem --></div>
+
+
 ### Capturing a stream of commit changes
 
 Sometimes it is very useful to capture all or parts of "commit log" for commits made through Cayenne (for audit purposes, etc). It has always been a challenge to do it in a consistent and convenient manner. We've made a few attempts to solve this before. M3 features new and the most comprehensive solution. There is a [PostCommitBuilder](https://github.com/apache/cayenne/blob/4.0.M3/cayenne-lifecycle/src/main/java/org/apache/cayenne/lifecycle/postcommit/PostCommitModuleBuilder.java) class that helps to create a special DI module with all required extensions for this to work. It allows to register [PostCommitListeners](https://github.com/apache/cayenne/blob/4.0.M3/cayenne-lifecycle/src/main/java/org/apache/cayenne/lifecycle/postcommit/PostCommitListener.java) that will receive an event on every commit, containing a full commit log object.
 
-### A full list of changes in this release:
+<div class="pb-3"><!-- gap 3rem --></div>
+<h2 class="text-center">A full list of changes in this release:</h2>
+<div class="pb-2"><!-- gap 2rem --></div>
 
 * CAY-1626 Add JodaTime DateTime support
 * CAY-1902 Implement resolving Db paths for DataObjects
@@ -74,6 +94,9 @@ Sometimes it is very useful to capture all or parts of "commit log" for commits 
 * CAY-2043 ServerRuntimeBuilder: use DataDomain name for the default DataNode
 * CAY-2044 Collection setter for to-many relationships
 * CAY-2045 Add autosuggestion fields to choose attributes and relationships
+
+<div class="pb-2"><!-- gap 2rem --></div>
+
 
 ### Bug Fixes:
 

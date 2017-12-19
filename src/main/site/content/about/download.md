@@ -15,14 +15,20 @@ aliases:
     - /download.html
 ---
 
-_KEYS file to verify the file signatures can be [found here](http://www.apache.org/dist/cayenne/KEYS)._
+<h5 class="mb-5">KEYS file to verify the file signatures can be <a href="http://www.apache.org/dist/cayenne/KEYS">found here</a></h5>
 
-### Legacy Releases
+## Legacy Releases
 
-* [All Apache Cayenne releases](http://archive.apache.org/dist/cayenne/).
-* [All pre-Apache (SourceForge) Cayenne Releases](http://sourceforge.net/project/showfiles.php?group_id=48132).
+<ul class="list-unstyled  mb-5">
+	<li>
+		<a href="http://archive.apache.org/dist/cayenne/">All Apache Cayenne releases</a>
+	</li>
+	<li>
+		<a href="http://sourceforge.net/project/showfiles.php?group_id=48132">All pre-Apache (SourceForge) Cayenne Releases</a>
+	</li>
+</ul>
 
-### Maven
+## Maven
 
 All Cayenne artifacts are available from [Maven Central][1] for use with Maven, Ivy, Gradle or any other dependency management tool. 
 
