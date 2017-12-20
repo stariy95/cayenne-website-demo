@@ -15,7 +15,7 @@
 			position: fixed;
 			width: 100%;
 			top: $topbar-navbar-height;
-			z-index: 999;
+			z-index: $zindex-navbars - 1;
 		}
 
 		.dropdown-toggle {

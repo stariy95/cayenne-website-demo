@@ -7,6 +7,20 @@
 {{ $docVersion := ($.Scratch.Get "cayenneUrlVersion") }}
 {{ $currentPageURL := .URL }}
 
+
+{{- range where $.Site.Data.cayenne.releases "docs" true -}}
+{{- $ver := .version -}}
+{{- $.Scratch.SetInMap "indexUrlByVersion" $ver (printf "/docs/%s/api/" $ver) -}}
+    {{- range (sort (where $.Site.Pages "Kind" "page") "Weight" "desc") -}}
+        {{- if eq .Params.cayenneVersion $ver -}}
+            {{- $.Scratch.SetInMap "indexUrlByVersion" $ver .URL -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+
+{{ $urlByVersion := $.Scratch.Get "indexUrlByVersion" }}
+
 <main>
     <div class="cd-top-sidebar  bb">
         <div class="container">
@@ -21,8 +35,7 @@
                             <div class="dropdown-menu">
                                 {{ range where $.Site.Data.cayenne.releases "docs" true -}}
                                 {{- $ver := .version -}}
-                                {{- $urlFriendlyVersion := replace $ver "." "-" }}
-                                <a class="dropdown-item" id="cayenne-{{ $urlFriendlyVersion }}-tab" href="#cayenne-{{ $urlFriendlyVersion }}" role="tab" data-toggle="tab" aria-controls="cayenne-{{ $urlFriendlyVersion }}" aria-expanded="true">Version {{ $ver }} ({{ .type }})</a>
+                                <a class="dropdown-item" href="{{ index $urlByVersion $ver }}">Version {{ $ver }} ({{ .type }})</a>
                                 {{- end }}
                             </div>
                         </li>
@@ -36,30 +49,24 @@
         <div class="row no-gutters  ">
             <div class="col-12 col-lg-4 col-xl-3  br  py-2  bg-gray-100  cd-sidebar">
                 <div class="tab-content" id="cd-docs-nav">
-                    {{ range where $.Site.Data.cayenne.releases "docs" true -}}
-                    {{- $ver := .version -}}
-                    {{- $urlFriendlyVersion := replace $ver "." "-" }}
-                    <div class="tab-pane fade {{ if (eq $ver $docVersion) }}active show{{ end }}" id="cayenne-{{ $urlFriendlyVersion }}" role="tabpanel" aria-labelledby="cayenne-{{ $urlFriendlyVersion }}-tab" aria-expanded="{{ if (eq $ver $docVersion) }}true{{ else }}false{{ end }}">
-                        {{ range where $.Site.Pages "Kind" "page" -}}
-                        {{- if eq .Params.cayenneVersion $ver }}
-                        <div class="cd-toc-item">
-                            {{ if eq $currentPageURL .URL }}
-                            <span class="cd-toc-link active">{{ .Title }}</span>
-                            {{- $tocFile := printf "content/docs/%s/%s.toc.html" $ver .File.BaseFileName -}}
+                    {{ range (sort (where $.Site.Pages "Kind" "page") "Weight" ) -}}
+                    {{- if eq .Params.cayenneVersion $docVersion }}
+                    <div class="cd-toc-item">
+                        {{ if eq $currentPageURL .URL }}
+                        <span class="cd-toc-link active">{{ .Title }}</span>
+                            {{- $tocFile := printf "content/docs/%s/%s.toc.html" $docVersion .File.BaseFileName -}}
                             {{- if (fileExists $tocFile) -}}
-                            {{ readFile $tocFile | safeHTML }}
+                                {{ readFile $tocFile | safeHTML }}
                             {{- end -}}
-                            {{ else }}
+                        {{ else }}
                             <a class="cd-toc-link" href="{{ .URL }}">{{ .Title }}</a>
-                            {{ end }}
-                        </div>
-                        {{ end -}}
-                        {{- end }}
-                        <div class="cd-toc-item">
-                            <a class="cd-toc-link" href="/docs/{{ $ver }}/api/">JavaDoc</a>
-                        </div>
+                        {{ end }}
                     </div>
+                    {{ end -}}
                     {{- end }}
+                    <div class="cd-toc-item">
+                        <a class="cd-toc-link" href="/docs/{{ $docVersion }}/api/">JavaDoc</a>
+                    </div>
                 </div>
             </div>
             <!-- Main -->
