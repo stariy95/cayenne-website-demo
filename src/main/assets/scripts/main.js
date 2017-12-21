@@ -36,14 +36,17 @@ function initHljs() {
     hljs.initHighlightingOnLoad();
 }
 
+function ghCallback(ghData) {
+    $(".stargazers_count").text(ghData.stargazers_count || '');
+}
+
+function initGitHubBage() {
+    var ghUrl = "https://api.github.com/repos/apache/cayenne";
+    $.getJSON(ghUrl, ghCallback);
+}
+
 $(document).ready(function () {
     initHljs();
-
-    // add scrollspy classes
-    if ($('#cd-docs-nav #toc').length) {
-        $('#cd-docs-nav #toc ul').addClass('nav');
-        $('#cd-docs-nav #toc ul a').addClass('nav-link');
-    }
-
+    initGitHubBage();
 });
 
