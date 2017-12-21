@@ -20,6 +20,6 @@
 const gulp = require('gulp');
 
 gulp.task('fonts', ['clean-static'], function() {
-    return gulp.src('styles/fonts/*')
+    return gulp.src(['styles/fonts/*', 'node_modules/font-awesome/fonts/*'])
         .pipe(gulp.dest('../site/static/css/fonts'));
 });

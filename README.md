@@ -102,6 +102,6 @@ There is two main parts of site src:
 
 ## ToDo
 
-* Add fontawesome as dependency
-* Dockbook ToC into docs aside
-* $small-font-size-rem - https://davidwalsh.name/rem-px-browser-function-sass
+- [x] Add fontawesome as dependency
+- [x] Dockbook ToC into docs aside
+- [ ] $small-font-size-rem - https://davidwalsh.name/rem-px-browser-function-sass

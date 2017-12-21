@@ -21,17 +21,8 @@
 @include customFontFace('montserrat', 'fonts/montserrat-bolditalic', 700, italic);
 
 // FA ICONS
-@import url('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
-@font-face {
-    font-family: 'fontawesome';
-    src: url('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?') format('eot'), 
-         url('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/FontAwesome.otf')  format('opentype'),
-         url('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff') format('woff'), 
-         url('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf')  format('truetype'),
-         url('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.svg#fontawesome') format('svg');
-    font-style: normal;
-    font-weight: normal;
-}
+@import "../node_modules/font-awesome/scss/font-awesome";
+@include customFontFace('fontawesome', 'fonts/fontawesome-webfont', 400);
 
 // Bootstrap v4 bet2
 @import "../node_modules/bootstrap/scss/bootstrap";
