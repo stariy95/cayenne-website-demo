@@ -52,10 +52,10 @@ releases:
   - version: "3.0"
     latestRevision: "3.0.2"
     description: "Previous stable release"
-    type: "Stable"
+    type: "Legacy"
     date: "2011-06-21"
     docs: true
-    downloadable: true
+    downloadable: false
     customLink: "cayenne-3.0.2" # custom download link, full link will be like:
                                 # http://www.apache.org/dyn/closer.lua/cayenne/{{ customLink }}-src.tar.gz
     jdk: 1.5
