@@ -111,16 +111,16 @@
 
 		h4, h5, h6,
 		.h4, .h5, .h6 {
-		  font-weight: $font-weight-normal;
+		  	font-weight: $font-weight-normal;
 		}
 
 		//
 		// Emphasis
 		//
-		
+
 		.xsmall {
 			font-size: $xsmall-font-size;
-		  font-weight: inherit;
+		  	font-weight: inherit;
 		}
 
 	// _button.scss
@@ -129,7 +129,7 @@
 			@include button-size(.9rem, 4.3rem, 1.125rem, 1.6, 50px);
 			padding-bottom: .7rem;
 
-			@include media-breakpoint-down(xs) { 
+			@include media-breakpoint-down(xs) {
 				padding-left: 3rem;
 				padding-right: 3rem;
 			}
@@ -137,7 +137,7 @@
 
 	// _dropdown.scss
     .dropdown-item {
-      font-weight: $font-weight-light;
+		font-weight: $font-weight-light;
     }
 
 		// caret
@@ -151,20 +151,18 @@
 	// _tables.scss
 		.table {
 
-		  @include media-breakpoint-down(sm) {
-			  th,
-	  		td {
-	    		padding: $table-cell-padding-sm;
-	    	}
-	    }
+			@include media-breakpoint-down(sm) {
+				th,
+				td {
+					padding: $table-cell-padding-sm;
+				}
+			}
 
-		  thead th {
-		  	font-weight: $font-weight-medium;
-		    border-bottom: (1 * $table-border-width) solid $table-border-color;
-		  }
-
-	  }
-
+			thead th {
+				font-weight: $font-weight-medium;
+				border-bottom: (1 * $table-border-width) solid $table-border-color;
+			}
+		}
 
 
 // MAIN
@@ -198,13 +196,13 @@
 	// TYPE
     // RESPONSIVE TYPOGRAPHY
     @include media-breakpoint-down(xs) {
-      html {
-        font-size: .8rem;
-      }
+		html {
+			font-size: .8rem;
+		}
 
-      h1 {
-        font-size: $font-size-base * 2.8;
-      }
+		h1 {
+			font-size: $font-size-base * 2.8;
+		}
     }
 
     // LINKS
@@ -222,7 +220,7 @@
 				// Lists general
 				li {
 					position: relative;
-			    margin-bottom: .5em; //.675
+			    	margin-bottom: .5em; //.675
 					list-style: none inside;
 				}
 
@@ -233,14 +231,14 @@
 
 					li:before {
 						counter-increment: term;
-		   			content: '\25CF';
+						content: '\25CF';
 
 						color: rgba(#000, .5); //$body-color;
 
-				    width: 2em;
+						width: 2em;
 						margin-right: .5em;
-		        margin-left: -2.5em;
-				    text-align: center;
+						margin-left: -2.5em;
+						text-align: center;
 
 						// Adjust
 						font-size: .8em;
@@ -257,7 +255,7 @@
 
 					li:before {
 						counter-increment: term;
-		   			content: " ." counter(term);
+		   				content: " ." counter(term);
 
 						font-weight: $font-weight-normal;
 						color: $body-color;
@@ -265,11 +263,11 @@
 						float: left; // display: inline-block; - works only for text content, any other element e.g. <p>, <div> or 
 												 // or whatever will break layout, so we need to wrest :before-el from context
 
-				    width: 2em;
+						width: 2em;
 						margin-right: .5em;
-		        margin-left: -2.5em;
-				    text-align: center;
-				    direction: rtl;
+						margin-left: -2.5em;
+						text-align: center;
+						direction: rtl;
 					}
 				}
 
@@ -383,10 +381,10 @@
 			overflow-y: auto;
 
 			.nav-link {
-        color: $headings-color;
-        font-weight: $display4-weight;
-        line-height: 1.4;
-        padding: 1rem;
+				color: $headings-color;
+				font-weight: $display4-weight;
+				line-height: 1.4;
+				padding: 1rem;
 
 				@include media-breakpoint-down(xs) {
 					padding-left: 1rem;
@@ -396,19 +394,19 @@
 		}
 
     // TABS
-    .nav-tabs {
-      .nav-link {
-        color: #777;
-        border-width: 0 0 1px;
-      }
+	.nav-tabs {
+		.nav-link {
+			color: #777;
+			border-width: 0 0 1px;
+		}
 
-      .nav-link.active,
-      .nav-item.show .nav-link {
-        color: #444;
-        border-width: 0 0 2px;
-        border-color: #dc5656;
-      }
-    }
+		.nav-link.active,
+		.nav-item.show .nav-link {
+			color: #444;
+			border-width: 0 0 2px;
+			border-color: #dc5656;
+		}
+	}
 
 
 	// FOOTER
