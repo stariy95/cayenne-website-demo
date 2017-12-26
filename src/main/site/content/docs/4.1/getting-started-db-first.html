@@ -87,12 +87,12 @@ menu:
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="sql" class="sql"><span class="class">CREATE</span> SCHEMA <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> cayenne_demo; USE cayenne_demo;
-<span class="class">CREATE</span> <span class="type">TABLE</span> ARTIST (DATE_OF_BIRTH <span class="predefined-type">DATE</span> <span class="predefined-constant">NULL</span>, ID <span class="predefined-type">INT</span> <span class="keyword">NOT</span> <span class="predefined-constant">NULL</span> <span class="directive">AUTO_INCREMENT</span>, NAME <span class="predefined-type">VARCHAR</span>(<span class="integer">200</span>) <span class="predefined-constant">NULL</span>, <span class="directive">PRIMARY</span> <span class="type">KEY</span> (ID)) <span class="directive">ENGINE</span>=InnoDB;
-<span class="class">CREATE</span> <span class="type">TABLE</span> GALLERY (ID <span class="predefined-type">INT</span> <span class="keyword">NOT</span> <span class="predefined-constant">NULL</span> <span class="directive">AUTO_INCREMENT</span>, NAME <span class="predefined-type">VARCHAR</span>(<span class="integer">200</span>) <span class="predefined-constant">NULL</span>, <span class="directive">PRIMARY</span> <span class="type">KEY</span> (ID)) <span class="directive">ENGINE</span>=InnoDB;
-<span class="class">CREATE</span> <span class="type">TABLE</span> PAINTING (ARTIST_ID <span class="predefined-type">INT</span> <span class="predefined-constant">NULL</span>, GALLERY_ID <span class="predefined-type">INT</span> <span class="predefined-constant">NULL</span>, ID <span class="predefined-type">INT</span> <span class="keyword">NOT</span> <span class="predefined-constant">NULL</span> <span class="directive">AUTO_INCREMENT</span>, NAME <span class="predefined-type">VARCHAR</span>(<span class="integer">200</span>) <span class="predefined-constant">NULL</span>, <span class="directive">PRIMARY</span> <span class="type">KEY</span> (ID)) <span class="directive">ENGINE</span>=InnoDB;
-<span class="class">ALTER</span> <span class="type">TABLE</span> PAINTING <span class="class">ADD</span> <span class="directive">FOREIGN</span> <span class="type">KEY</span> (ARTIST_ID) <span class="keyword">REFERENCES</span> ARTIST (ID) <span class="keyword">ON</span> <span class="class">DELETE</span> <span class="directive">CASCADE</span>;
-<span class="class">ALTER</span> <span class="type">TABLE</span> PAINTING <span class="class">ADD</span> <span class="directive">FOREIGN</span> <span class="type">KEY</span> (GALLERY_ID) <span class="keyword">REFERENCES</span> GALLERY (ID) <span class="keyword">ON</span> <span class="class">DELETE</span> <span class="directive">CASCADE</span>;</code></pre> 
+      <pre class="highlight"><code class="language-sql sql" data-lang="sql">CREATE SCHEMA IF NOT EXISTS cayenne_demo; USE cayenne_demo;
+CREATE TABLE ARTIST (DATE_OF_BIRTH DATE NULL, ID INT NOT NULL AUTO_INCREMENT, NAME VARCHAR(200) NULL, PRIMARY KEY (ID)) ENGINE=InnoDB;
+CREATE TABLE GALLERY (ID INT NOT NULL AUTO_INCREMENT, NAME VARCHAR(200) NULL, PRIMARY KEY (ID)) ENGINE=InnoDB;
+CREATE TABLE PAINTING (ARTIST_ID INT NULL, GALLERY_ID INT NULL, ID INT NOT NULL AUTO_INCREMENT, NAME VARCHAR(200) NULL, PRIMARY KEY (ID)) ENGINE=InnoDB;
+ALTER TABLE PAINTING ADD FOREIGN KEY (ARTIST_ID) REFERENCES ARTIST (ID) ON DELETE CASCADE;
+ALTER TABLE PAINTING ADD FOREIGN KEY (GALLERY_ID) REFERENCES GALLERY (ID) ON DELETE CASCADE;</code></pre> 
      </div> 
     </div> 
     <div class="paragraph"> 
@@ -129,9 +129,9 @@ menu:
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="xml" class="xml"><span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;cayenne.version&gt;</span>4.1.M2-SNAPSHOT<span class="tag">&lt;/cayenne.version&gt;</span>
-<span class="tag">&lt;/properties&gt;</span></code></pre> 
+      <pre class="highlight"><code class="language-xml xml" data-lang="xml">&lt;properties&gt;
+    &lt;cayenne.version&gt;4.1.M2-SNAPSHOT&lt;/cayenne.version&gt;
+&lt;/properties&gt;</code></pre> 
      </div> 
     </div> 
     <div class="paragraph"> 
@@ -139,15 +139,15 @@ menu:
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="xml" class="xml"><span class="tag">&lt;build&gt;</span>
-    <span class="tag">&lt;plugins&gt;</span>
-        <span class="tag">&lt;plugin&gt;</span>
-            <span class="tag">&lt;groupId&gt;</span>org.apache.cayenne.plugins<span class="tag">&lt;/groupId&gt;</span>
-            <span class="tag">&lt;artifactId&gt;</span>cayenne-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
-            <span class="tag">&lt;version&gt;</span>${cayenne.version}<span class="tag">&lt;/version&gt;</span>
-        <span class="tag">&lt;/plugin&gt;</span>
-    <span class="tag">&lt;/plugins&gt;</span>
-<span class="tag">&lt;/build&gt;</span></code></pre> 
+      <pre class="highlight"><code class="language-xml xml" data-lang="xml">&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.cayenne.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;cayenne-maven-plugin&lt;/artifactId&gt;
+            &lt;version&gt;${cayenne.version}&lt;/version&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;</code></pre> 
      </div> 
     </div> 
    </div> 
@@ -169,23 +169,23 @@ menu:
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="xml" class="xml"><span class="tag">&lt;plugin&gt;</span>
+      <pre class="highlight"><code class="language-xml xml" data-lang="xml">&lt;plugin&gt;
     ...
-    <span class="tag">&lt;configuration&gt;</span>
-        <span class="tag">&lt;dataSource&gt;</span>
-            <span class="tag">&lt;driver&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/driver&gt;</span>
-            <span class="tag">&lt;url&gt;</span>jdbc:mysql://127.0.0.1:3306/cayenne_demo<span class="tag">&lt;/url&gt;</span>
-            <span class="tag">&lt;username&gt;</span>root<span class="tag">&lt;/username&gt;</span>
-            <span class="tag">&lt;password&gt;</span>your-mysql-password<span class="tag">&lt;/password&gt;</span>
-        <span class="tag">&lt;/dataSource&gt;</span>
-    <span class="tag">&lt;/configuration&gt;</span>
-    <span class="tag">&lt;dependencies&gt;</span>
-        <span class="tag">&lt;dependency&gt;</span>
-            <span class="tag">&lt;groupId&gt;</span>mysql<span class="tag">&lt;/groupId&gt;</span>
-            <span class="tag">&lt;artifactId&gt;</span>mysql-connector-java<span class="tag">&lt;/artifactId&gt;</span>
-            <span class="tag">&lt;version&gt;</span>6.0.5<span class="tag">&lt;/version&gt;</span>
-        <span class="tag">&lt;/dependency&gt;</span>
-    <span class="tag">&lt;/dependencies&gt;</span></code></pre> 
+    &lt;configuration&gt;
+        &lt;dataSource&gt;
+            &lt;driver&gt;com.mysql.jdbc.Driver&lt;/driver&gt;
+            &lt;url&gt;jdbc:mysql://127.0.0.1:3306/cayenne_demo&lt;/url&gt;
+            &lt;username&gt;root&lt;/username&gt;
+            &lt;password&gt;your-mysql-password&lt;/password&gt;
+        &lt;/dataSource&gt;
+    &lt;/configuration&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+            &lt;version&gt;6.0.5&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;</code></pre> 
      </div> 
     </div> 
     <div class="admonitionblock note"> 
@@ -206,10 +206,10 @@ menu:
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="xml" class="xml"><span class="tag">&lt;configuration&gt;</span>
+      <pre class="highlight"><code class="language-xml xml" data-lang="xml">&lt;configuration&gt;
     ...
-    <span class="tag">&lt;/dataSource&gt;</span>
-    <span class="tag">&lt;map&gt;</span>${project.basedir}/src/main/resources/datamap.map.xml<span class="tag">&lt;/map&gt;</span></code></pre> 
+    &lt;/dataSource&gt;
+    &lt;map&gt;${project.basedir}/src/main/resources/datamap.map.xml&lt;/map&gt;</code></pre> 
      </div> 
     </div> 
     <div class="paragraph"> 
@@ -217,12 +217,12 @@ menu:
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="xml" class="xml"><span class="tag">&lt;configuration&gt;</span>
-    ...<span class="tag">&lt;/map&gt;</span>
-    <span class="tag">&lt;dbImport&gt;</span>
-        <span class="tag">&lt;defaultPackage&gt;</span>org.apache.cayenne.tutorial.persistent<span class="tag">&lt;/defaultPackage&gt;</span>
-        <span class="tag">&lt;catalog&gt;</span>cayenne_demo<span class="tag">&lt;/catalog&gt;</span>
-    <span class="tag">&lt;/dbImport&gt;</span></code></pre> 
+      <pre class="highlight"><code class="language-xml xml" data-lang="xml">&lt;configuration&gt;
+    ...&lt;/map&gt;
+    &lt;dbImport&gt;
+        &lt;defaultPackage&gt;org.apache.cayenne.tutorial.persistent&lt;/defaultPackage&gt;
+        &lt;catalog&gt;cayenne_demo&lt;/catalog&gt;
+    &lt;/dbImport&gt;</code></pre> 
      </div> 
     </div> 
    </div> 
@@ -302,11 +302,11 @@ menu:
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="xml" class="xml"><span class="tag">&lt;plugin&gt;</span>
-    <span class="tag">&lt;groupId&gt;</span>org.apache.cayenne.plugins<span class="tag">&lt;/groupId&gt;</span>
-    <span class="tag">&lt;artifactId&gt;</span>cayenne-modeler-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>${cayenne.version}<span class="tag">&lt;/version&gt;</span>
-<span class="tag">&lt;/plugin&gt;</span></code></pre> 
+      <pre class="highlight"><code class="language-xml xml" data-lang="xml">&lt;plugin&gt;
+    &lt;groupId&gt;org.apache.cayenne.plugins&lt;/groupId&gt;
+    &lt;artifactId&gt;cayenne-modeler-maven-plugin&lt;/artifactId&gt;
+    &lt;version&gt;${cayenne.version}&lt;/version&gt;
+&lt;/plugin&gt;</code></pre> 
      </div> 
     </div> 
     <div class="paragraph"> 
@@ -331,11 +331,11 @@ menu:
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="xml" class="xml"><span class="tag">&lt;plugin&gt;</span>
+      <pre class="highlight"><code class="language-xml xml" data-lang="xml">&lt;plugin&gt;
     ...
-    <span class="tag">&lt;configuration&gt;</span>
-        <span class="tag">&lt;modelFile&gt;</span>${project.basedir}/src/main/resources/cayenne-project.xml<span class="tag">&lt;/modelFile&gt;</span>
-    <span class="tag">&lt;/configuration&gt;</span></code></pre> 
+    &lt;configuration&gt;
+        &lt;modelFile&gt;${project.basedir}/src/main/resources/cayenne-project.xml&lt;/modelFile&gt;
+    &lt;/configuration&gt;</code></pre> 
      </div> 
     </div> 
    </div> 
@@ -357,9 +357,9 @@ menu:
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="sql" class="sql"><span class="class">CREATE</span> <span class="type">TABLE</span> cayenne_demo.PAINTING_INFO (INFO <span class="predefined-type">VARCHAR</span>(<span class="integer">255</span>) <span class="predefined-constant">NULL</span>, PAINTING_ID <span class="predefined-type">INT</span> <span class="keyword">NOT</span> <span class="predefined-constant">NULL</span>, <span class="directive">PRIMARY</span> <span class="type">KEY</span> (PAINTING_ID)) <span class="directive">ENGINE</span>=InnoDB;
-<span class="class">ALTER</span> <span class="type">TABLE</span> cayenne_demo.GALLERY <span class="class">ADD</span> <span class="type">COLUMN</span> FOUNDED_DATE <span class="predefined-type">DATE</span>;
-<span class="class">ALTER</span> <span class="type">TABLE</span> cayenne_demo.PAINTING_INFO <span class="class">ADD</span> <span class="directive">FOREIGN</span> <span class="type">KEY</span> (PAINTING_ID) <span class="keyword">REFERENCES</span> cayenne_demo.PAINTING (ID);</code></pre> 
+      <pre class="highlight"><code class="language-sql sql" data-lang="sql">CREATE TABLE cayenne_demo.PAINTING_INFO (INFO VARCHAR(255) NULL, PAINTING_ID INT NOT NULL, PRIMARY KEY (PAINTING_ID)) ENGINE=InnoDB;
+ALTER TABLE cayenne_demo.GALLERY ADD COLUMN FOUNDED_DATE DATE;
+ALTER TABLE cayenne_demo.PAINTING_INFO ADD FOREIGN KEY (PAINTING_ID) REFERENCES cayenne_demo.PAINTING (ID);</code></pre> 
      </div> 
     </div> 
    </div> 
@@ -465,10 +465,10 @@ menu:
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="sql" class="sql"><span class="class">CREATE</span> <span class="type">TABLE</span> cayenne_demo.LEGACY_PAINTING_INFO (ID <span class="predefined-type">INT</span> <span class="keyword">NOT</span> <span class="predefined-constant">NULL</span> <span class="directive">AUTO_INCREMENT</span>, INFO <span class="predefined-type">VARCHAR</span>(<span class="integer">255</span>) <span class="predefined-constant">NULL</span>, PAINTING_ID <span class="predefined-type">INT</span> <span class="keyword">NOT</span> <span class="predefined-constant">NULL</span>, <span class="directive">PRIMARY</span> <span class="type">KEY</span> (ID)) <span class="directive">ENGINE</span>=InnoDB;
-<span class="class">ALTER</span> <span class="type">TABLE</span> cayenne_demo.ARTIST <span class="class">ADD</span> <span class="type">COLUMN</span> __service_column <span class="predefined-type">INT</span>;
-<span class="class">ALTER</span> <span class="type">TABLE</span> cayenne_demo.GALLERY <span class="class">ADD</span> <span class="type">COLUMN</span> __service_column <span class="predefined-type">INT</span>;
-<span class="class">ALTER</span> <span class="type">TABLE</span> cayenne_demo.PAINTING <span class="class">ADD</span> <span class="type">COLUMN</span> __service_column <span class="predefined-type">INT</span>;</code></pre> 
+      <pre class="highlight"><code class="language-sql sql" data-lang="sql">CREATE TABLE cayenne_demo.LEGACY_PAINTING_INFO (ID INT NOT NULL AUTO_INCREMENT, INFO VARCHAR(255) NULL, PAINTING_ID INT NOT NULL, PRIMARY KEY (ID)) ENGINE=InnoDB;
+ALTER TABLE cayenne_demo.ARTIST ADD COLUMN __service_column INT;
+ALTER TABLE cayenne_demo.GALLERY ADD COLUMN __service_column INT;
+ALTER TABLE cayenne_demo.PAINTING ADD COLUMN __service_column INT;</code></pre> 
      </div> 
     </div> 
    </div> 
@@ -479,8 +479,8 @@ menu:
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="xml" class="xml"><span class="tag">&lt;excludeTable&gt;</span>LEGACY_PAINTING_INFO<span class="tag">&lt;/excludeTable&gt;</span>
-<span class="tag">&lt;excludeColumn&gt;</span>__service_column<span class="tag">&lt;/excludeColumn&gt;</span></code></pre> 
+      <pre class="highlight"><code class="language-xml xml" data-lang="xml">&lt;excludeTable&gt;LEGACY_PAINTING_INFO&lt;/excludeTable&gt;
+&lt;excludeColumn&gt;__service_column&lt;/excludeColumn&gt;</code></pre> 
      </div> 
     </div> 
     <div class="paragraph"> 
@@ -546,20 +546,20 @@ menu:
    </div> 
    <div class="listingblock"> 
     <div class="content"> 
-     <pre class="CodeRay highlight"><code data-lang="xml" class="xml"><span class="tag">&lt;project&gt;</span>
+     <pre class="highlight"><code class="language-xml xml" data-lang="xml">&lt;project&gt;
     ...
-    <span class="tag">&lt;dependencies&gt;</span>
-        <span class="tag">&lt;dependency&gt;</span>
-            <span class="tag">&lt;groupId&gt;</span>org.apache.cayenne<span class="tag">&lt;/groupId&gt;</span>
-            <span class="tag">&lt;artifactId&gt;</span>cayenne-server<span class="tag">&lt;/artifactId&gt;</span>
-            <span class="tag">&lt;version&gt;</span>${cayenne.version}<span class="tag">&lt;/version&gt;</span>
-        <span class="tag">&lt;/dependency&gt;</span>
-        <span class="tag">&lt;dependency&gt;</span>
-            <span class="tag">&lt;groupId&gt;</span>org.apache.cayenne<span class="tag">&lt;/groupId&gt;</span>
-            <span class="tag">&lt;artifactId&gt;</span>cayenne-java8<span class="tag">&lt;/artifactId&gt;</span>
-            <span class="tag">&lt;version&gt;</span>${cayenne.version}<span class="tag">&lt;/version&gt;</span>
-        <span class="tag">&lt;/dependency&gt;</span>
-    <span class="tag">&lt;/dependencies&gt;</span></code></pre> 
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.cayenne&lt;/groupId&gt;
+            &lt;artifactId&gt;cayenne-server&lt;/artifactId&gt;
+            &lt;version&gt;${cayenne.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.cayenne&lt;/groupId&gt;
+            &lt;artifactId&gt;cayenne-java8&lt;/artifactId&gt;
+            &lt;version&gt;${cayenne.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;</code></pre> 
     </div> 
    </div> 
    <div class="admonitionblock note"> 
@@ -580,16 +580,16 @@ menu:
    </div> 
    <div class="listingblock"> 
     <div class="content"> 
-     <pre class="CodeRay highlight"><code data-lang="xml" class="xml"><span class="tag">&lt;build&gt;</span>
-    <span class="tag">&lt;plugins&gt;</span>
+     <pre class="highlight"><code class="language-xml xml" data-lang="xml">&lt;build&gt;
+    &lt;plugins&gt;
     ...
-        <span class="tag">&lt;plugin&gt;</span>
-            <span class="tag">&lt;artifactId&gt;</span>maven-compiler-plugin<span class="tag">&lt;/artifactId&gt;</span>
-            <span class="tag">&lt;configuration&gt;</span>
-                <span class="tag">&lt;source&gt;</span>1.8<span class="tag">&lt;/source&gt;</span>
-                <span class="tag">&lt;target&gt;</span>1.8<span class="tag">&lt;/target&gt;</span>
-            <span class="tag">&lt;/configuration&gt;</span>
-        <span class="tag">&lt;/plugin&gt;</span>
+        &lt;plugin&gt;
+            &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;source&gt;1.8&lt;/source&gt;
+                &lt;target&gt;1.8&lt;/target&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
     ...</code></pre> 
     </div> 
    </div> 
@@ -610,11 +610,11 @@ menu:
       <li> <p>Create a standard "main" method to make it a runnable class:</p> 
        <div class="listingblock"> 
         <div class="content"> 
-         <pre class="CodeRay highlight"><code data-lang="java" class="java"><span class="keyword">package</span> <span class="namespace">org.apache.cayenne.tutorial</span>;
+         <pre class="highlight"><code class="language-java java" data-lang="java">package org.apache.cayenne.tutorial;
 
-<span class="directive">public</span> <span class="type">class</span> <span class="class">Main</span> {
+public class Main {
 
-    <span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> main(<span class="predefined-type">String</span><span class="type">[]</span> args) {
+    public static void main(String[] args) {
 
     }
 }</code></pre> 
@@ -623,21 +623,21 @@ menu:
       <li> <p>The first thing you need to be able to access the database is to create a <code class="">ServerRuntime</code> object (which is essentially a wrapper around Cayenne stack) and use it to obtain an instance of an <code class="">ObjectContext</code>.</p> 
        <div class="listingblock"> 
         <div class="content"> 
-         <pre class="CodeRay highlight"><code data-lang="java" class="java"><span class="keyword">package</span> <span class="namespace">org.apache.cayenne.tutorial</span>;
+         <pre class="highlight"><code class="language-java java" data-lang="java">package org.apache.cayenne.tutorial;
 
-<span class="keyword">import</span> <span class="include">org.apache.cayenne.ObjectContext</span>;
-<span class="keyword">import</span> <span class="include">org.apache.cayenne.configuration.server.ServerRuntime</span>;
+import org.apache.cayenne.ObjectContext;
+import org.apache.cayenne.configuration.server.ServerRuntime;
 
-<span class="directive">public</span> <span class="type">class</span> <span class="class">Main</span> {
+public class Main {
 
-    <span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> main(<span class="predefined-type">String</span><span class="type">[]</span> args) {
+    public static void main(String[] args) {
         ServerRuntime cayenneRuntime = ServerRuntime.builder()
             .dataSource(DataSourceBuilder
-                    .url(<span class="string"><span class="delimiter">"</span><span class="content">jdbc:mysql://127.0.0.1:3306/cayenne_demo</span><span class="delimiter">"</span></span>)
-                    .driver(<span class="string"><span class="delimiter">"</span><span class="content">com.mysql.cj.jdbc.Driver</span><span class="delimiter">"</span></span>)
-                    .userName(<span class="string"><span class="delimiter">"</span><span class="content">root</span><span class="delimiter">"</span></span>) <span class="comment">// TODO: change to your actual username and password</span>
-                    .password(<span class="string"><span class="delimiter">"</span><span class="content">your-password</span><span class="delimiter">"</span></span>).build())
-            .addConfig(<span class="string"><span class="delimiter">"</span><span class="content">cayenne-project.xml</span><span class="delimiter">"</span></span>)
+                    .url("jdbc:mysql://127.0.0.1:3306/cayenne_demo")
+                    .driver("com.mysql.cj.jdbc.Driver")
+                    .userName("root") // TODO: change to your actual username and password
+                    .password("your-password").build())
+            .addConfig("cayenne-project.xml")
             .build();
         ObjectContext context = cayenneRuntime.newContext();
     }
@@ -650,8 +650,8 @@ menu:
       <li> <p>Let’s now add some code that will create persistent object:</p> 
        <div class="listingblock"> 
         <div class="content"> 
-         <pre class="CodeRay highlight"><code data-lang="java" class="java">Artist artist = context.newObject(Artist.class);
-artist.setName(<span class="string"><span class="delimiter">"</span><span class="content">Picasso</span><span class="delimiter">"</span></span>);
+         <pre class="highlight"><code class="language-java java" data-lang="java">Artist artist = context.newObject(Artist.class);
+artist.setName("Picasso");
 context.commitChanges();</code></pre> 
         </div> 
        </div> </li> 
@@ -665,16 +665,16 @@ context.commitChanges();</code></pre>
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="xml" class="xml"><span class="tag">&lt;dependency&gt;</span>
-    <span class="tag">&lt;groupId&gt;</span>mysql<span class="tag">&lt;/groupId&gt;</span>
-    <span class="tag">&lt;artifactId&gt;</span>mysql-connector-java<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>6.0.5<span class="tag">&lt;/version&gt;</span>
-<span class="tag">&lt;/dependency&gt;</span>
-<span class="tag">&lt;dependency&gt;</span>
-    <span class="tag">&lt;groupId&gt;</span>org.slf4j<span class="tag">&lt;/groupId&gt;</span>
-    <span class="tag">&lt;artifactId&gt;</span>slf4j-simple<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>1.7.25<span class="tag">&lt;/version&gt;</span>
-<span class="tag">&lt;/dependency&gt;</span></code></pre> 
+      <pre class="highlight"><code class="language-xml xml" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;version&gt;6.0.5&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+    &lt;artifactId&gt;slf4j-simple&lt;/artifactId&gt;
+    &lt;version&gt;1.7.25&lt;/version&gt;
+&lt;/dependency&gt;</code></pre> 
      </div> 
     </div> 
     <div class="paragraph"> 

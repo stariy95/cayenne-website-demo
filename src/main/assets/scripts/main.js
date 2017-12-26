@@ -29,24 +29,22 @@ function initHljs() {
     var sql     = require('highlight.js/lib/languages/sql.js');
     var groovy  = require('highlight.js/lib/languages/groovy.js');
 
-    hljs.registerLanguage('xml', xml);
-    hljs.registerLanguage('java', java);
-    hljs.registerLanguage('sql', sql);
+    hljs.registerLanguage('xml',    xml);
+    hljs.registerLanguage('java',   java);
+    hljs.registerLanguage('sql',    sql);
     hljs.registerLanguage('groovy', groovy);
     hljs.initHighlightingOnLoad();
 }
 
-function ghCallback(ghData) {
-    $(".stargazers_count").text(ghData.stargazers_count || '');
-}
-
-function initGitHubBage() {
+function initGitHubBadge() {
     var ghUrl = "https://api.github.com/repos/apache/cayenne";
-    $.getJSON(ghUrl, ghCallback);
+    $.getJSON(ghUrl, function ghCallback(ghData) {
+        $(".stargazers_count").text(ghData.stargazers_count || '');
+    });
 }
 
 $(document).ready(function () {
     initHljs();
-    initGitHubBage();
+    initGitHubBadge();
 });
 

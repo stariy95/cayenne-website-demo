@@ -289,48 +289,48 @@ menu:
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="xml" class="xml"><span class="tag">&lt;project</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://maven.apache.org/POM/4.0.0</span><span class="delimiter">"</span></span> <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">"</span></span>
-        <span class="attribute-name">xsi:schemaLocation</span>=<span class="string"><span class="delimiter">"</span><span class="content">http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd</span><span class="delimiter">"</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;modelVersion&gt;</span>4.0.0<span class="tag">&lt;/modelVersion&gt;</span>
-    <span class="tag">&lt;groupId&gt;</span>org.example.cayenne<span class="tag">&lt;/groupId&gt;</span>
-    <span class="tag">&lt;artifactId&gt;</span>tutorial<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
-    <span class="tag">&lt;cayenne.version&gt;</span>4.1.M2-SNAPSHOT<span class="tag">&lt;/version&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+      <pre class="highlight"><code class="language-xml xml" data-lang="xml">&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    &lt;groupId&gt;org.example.cayenne&lt;/groupId&gt;
+    &lt;artifactId&gt;tutorial&lt;/artifactId&gt;
+    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+    &lt;cayenne.version&gt;4.1.M2-SNAPSHOT&lt;/version&gt; <i class="conum" data-value="1"></i><b>(1)</b>
 
-    <span class="tag">&lt;dependencies&gt;</span>
-        <span class="tag">&lt;dependency&gt;</span>
-            <span class="tag">&lt;groupId&gt;</span>org.apache.cayenne<span class="tag">&lt;/groupId&gt;</span>
-            <span class="tag">&lt;artifactId&gt;</span>cayenne-server<span class="tag">&lt;/artifactId&gt;</span>
-            <span class="tag">&lt;version&gt;</span>${cayenne.version}<span class="tag">&lt;/version&gt;</span>
-        <span class="tag">&lt;/dependency&gt;</span>
-        <span class="comment">&lt;!--  For java.time.* types you need to use this dependency--&gt;</span>
-        <span class="tag">&lt;dependency&gt;</span>
-            <span class="tag">&lt;groupId&gt;</span>org.apache.cayenne<span class="tag">&lt;/groupId&gt;</span>
-            <span class="tag">&lt;artifactId&gt;</span>cayenne-java8<span class="tag">&lt;/artifactId&gt;</span>
-            <span class="tag">&lt;version&gt;</span>${cayenne.version}<span class="tag">&lt;/version&gt;</span>
-        <span class="tag">&lt;/dependency&gt;</span>
-        <span class="tag">&lt;dependency&gt;</span>
-            <span class="tag">&lt;groupId&gt;</span>org.slf4j<span class="tag">&lt;/groupId&gt;</span>
-            <span class="tag">&lt;artifactId&gt;</span>slf4j-simple<span class="tag">&lt;/artifactId&gt;</span>
-            <span class="tag">&lt;version&gt;</span>1.7.25<span class="tag">&lt;/version&gt;</span>
-        <span class="tag">&lt;/dependency&gt;</span>
-    <span class="tag">&lt;/dependencies&gt;</span>
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.cayenne&lt;/groupId&gt;
+            &lt;artifactId&gt;cayenne-server&lt;/artifactId&gt;
+            &lt;version&gt;${cayenne.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!--  For java.time.* types you need to use this dependency--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.cayenne&lt;/groupId&gt;
+            &lt;artifactId&gt;cayenne-java8&lt;/artifactId&gt;
+            &lt;version&gt;${cayenne.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+            &lt;artifactId&gt;slf4j-simple&lt;/artifactId&gt;
+            &lt;version&gt;1.7.25&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
 
-    <span class="tag">&lt;build&gt;</span>
-        <span class="tag">&lt;plugins&gt;</span>
-            <span class="comment">&lt;!-- Tell maven to support Java 8 --&gt;</span>
-            <span class="tag">&lt;plugin&gt;</span>
-                <span class="tag">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/groupId&gt;</span>
-                <span class="tag">&lt;artifactId&gt;</span>maven-compiler-plugin<span class="tag">&lt;/artifactId&gt;</span>
-                <span class="tag">&lt;version&gt;</span>3.6.1<span class="tag">&lt;/version&gt;</span>
-                <span class="tag">&lt;configuration&gt;</span>
-                    <span class="tag">&lt;source&gt;</span>1.8<span class="tag">&lt;/source&gt;</span>
-                    <span class="tag">&lt;target&gt;</span>1.8<span class="tag">&lt;/target&gt;</span>
-                <span class="tag">&lt;/configuration&gt;</span>
-            <span class="tag">&lt;/plugin&gt;</span>
-        <span class="tag">&lt;/plugins&gt;</span>
-    <span class="tag">&lt;/build&gt;</span>
-<span class="tag">&lt;/project&gt;</span></code></pre> 
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;!-- Tell maven to support Java 8 --&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+                &lt;version&gt;3.6.1&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;source&gt;1.8&lt;/source&gt;
+                    &lt;target&gt;1.8&lt;/target&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+&lt;/project&gt;</code></pre> 
      </div> 
     </div> 
     <div class="colist arabic"> 
@@ -392,11 +392,11 @@ menu:
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="java" class="java"><span class="keyword">package</span> <span class="namespace">org.example.cayenne</span>;
+      <pre class="highlight"><code class="language-java java" data-lang="java">package org.example.cayenne;
 
-<span class="directive">public</span> <span class="type">class</span> <span class="class">Main</span> {
+public class Main {
 
-    <span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> main(<span class="predefined-type">String</span><span class="type">[]</span> args) {
+    public static void main(String[] args) {
     }
 }</code></pre> 
      </div> 
@@ -408,16 +408,16 @@ menu:
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="java" class="java"><span class="keyword">package</span> <span class="namespace">org.example.cayenne</span>;
+      <pre class="highlight"><code class="language-java java" data-lang="java">package org.example.cayenne;
 
-<span class="keyword">import</span> <span class="include">org.apache.cayenne.ObjectContext</span>;
-<span class="keyword">import</span> <span class="include">org.apache.cayenne.configuration.server.ServerRuntime</span>;
+import org.apache.cayenne.ObjectContext;
+import org.apache.cayenne.configuration.server.ServerRuntime;
 
-<span class="directive">public</span> <span class="type">class</span> <span class="class">Main</span> {
+public class Main {
 
-    <span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> main(<span class="predefined-type">String</span><span class="type">[]</span> args) {
+    public static void main(String[] args) {
         ServerRuntime cayenneRuntime = ServerRuntime.builder()
-                        .addConfig(<span class="string"><span class="delimiter">"</span><span class="content">cayenne-project.xml</span><span class="delimiter">"</span></span>)
+                        .addConfig("cayenne-project.xml")
                         .build();
         ObjectContext context = cayenneRuntime.newContext();
     }
@@ -435,11 +435,11 @@ menu:
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="xml" class="xml"><span class="tag">&lt;dependency&gt;</span>
-   <span class="tag">&lt;groupId&gt;</span>org.apache.derby<span class="tag">&lt;/groupId&gt;</span>
-   <span class="tag">&lt;artifactId&gt;</span>derby<span class="tag">&lt;/artifactId&gt;</span>
-   <span class="tag">&lt;version&gt;</span>10.13.1.1<span class="tag">&lt;/version&gt;</span>
-<span class="tag">&lt;/dependency&gt;</span></code></pre> 
+      <pre class="highlight"><code class="language-xml xml" data-lang="xml">&lt;dependency&gt;
+   &lt;groupId&gt;org.apache.derby&lt;/groupId&gt;
+   &lt;artifactId&gt;derby&lt;/artifactId&gt;
+   &lt;version&gt;10.13.1.1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre> 
      </div> 
     </div> 
     <div class="paragraph"> 
@@ -486,28 +486,28 @@ INFO: setting DataNode 'datanode' as default, used by all unlinked DataMaps&lt;/
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="java" class="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">Artist</span> <span class="directive">extends</span> _Artist {
+      <pre class="highlight"><code class="language-java java" data-lang="java">public class Artist extends _Artist {
 
-    <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> DEFAULT_DATE_FORMAT = <span class="string"><span class="delimiter">"</span><span class="content">yyyyMMdd</span><span class="delimiter">"</span></span>;
+    static final String DEFAULT_DATE_FORMAT = "yyyyMMdd";
 
-    <span class="comment">/**
+    /**
      * Sets date of birth using a string in format yyyyMMdd.
-     */</span>
-    <span class="directive">public</span> <span class="type">void</span> setDateOfBirthString(<span class="predefined-type">String</span> yearMonthDay) {
-        <span class="keyword">if</span> (yearMonthDay == <span class="predefined-constant">null</span>) {
-            setDateOfBirth(<span class="predefined-constant">null</span>);
-            <span class="keyword">return</span>;
+     */
+    public void setDateOfBirthString(String yearMonthDay) {
+        if (yearMonthDay == null) {
+            setDateOfBirth(null);
+            return;
         }
 
         LocalDate date;
-        <span class="keyword">try</span> {
+        try {
             DateTimeFormatter formatter = DateTimeFormatter
                     .ofPattern(DEFAULT_DATE_FORMAT);
             date = LocalDate.parse(yearMonthDay, formatter);
-        } <span class="keyword">catch</span> (DateTimeParseException e) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(
-                    <span class="string"><span class="delimiter">"</span><span class="content">A date argument must be in format '</span><span class="delimiter">"</span></span>
-                            + DEFAULT_DATE_FORMAT + <span class="string"><span class="delimiter">"</span><span class="content">': </span><span class="delimiter">"</span></span> + yearMonthDay);
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException(
+                    "A date argument must be in format '"
+                            + DEFAULT_DATE_FORMAT + "': " + yearMonthDay);
         }
         setDateOfBirth(date);
     }
@@ -522,9 +522,9 @@ INFO: setting DataNode 'datanode' as default, used by all unlinked DataMaps&lt;/
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="java" class="java">Artist picasso = context.newObject(Artist.class);
-picasso.setName(<span class="string"><span class="delimiter">"</span><span class="content">Pablo Picasso</span><span class="delimiter">"</span></span>);
-picasso.setDateOfBirthString(<span class="string"><span class="delimiter">"</span><span class="content">18811025</span><span class="delimiter">"</span></span>);</code></pre> 
+      <pre class="highlight"><code class="language-java java" data-lang="java">Artist picasso = context.newObject(Artist.class);
+picasso.setName("Pablo Picasso");
+picasso.setDateOfBirthString("18811025");</code></pre> 
      </div> 
     </div> 
     <div class="paragraph"> 
@@ -532,12 +532,12 @@ picasso.setDateOfBirthString(<span class="string"><span class="delimiter">"</spa
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="java" class="java">Gallery metropolitan = context.newObject(Gallery.class);
-metropolitan.setName(<span class="string"><span class="delimiter">"</span><span class="content">Metropolitan Museum of Art</span><span class="delimiter">"</span></span>);
+      <pre class="highlight"><code class="language-java java" data-lang="java">Gallery metropolitan = context.newObject(Gallery.class);
+metropolitan.setName("Metropolitan Museum of Art");
 Painting girl = context.newObject(Painting.class);
-girl.setName(<span class="string"><span class="delimiter">"</span><span class="content">Girl Reading at a Table</span><span class="delimiter">"</span></span>);
+girl.setName("Girl Reading at a Table");
 Painting stein = context.newObject(Painting.class);
-stein.setName(<span class="string"><span class="delimiter">"</span><span class="content">Gertrude Stein</span><span class="delimiter">"</span></span>);</code></pre> 
+stein.setName("Gertrude Stein");</code></pre> 
      </div> 
     </div> 
     <div class="paragraph"> 
@@ -545,7 +545,7 @@ stein.setName(<span class="string"><span class="delimiter">"</span><span class="
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="java" class="java">picasso.addToPaintings(girl);
+      <pre class="highlight"><code class="language-java java" data-lang="java">picasso.addToPaintings(girl);
 picasso.addToPaintings(stein);
 girl.setGallery(metropolitan);
 stein.setGallery(metropolitan);</code></pre> 
@@ -556,7 +556,7 @@ stein.setGallery(metropolitan);</code></pre>
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="java" class="java">context.commitChanges();</code></pre> 
+      <pre class="highlight"><code class="language-java java" data-lang="java">context.commitChanges();</code></pre> 
      </div> 
     </div> 
     <div class="paragraph"> 
@@ -617,7 +617,7 @@ INFO: +++ transaction committed.</pre>
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="java" class="java"><span class="predefined-type">List</span>&lt;Painting&gt; paintings1 = ObjectSelect.query(Painting.class).select(context);</code></pre> 
+      <pre class="highlight"><code class="language-java java" data-lang="java">List&lt;Painting&gt; paintings1 = ObjectSelect.query(Painting.class).select(context);</code></pre> 
      </div> 
     </div> 
     <div class="literalblock"> 
@@ -633,8 +633,8 @@ INFO: === returned 2 rows. - took 18 ms.</pre>
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="java" class="java"><span class="predefined-type">List</span>&lt;Painting&gt; paintings2 = ObjectSelect.query(Painting.class)
-        .where(Painting.NAME.likeIgnoreCase(<span class="string"><span class="delimiter">"</span><span class="content">gi%</span><span class="delimiter">"</span></span>)).select(context);</code></pre> 
+      <pre class="highlight"><code class="language-java java" data-lang="java">List&lt;Painting&gt; paintings2 = ObjectSelect.query(Painting.class)
+        .where(Painting.NAME.likeIgnoreCase("gi%")).select(context);</code></pre> 
      </div> 
     </div> 
     <div class="literalblock"> 
@@ -651,8 +651,8 @@ INFO: === returned 1 row. - took 18 ms.</pre>
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="java" class="java"><span class="predefined-type">List</span>&lt;Painting&gt; paintings3 = ObjectSelect.query(Painting.class)
-        .where(Painting.ARTIST.dot(Artist.DATE_OF_BIRTH).lt(LocalDate.of(<span class="integer">1900</span>,<span class="integer">1</span>,<span class="integer">1</span>)))
+      <pre class="highlight"><code class="language-java java" data-lang="java">List&lt;Painting&gt; paintings3 = ObjectSelect.query(Painting.class)
+        .where(Painting.ARTIST.dot(Artist.DATE_OF_BIRTH).lt(LocalDate.of(1900,1,1)))
         .select(context);</code></pre> 
      </div> 
     </div> 
@@ -700,8 +700,8 @@ INFO: === returned 2 rows. - took 25 ms.</pre>
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="java" class="java">Artist picasso = ObjectSelect.query(Artist.class)
-            .where(Artist.NAME.eq(<span class="string"><span class="delimiter">"</span><span class="content">Pablo Picasso</span><span class="delimiter">"</span></span>)).selectOne(context);</code></pre> 
+      <pre class="highlight"><code class="language-java java" data-lang="java">Artist picasso = ObjectSelect.query(Artist.class)
+            .where(Artist.NAME.eq("Pablo Picasso")).selectOne(context);</code></pre> 
      </div> 
     </div> 
     <div class="paragraph"> 
@@ -709,7 +709,7 @@ INFO: === returned 2 rows. - took 25 ms.</pre>
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="java" class="java"><span class="keyword">if</span> (picasso != <span class="predefined-constant">null</span>) {
+      <pre class="highlight"><code class="language-java java" data-lang="java">if (picasso != null) {
     context.deleteObject(picasso);
     context.commitChanges();
 }</code></pre> 
@@ -771,29 +771,29 @@ INFO: +++ transaction committed.</pre>
      web.xml
     </div> 
     <div class="content"> 
-     <pre class="CodeRay highlight"><code data-lang="xml" class="xml"><span class="preprocessor">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-<span class="doctype">&lt;!DOCTYPE web-app
+     <pre class="highlight"><code class="language-xml xml" data-lang="xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;!DOCTYPE web-app
    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-  "http://java.sun.com/dtd/web-app_2_3.dtd"&gt;</span>
-<span class="tag">&lt;web-app&gt;</span>
-    <span class="tag">&lt;display-name&gt;</span>Cayenne Tutorial<span class="tag">&lt;/display-name&gt;</span>
+  "http://java.sun.com/dtd/web-app_2_3.dtd"&gt;
+&lt;web-app&gt;
+    &lt;display-name&gt;Cayenne Tutorial&lt;/display-name&gt;
 
-    <span class="comment">&lt;!-- This filter bootstraps ServerRuntime and then provides each request thread
+    &lt;!-- This filter bootstraps ServerRuntime and then provides each request thread
          with a session-bound DataContext. Note that the name of the filter is important,
          as it points it to the right named configuration file.
-    --&gt;</span>
-    <span class="tag">&lt;filter&gt;</span>
-        <span class="tag">&lt;filter-name&gt;</span>cayenne-project<span class="tag">&lt;/filter-name&gt;</span>
-        <span class="tag">&lt;filter-class&gt;</span>org.apache.cayenne.configuration.web.CayenneFilter<span class="tag">&lt;/filter-class&gt;</span>
-    <span class="tag">&lt;/filter&gt;</span>
-    <span class="tag">&lt;filter-mapping&gt;</span>
-        <span class="tag">&lt;filter-name&gt;</span>cayenne-project<span class="tag">&lt;/filter-name&gt;</span>
-        <span class="tag">&lt;url-pattern&gt;</span>/*<span class="tag">&lt;/url-pattern&gt;</span>
-    <span class="tag">&lt;/filter-mapping&gt;</span>
-    <span class="tag">&lt;welcome-file-list&gt;</span>
-        <span class="tag">&lt;welcome-file&gt;</span>index.jsp<span class="tag">&lt;/welcome-file&gt;</span>
-    <span class="tag">&lt;/welcome-file-list&gt;</span>
-<span class="tag">&lt;/web-app&gt;</span></code></pre> 
+    --&gt;
+    &lt;filter&gt;
+        &lt;filter-name&gt;cayenne-project&lt;/filter-name&gt;
+        &lt;filter-class&gt;org.apache.cayenne.configuration.web.CayenneFilter&lt;/filter-class&gt;
+    &lt;/filter&gt;
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;cayenne-project&lt;/filter-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
+    &lt;welcome-file-list&gt;
+        &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;
+    &lt;/welcome-file-list&gt;
+&lt;/web-app&gt;</code></pre> 
     </div> 
    </div> 
    <div class="ulist"> 
@@ -806,7 +806,7 @@ INFO: +++ transaction committed.</pre>
      webapp/index.jsp
     </div> 
     <div class="content"> 
-     <pre class="CodeRay highlight"><code data-lang="jsp" class="jsp">&lt;%@ page language="java" contentType="text/html" %&gt;
+     <pre class="highlight"><code class="language-jsp jsp" data-lang="jsp">&lt;%@ page language="java" contentType="text/html" %&gt;
 &lt;%@ page import="org.example.cayenne.persistent.*" %&gt;
 &lt;%@ page import="org.apache.cayenne.*" %&gt;
 &lt;%@ page import="org.apache.cayenne.query.*" %&gt;
@@ -852,7 +852,7 @@ INFO: +++ transaction committed.</pre>
      webapp/detail.jsp
     </div> 
     <div class="content"> 
-     <pre class="CodeRay highlight"><code data-lang="jsp" class="jsp">&lt;%@ page language="java" contentType="text/html" %&gt;
+     <pre class="highlight"><code class="language-jsp jsp" data-lang="jsp">&lt;%@ page language="java" contentType="text/html" %&gt;
 &lt;%@ page import="org.example.cayenne.persistent.*" %&gt;
 &lt;%@ page import="org.apache.cayenne.*" %&gt;
 &lt;%@ page import="org.apache.cayenne.query.*" %&gt;
@@ -935,12 +935,12 @@ INFO: +++ transaction committed.</pre>
       pom.xml
      </div> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="xml" class="xml"><span class="tag">&lt;dependency&gt;</span>
-    <span class="tag">&lt;groupId&gt;</span>javax.servlet<span class="tag">&lt;/groupId&gt;</span>
-    <span class="tag">&lt;artifactId&gt;</span>javax.servlet-api<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>3.1.0<span class="tag">&lt;/version&gt;</span>
-    <span class="tag">&lt;scope&gt;</span>provided<span class="tag">&lt;/scope&gt;</span>
-<span class="tag">&lt;/dependency&gt;</span></code></pre> 
+      <pre class="highlight"><code class="language-xml xml" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+    &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
+    &lt;version&gt;3.1.0&lt;/version&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre> 
      </div> 
     </div> 
     <div class="paragraph"> 
@@ -951,15 +951,15 @@ INFO: +++ transaction committed.</pre>
       pom.xml
      </div> 
      <div class="content"> 
-      <pre class="CodeRay highlight"><code data-lang="xml" class="xml"><span class="tag">&lt;build&gt;</span>
-    <span class="tag">&lt;plugins&gt;</span>
-        <span class="tag">&lt;plugin&gt;</span>
-            <span class="tag">&lt;groupId&gt;</span>org.eclipse.jetty<span class="tag">&lt;/groupId&gt;</span>
-            <span class="tag">&lt;artifactId&gt;</span>jetty-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
-            <span class="tag">&lt;version&gt;</span>9.3.14.v20161028<span class="tag">&lt;/version&gt;</span>
-        <span class="tag">&lt;/plugin&gt;</span>
-    <span class="tag">&lt;/plugins&gt;</span>
-<span class="tag">&lt;/build&gt;</span></code></pre> 
+      <pre class="highlight"><code class="language-xml xml" data-lang="xml">&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+            &lt;artifactId&gt;jetty-maven-plugin&lt;/artifactId&gt;
+            &lt;version&gt;9.3.14.v20161028&lt;/version&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;</code></pre> 
      </div> 
     </div> 
     <div class="ulist"> 

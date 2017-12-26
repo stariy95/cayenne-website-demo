@@ -235,7 +235,30 @@
 			    top: -.25em;
 			}
 
-			p {
+			.table {
+				table-layout: fixed;
+				width: 100%;
+
+				td {
+					overflow: scroll;
+					padding: 0.75rem;
+				}
+
+				td.icon {
+					width: 10%;
+					text-align: center;
+					i {
+						vertical-align: middle;
+					}
+				}
+
+				p {
+					//word-break: break-all;
+					//word-wrap: break-word;
+				}
+			}
+
+			code {
 				word-break: break-all;
 				word-wrap: break-word;
 			}
