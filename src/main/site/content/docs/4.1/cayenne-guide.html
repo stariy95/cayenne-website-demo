@@ -126,7 +126,7 @@ menu:
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="highlight"><code class="">$ java -jar CayenneModeler.jar</code></pre> 
+      <pre class="highlight"><code>$ java -jar CayenneModeler.jar</code></pre> 
      </div> 
     </div> 
     <div class="paragraph"> 
@@ -150,7 +150,7 @@ menu:
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="highlight"><code class="">$ mvn cayenne-modeler:run</code></pre> 
+      <pre class="highlight"><code>$ mvn cayenne-modeler:run</code></pre> 
      </div> 
     </div> 
     <table id="pluginParameteres" class="tableblock frame-all grid-all spread table table-bordered"> 
@@ -336,7 +336,7 @@ total 24
      <p>Normally each ObjEntity is mapped to a specific Java class (such as Artist or Painting) that explicitly declare all entity properties as pairs of getters and setters. However Cayenne allows to map a completly generic class to any number of entities. The only expectation is that a generic class implements org.apache.cayenne.DataObject. So an ideal candidate for a generic class is CayenneDataObject, or some custom subclass of CayenneDataObject.</p> 
     </div> 
     <div class="paragraph"> 
-     <p>If you don’t enter anything for Java Class of an ObjEntity, Cayenne assumes generic mapping and uses the following implicit rules to determine a class of a generic object. If DataMap "Custom Superclass" is set, runtime uses this class to instantiate new objects. If not, <code class="">org.apache.cayenne.CayenneDataObject</code> is used.</p> 
+     <p>If you don’t enter anything for Java Class of an ObjEntity, Cayenne assumes generic mapping and uses the following implicit rules to determine a class of a generic object. If DataMap "Custom Superclass" is set, runtime uses this class to instantiate new objects. If not, <code>org.apache.cayenne.CayenneDataObject</code> is used.</p> 
     </div> 
     <div class="paragraph"> 
      <p>Class generation procedures (either done in the Modeler or with Ant or Maven) would skip entities that are mapped to CayenneDataObject explicitly or have no class mapping.</p> 
@@ -363,9 +363,9 @@ total 24
     </div> 
     <div class="ulist"> 
      <ul> 
-      <li> <p><code class="">cayenne-di-4.1.M2-SNAPSHOT.jar</code> - Cayenne dependency injection (DI) container library. All applications will require this file.</p> </li> 
-      <li> <p><code class="">cayenne-server-4.1.M2-SNAPSHOT.jar</code> - contains main Cayenne runtime (adapters, DB access classes, etc.). Most applications will require this file.</p> </li> 
-      <li> <p><code class="">cayenne-client-4.1.M2-SNAPSHOT.jar</code> - a client-side runtime for <a href="#rop">ROP applications</a>.</p> </li> 
+      <li> <p><code>cayenne-di-4.1.M2-SNAPSHOT.jar</code> - Cayenne dependency injection (DI) container library. All applications will require this file.</p> </li> 
+      <li> <p><code>cayenne-server-4.1.M2-SNAPSHOT.jar</code> - contains main Cayenne runtime (adapters, DB access classes, etc.). Most applications will require this file.</p> </li> 
+      <li> <p><code>cayenne-client-4.1.M2-SNAPSHOT.jar</code> - a client-side runtime for <a href="#rop">ROP applications</a>.</p> </li> 
       <li> <p>Other cayenne-* jars - various Cayenne tools extensions.</p> </li> 
      </ul> 
     </div> 
@@ -373,10 +373,10 @@ total 24
    <div class="sect3"> 
     <h4 id="dependencies"><a class="anchor" href="#dependencies"></a>Dependencies</h4> 
     <div class="paragraph"> 
-     <p>With modern build tools like Maven and Gradle, you should not worry about tracking dependencies. If you have one of those, you can skip this section and go straight to the Maven section below. However if your environment requires manual dependency resolution (like Ant), the distribution provides all of Cayenne jars plus a minimal set of third-party dependencies to get you started in a default configuration. Check lib and <code class="">lib/third-party</code> folders for those.</p> 
+     <p>With modern build tools like Maven and Gradle, you should not worry about tracking dependencies. If you have one of those, you can skip this section and go straight to the Maven section below. However if your environment requires manual dependency resolution (like Ant), the distribution provides all of Cayenne jars plus a minimal set of third-party dependencies to get you started in a default configuration. Check lib and <code>lib/third-party</code> folders for those.</p> 
     </div> 
     <div class="paragraph"> 
-     <p>Dependencies for non-standard configurations will need to be figured out by the users on their own. Check <code class="">pom.xml</code> files of the corresponding Cayenne modules in one of the searchable Maven archives out there to get an idea of those dependencies (e.g. <a href="http://search.maven.org" class="bare">http://search.maven.org</a>).</p> 
+     <p>Dependencies for non-standard configurations will need to be figured out by the users on their own. Check <code>pom.xml</code> files of the corresponding Cayenne modules in one of the searchable Maven archives out there to get an idea of those dependencies (e.g. <a href="http://search.maven.org" class="bare">http://search.maven.org</a>).</p> 
     </div> 
    </div> 
    <div class="sect3"> 
@@ -394,12 +394,12 @@ total 24
      </div> 
     </div> 
     <div class="paragraph"> 
-     <p>Additionally Cayenne provides a Maven plugin with a set of goals to perform various project tasks, such as synching generated Java classes with the mapping, described in the following subsection. The full plugin name is <code class="">org.apache.cayenne.plugins:cayenne-maven-plugin</code>.</p> 
+     <p>Additionally Cayenne provides a Maven plugin with a set of goals to perform various project tasks, such as synching generated Java classes with the mapping, described in the following subsection. The full plugin name is <code>org.apache.cayenne.plugins:cayenne-maven-plugin</code>.</p> 
     </div> 
     <div class="sect4"> 
      <h5 id="cgen"><a class="anchor" href="#cgen"></a>cgen</h5> 
      <div class="paragraph"> 
-      <p><code class="">cgen</code> is a <code class="">cayenne-maven-plugin</code> goal that generates and maintains source (.java) files of persistent objects based on a DataMap. By default, it is bound to the generate-sources phase. If "makePairs" is set to "true" (which is the recommended default), this task will generate a pair of classes (superclass/subclass) for each ObjEntity in the DataMap. Superclasses should not be changed manually, since they are always overwritten. Subclasses are never overwritten and may be later customized by the user. If "makePairs" is set to "false", a single class will be generated for each ObjEntity.</p> 
+      <p><code>cgen</code> is a <code>cayenne-maven-plugin</code> goal that generates and maintains source (.java) files of persistent objects based on a DataMap. By default, it is bound to the generate-sources phase. If "makePairs" is set to "true" (which is the recommended default), this task will generate a pair of classes (superclass/subclass) for each ObjEntity in the DataMap. Superclasses should not be changed manually, since they are always overwritten. Subclasses are never overwritten and may be later customized by the user. If "makePairs" is set to "false", a single class will be generated for each ObjEntity.</p> 
      </div> 
      <div class="paragraph"> 
       <p>By creating custom templates, you can use cgen to generate other output (such as web pages, reports, specialized code templates) based on DataMap information.</p> 
@@ -431,7 +431,7 @@ total 24
           </div> 
           <div class="listingblock"> 
            <div class="content"> 
-            <pre class="highlight"><code class="">${project.basedir}/src/main/resources/my.map.xml</code></pre> 
+            <pre class="highlight"><code>${project.basedir}/src/main/resources/my.map.xml</code></pre> 
            </div> 
           </div>
          </div></td> 
@@ -565,7 +565,7 @@ total 24
     <div class="sect4"> 
      <h5 id="cdbgen"><a class="anchor" href="#cdbgen"></a>cdbgen</h5> 
      <div class="paragraph"> 
-      <p><code class="">cdbgen</code> is a <code class="">cayenne-maven-plugin</code> goal that drops and/or generates tables in a database on Cayenne DataMap. By default, it is bound to the pre-integration-test phase.</p> 
+      <p><code>cdbgen</code> is a <code>cayenne-maven-plugin</code> goal that drops and/or generates tables in a database on Cayenne DataMap. By default, it is bound to the pre-integration-test phase.</p> 
      </div> 
      <table id="cdbgenTable" class="tableblock frame-all grid-all spread table table-bordered"> 
       <caption class="title">
@@ -594,7 +594,7 @@ total 24
           </div> 
           <div class="listingblock"> 
            <div class="content"> 
-            <pre class="highlight"><code class="">${project.basedir}/src/main/resources/my.map.xml</code></pre> 
+            <pre class="highlight"><code>${project.basedir}/src/main/resources/my.map.xml</code></pre> 
            </div> 
           </div>
          </div></td> 
@@ -732,7 +732,7 @@ total 24
     <div class="sect4"> 
      <h5 id="mavenCdbimort"><a class="anchor" href="#mavenCdbimort"></a>cdbimport</h5> 
      <div class="paragraph"> 
-      <p><code class="">cdbimport</code> is a <code class="">cayenne-maven-plugin</code> goal that generates a DataMap based on an existing database schema. By default, it is bound to the generate-sources phase. This allows you to generate your DataMap prior to building your project, possibly followed by "cgen" execution to generate the classes. CDBImport plugin described in details in chapter <a href="#dbFirstFlow">"DB-First Flow"</a></p> 
+      <p><code>cdbimport</code> is a <code>cayenne-maven-plugin</code> goal that generates a DataMap based on an existing database schema. By default, it is bound to the generate-sources phase. This allows you to generate your DataMap prior to building your project, possibly followed by "cgen" execution to generate the classes. CDBImport plugin described in details in chapter <a href="#dbFirstFlow">"DB-First Flow"</a></p> 
      </div> 
      <table id="cdbimportTable" class="tableblock frame-all grid-all spread table table-bordered"> 
       <caption class="title">
@@ -757,7 +757,7 @@ total 24
         <td class="tableblock halign-left valign-middle"><p class="tableblock">map</p></td> 
         <td class="tableblock halign-left valign-middle"><p class="tableblock">File</p></td> 
         <td class="tableblock halign-left valign-middle"><p class="tableblock">Yes</p></td> 
-        <td class="tableblock halign-left valign-middle"><p class="tableblock">DataMap XML file which is the destination of the schema import. Can be an existing file. If this file does not exist, it is created when cdbimport is executed. E.g. <code class="">${project.basedir}/src/main/resources/my.map.xml</code>. If "overwrite" is true (the default), an existing DataMap will be used as a template for the new imported DataMap, i.e. all its entities will be cleared and recreated, but its common settings, such as default Java package, will be preserved (unless changed explicitly in the plugin configuration).</p></td> 
+        <td class="tableblock halign-left valign-middle"><p class="tableblock">DataMap XML file which is the destination of the schema import. Can be an existing file. If this file does not exist, it is created when cdbimport is executed. E.g. <code>${project.basedir}/src/main/resources/my.map.xml</code>. If "overwrite" is true (the default), an existing DataMap will be used as a template for the new imported DataMap, i.e. all its entities will be cleared and recreated, but its common settings, such as default Java package, will be preserved (unless changed explicitly in the plugin configuration).</p></td> 
        </tr> 
        <tr> 
         <td class="tableblock halign-left valign-middle"><p class="tableblock">adapter</p></td> 
@@ -849,12 +849,12 @@ total 24
        <tr> 
         <td class="tableblock halign-left valign-middle"><p class="tableblock">forceDataMapCatalog</p></td> 
         <td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td> 
-        <td class="tableblock halign-left valign-middle"><p class="tableblock">Automatically tagging each DbEntity with the actual DB catalog/schema (default behavior) may sometimes be undesirable. If this is the case then setting <code class="">forceDataMapCatalog</code> to <code class="">true</code> will set DbEntity catalog to one in the DataMap. Default value is <code class="">false</code>.</p></td> 
+        <td class="tableblock halign-left valign-middle"><p class="tableblock">Automatically tagging each DbEntity with the actual DB catalog/schema (default behavior) may sometimes be undesirable. If this is the case then setting <code>forceDataMapCatalog</code> to <code>true</code> will set DbEntity catalog to one in the DataMap. Default value is <code>false</code>.</p></td> 
        </tr> 
        <tr> 
         <td class="tableblock halign-left valign-middle"><p class="tableblock">forceDataMapSchema</p></td> 
         <td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td> 
-        <td class="tableblock halign-left valign-middle"><p class="tableblock">Automatically tagging each DbEntity with the actual DB catalog/schema (default behavior) may sometimes be undesirable. If this is the case then setting <code class="">forceDataMapSchema</code> to <code class="">true</code> will set DbEntity schema to one in the DataMap. Default value is <code class="">false</code>.</p></td> 
+        <td class="tableblock halign-left valign-middle"><p class="tableblock">Automatically tagging each DbEntity with the actual DB catalog/schema (default behavior) may sometimes be undesirable. If this is the case then setting <code>forceDataMapSchema</code> to <code>true</code> will set DbEntity schema to one in the DataMap. Default value is <code>false</code>.</p></td> 
        </tr> 
        <tr> 
         <td class="tableblock halign-left valign-middle"><p class="tableblock">meaningfulPkTables</p></td> 
@@ -864,7 +864,7 @@ total 24
        <tr> 
         <td class="tableblock halign-left valign-middle"><p class="tableblock">namingStrategy</p></td> 
         <td class="tableblock halign-left valign-middle"><p class="tableblock">String</p></td> 
-        <td class="tableblock halign-left valign-middle"><p class="tableblock">The naming strategy used for mapping database names to object entity names. Default is <code class="">o.a.c.dbsync.naming.DefaultObjectNameGenerator</code>.</p></td> 
+        <td class="tableblock halign-left valign-middle"><p class="tableblock">The naming strategy used for mapping database names to object entity names. Default is <code>o.a.c.dbsync.naming.DefaultObjectNameGenerator</code>.</p></td> 
        </tr> 
        <tr> 
         <td class="tableblock halign-left valign-middle"><p class="tableblock">skipPrimaryKeyLoading</p></td> 
@@ -906,7 +906,7 @@ total 24
        <tr> 
         <td class="tableblock halign-left valign-middle"><p class="tableblock">useJava7Types</p></td> 
         <td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td> 
-        <td class="tableblock halign-left valign-middle"><p class="tableblock">Whether <em>DATE</em>, <em>TIME</em> and <em>TIMESTAMP</em> data types should be mapped as <code class="">java.util.Date</code> or <code class="">java.time.* classes</code>. Default is "false", i.e. <code class="">java.time.*</code> will be used.</p></td> 
+        <td class="tableblock halign-left valign-middle"><p class="tableblock">Whether <em>DATE</em>, <em>TIME</em> and <em>TIMESTAMP</em> data types should be mapped as <code>java.util.Date</code> or <code>java.time.* classes</code>. Default is "false", i.e. <code>java.time.*</code> will be used.</p></td> 
        </tr> 
        <tr> 
         <td class="tableblock halign-left valign-middle"><p class="tableblock">filters configuration</p></td> 
@@ -990,7 +990,7 @@ total 24
     <div class="sect4"> 
      <h5 id="gradle-plugin"><a class="anchor" href="#gradle-plugin"></a>Gradle Plugin</h5> 
      <div class="paragraph"> 
-      <p>Cayenne Gradle plugin provides several tasks, such as synching generated Java classes with the mapping or synching mapping with the database. Plugin also provides <code class="">cayenne</code> extension that have some useful utility methods. Here is example of how to include Cayenne plugin into your project:</p> 
+      <p>Cayenne Gradle plugin provides several tasks, such as synching generated Java classes with the mapping or synching mapping with the database. Plugin also provides <code>cayenne</code> extension that have some useful utility methods. Here is example of how to include Cayenne plugin into your project:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -1028,10 +1028,10 @@ dependencies {
     <div class="sect4"> 
      <h5 id="cgen-2"><a class="anchor" href="#cgen-2"></a>cgen</h5> 
      <div class="paragraph"> 
-      <p>Cgen task generates Java classes based on your DataMap, it has same configuration parameters as in Maven Plugin version, described in <a href="#tablecgen">Table, “cgen required parameters”.</a>. If you provided default DataMap via <code class="">cayenne.defaultDataMap</code>, you can skip <code class="">cgen</code> configuration as default settings will suffice in common case.</p> 
+      <p>Cgen task generates Java classes based on your DataMap, it has same configuration parameters as in Maven Plugin version, described in <a href="#tablecgen">Table, “cgen required parameters”.</a>. If you provided default DataMap via <code>cayenne.defaultDataMap</code>, you can skip <code>cgen</code> configuration as default settings will suffice in common case.</p> 
      </div> 
      <div class="paragraph"> 
-      <p>Here is how you can change settings of the default <code class="">cgen</code> task:</p> 
+      <p>Here is how you can change settings of the default <code>cgen</code> task:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -1127,7 +1127,7 @@ dependencies {
       <p>Cdbgen task drops and/or generates tables in a database on Cayenne DataMap. Full list of parameters are same as in Maven Plugin version, described in <a href="#cdbgenTable">Table , “cdbgen required parameters”</a></p> 
      </div> 
      <div class="paragraph"> 
-      <p>Here is example of how to configure default <code class="">cdbgen</code> task:</p> 
+      <p>Here is example of how to configure default <code>cdbgen</code> task:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -1155,7 +1155,7 @@ dependencies {
     <div class="sect4"> 
      <h5 id="link-tasks-to-gradle-build-lifecycle"><a class="anchor" href="#link-tasks-to-gradle-build-lifecycle"></a>Link tasks to Gradle build lifecycle</h5> 
      <div class="paragraph"> 
-      <p>With gradle you can easily connect Cayenne tasks to default build lifecycle. Here is short example of how to connect defaut <code class="">cgen</code> and <code class="">cdbimport</code> tasks with <code class="">compileJava</code> task:</p> 
+      <p>With gradle you can easily connect Cayenne tasks to default build lifecycle. Here is short example of how to connect defaut <code>cgen</code> and <code>cdbimport</code> tasks with <code>compileJava</code> task:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -1168,7 +1168,7 @@ compileJava.dependsOn cgen</code></pre>
        <tbody>
         <tr> 
          <td class="icon"> <i class="fa fa-info-circle fa-2x" title="Note"></i> </td> 
-         <td class="content"> Running <code class="">cdbimport</code> automatically with build not always a good choice, e.g. in case of complex model that you need to alter in the Cayenne Modeler after import. </td> 
+         <td class="content"> Running <code>cdbimport</code> automatically with build not always a good choice, e.g. in case of complex model that you need to alter in the Cayenne Modeler after import. </td> 
         </tr> 
        </tbody>
       </table> 
@@ -1229,7 +1229,7 @@ compileJava.dependsOn cgen</code></pre>
    <div class="sect3"> 
     <h4 id="starting-and-stopping-serverruntime"><a class="anchor" href="#starting-and-stopping-serverruntime"></a>Starting and Stopping ServerRuntime</h4> 
     <div class="paragraph"> 
-     <p>In runtime Cayenne is accessed via <code class="">org.apache.cayenne.configuration.server.ServerRuntime</code>. ServerRuntime is created by calling a convenient builder:</p> 
+     <p>In runtime Cayenne is accessed via <code>org.apache.cayenne.configuration.server.ServerRuntime</code>. ServerRuntime is created by calling a convenient builder:</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -1290,7 +1290,7 @@ ServerRuntime runtime = ServerRuntime.builder()
       <li> <p>Runtime DataDomain properties are the same as the properties of the last project in the list. I.e. properties are not merged to avoid invalid combinations and unexpected runtime behavior.</p> </li> 
       <li> <p>If there are two or more DataMaps with the same name, only one DataMap is used in the merged project, the rest are discarded. Same precedence rules apply - DataMap from the project with the highest index in the project list overrides all other DataMaps with the same name.</p> </li> 
       <li> <p>If there are two or more DataNodes with the same name, only one DataNode is used in the merged project, the rest are discarded. DataNode coming from project with the highest index in the project list is chosen per precedence rule above.</p> </li> 
-      <li> <p>There is a notion of "default" DataNode. After the merge if any DataMaps are not explicitly linked to DataNodes, their queries will be executed via a default DataNode. This makes it possible to build mapping "libraries" that are only associated with a specific database in runtime. If there’s only one DataNode in the merged project, it will be automatically chosen as default. A possible way to explicitly designate a specific node as default is to override <code class="">DataDomainProvider.createAndInitDataDomain()</code>.</p> </li> 
+      <li> <p>There is a notion of "default" DataNode. After the merge if any DataMaps are not explicitly linked to DataNodes, their queries will be executed via a default DataNode. This makes it possible to build mapping "libraries" that are only associated with a specific database in runtime. If there’s only one DataNode in the merged project, it will be automatically chosen as default. A possible way to explicitly designate a specific node as default is to override <code>DataDomainProvider.createAndInitDataDomain()</code>.</p> </li> 
      </ul> 
     </div> 
    </div> 
@@ -1333,7 +1333,7 @@ ServerRuntime runtime = ServerRuntime.builder()
      <p>Of course the ObjectContext scope, and other behavior of the Cayenne runtime can be customized via dependency injection. For this another filter init parameter called "extra-modules" is used. "extra-modules" is a comma or space-separated list of class names, with each class implementing Module interface. These optional custom modules are loaded after the the standard ones, which allows users to override all standard definitions.</p> 
     </div> 
     <div class="paragraph"> 
-     <p>For those interested in the DI container contents of the runtime created by CayenneFilter, it is the same ServerRuntime as would’ve been created by other means, but with an extra <code class="">org.apache.cayenne.configuration.web.WebModule</code> module that provides <code class="">org.apache.cayenne.configuration.web.RequestHandler</code> service. This is the service to override in the custom modules if you need to provide a different ObjectContext scope, etc.</p> 
+     <p>For those interested in the DI container contents of the runtime created by CayenneFilter, it is the same ServerRuntime as would’ve been created by other means, but with an extra <code>org.apache.cayenne.configuration.web.WebModule</code> module that provides <code>org.apache.cayenne.configuration.web.RequestHandler</code> service. This is the service to override in the custom modules if you need to provide a different ObjectContext scope, etc.</p> 
     </div> 
     <div class="admonitionblock note"> 
      <table> 
@@ -1372,13 +1372,13 @@ ServerRuntime runtime = ServerRuntime.builder()
    <div class="sect3"> 
     <h4 id="persistent-object-and-its-lifecycle"><a class="anchor" href="#persistent-object-and-its-lifecycle"></a>Persistent Object and its Lifecycle</h4> 
     <div class="paragraph"> 
-     <p>Cayenne can persist Java objects that implement <code class="">org.apache.cayenne.Persistent</code> interface. Generally persistent classes are generated from the model as described above, so users do not have to worry about superclass and property implementation details.</p> 
+     <p>Cayenne can persist Java objects that implement <code>org.apache.cayenne.Persistent</code> interface. Generally persistent classes are generated from the model as described above, so users do not have to worry about superclass and property implementation details.</p> 
     </div> 
     <div class="paragraph"> 
      <p>Persistent interface provides access to 3 persistence-related properties - <em>objectId</em>, <em>persistenceState</em> and <em>objectContext</em>. All 3 are initialized by Cayenne runtime framework. Application code should not attempt to change them. However it is allowed to read them, which provides valuable runtime information. E.g. ObjectId can be used for quick equality check of 2 objects, knowing persistence state would allow highlighting changed objects, etc.</p> 
     </div> 
     <div class="paragraph"> 
-     <p>Each persistent object belongs to a single ObjectContext, and can be in one of the following persistence states (as defined in <code class="">org.apache.cayenne.PersistenceState</code>) :</p> 
+     <p>Each persistent object belongs to a single ObjectContext, and can be in one of the following persistence states (as defined in <code>org.apache.cayenne.PersistenceState</code>) :</p> 
     </div> 
     <table id="persistenceStates" class="tableblock frame-all grid-all spread table table-bordered"> 
      <caption class="title">
@@ -1462,7 +1462,7 @@ selectedArtist.setName("Dali");</code></pre>
      <p>At this point all in-memory changes are analyzed and a minimal set of SQL statements is issued in a single transaction to synchronize the database with the in-memory state. In our example "commitChanges" commits just one object, but generally it can be any number of objects.</p> 
     </div> 
     <div class="paragraph"> 
-     <p>If instead of commit, we wanted to reset all changed objects to the previously committed state, we’d call <code class="">rollbackChanges</code> instead:</p> 
+     <p>If instead of commit, we wanted to reset all changed objects to the previously committed state, we’d call <code>rollbackChanges</code> instead:</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -1479,10 +1479,10 @@ newArtist.setName("Picasso");</code></pre>
      </div> 
     </div> 
     <div class="paragraph"> 
-     <p>It will only exist in memory until <code class="">commitChanges</code> is issued. On commit Cayenne might generate a new primary key (unless a user set it explicitly, or a PK was inferred from a relationship) and issue an INSERT SQL statement to permanently store the object.</p> 
+     <p>It will only exist in memory until <code>commitChanges</code> is issued. On commit Cayenne might generate a new primary key (unless a user set it explicitly, or a PK was inferred from a relationship) and issue an INSERT SQL statement to permanently store the object.</p> 
     </div> 
     <div class="paragraph"> 
-     <p><code class="">deleteObjects</code> method takes one or more Persistent objects and marks them as "DELETED":</p> 
+     <p><code>deleteObjects</code> method takes one or more Persistent objects and marks them as "DELETED":</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -1494,7 +1494,7 @@ context.deleteObjects(artist2, artist3, artist4);</code></pre>
      <p>Additionally "deleteObjects" processes all delete rules modeled for the affected objects. This may result in implicitly deleting or modifying extra related objects. Same as insert and update, delete operations are sent to the database only when "commitChanges" is called. Similarly "rollbackChanges" will undo the effect of "newObject" and "deleteObjects".</p> 
     </div> 
     <div class="paragraph"> 
-     <p><code class="">localObject</code> returns a copy of a given persistent object that is "local" to a given ObjectContext:</p> 
+     <p><code>localObject</code> returns a copy of a given persistent object that is "local" to a given ObjectContext:</p> 
     </div> 
     <div class="paragraph"> 
      <p>Since an application often works with more than one context, "localObject" is a rather common operation. E.g. to improve performance a user might utilize a single shared context to select and cache data, and then occasionally transfer some selected objects to another context to modify and commit them:</p> 
@@ -1520,7 +1520,7 @@ Artist localArtist = editingContext.localObject(artist);</code></pre>
    <div class="sect3"> 
     <h4 id="cayenne-helper-class"><a class="anchor" href="#cayenne-helper-class"></a>Cayenne Helper Class</h4> 
     <div class="paragraph"> 
-     <p>There is a useful helper class called "Cayenne" (fully-qualified name <code class="">"org.apache.cayenne.Cayenne"</code>) that builds on ObjectContext API to provide a number of very common operations. E.g. get a primary key (most entities do not model PK as an object property) :</p> 
+     <p>There is a useful helper class called "Cayenne" (fully-qualified name <code>"org.apache.cayenne.Cayenne"</code>) that builds on ObjectContext API to provide a number of very common operations. E.g. get a primary key (most entities do not model PK as an object property) :</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -1652,10 +1652,10 @@ generic.writeProperty("name", "New Name");</code></pre>
      <p>Two cases where transactions need to be taken into consideration are container-managed and application-managed transactions.</p> 
     </div> 
     <div class="paragraph"> 
-     <p>If you are using an EJB container (or some other JTA environment), you’ll likely need to switch Cayenne runtime into "external transactions mode". This is done by setting DI configuration property defined in <code class="">Constants.SERVER_EXTERNAL_TX_PROPERTY</code> (see Appendix A). If this property is set to "true", Cayenne assumes that JDBC Connections obtained by runtime whenever that might happen are all coming from a transactional DataSource managed by the container. In this case Cayenne does not attempt to commit or rollback the connections, leaving it up to the container to do that when appropriate.</p> 
+     <p>If you are using an EJB container (or some other JTA environment), you’ll likely need to switch Cayenne runtime into "external transactions mode". This is done by setting DI configuration property defined in <code>Constants.SERVER_EXTERNAL_TX_PROPERTY</code> (see Appendix A). If this property is set to "true", Cayenne assumes that JDBC Connections obtained by runtime whenever that might happen are all coming from a transactional DataSource managed by the container. In this case Cayenne does not attempt to commit or rollback the connections, leaving it up to the container to do that when appropriate.</p> 
     </div> 
     <div class="paragraph"> 
-     <p>In the second scenario, an application might need to define its own transaction scope that spans more than one Cayenne operation. E.g. two sequential commits that need to be rolled back together in case of failure. This can be done via <code class="">ServerRuntime.performInTransaction</code> method:</p> 
+     <p>In the second scenario, an application might need to define its own transaction scope that spans more than one Cayenne operation. E.g. two sequential commits that need to be rolled back together in case of failure. This can be done via <code>ServerRuntime.performInTransaction</code> method:</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -1704,9 +1704,9 @@ tx.addConnection("mydatanode", myConnection);</code></pre>
     </div> 
     <div class="ulist"> 
      <ul> 
-      <li> <p><code class="">db:</code> is an optional prefix indicating that the following path is a DB path. Otherwise it is an object path.</p> </li> 
-      <li> <p><code class="">segment</code> is a name of a property (relationship or attribute in Cayenne terms) in the path. Path must have at least one segment; segments are separated by dot (".").</p> </li> 
-      <li> <p><code class="">+</code> An "OUTER JOIN" path component. Currently "+" only has effect when translated to SQL as OUTER JOIN. When evaluating expressions in memory, it is ignored.</p> </li> 
+      <li> <p><code>db:</code> is an optional prefix indicating that the following path is a DB path. Otherwise it is an object path.</p> </li> 
+      <li> <p><code>segment</code> is a name of a property (relationship or attribute in Cayenne terms) in the path. Path must have at least one segment; segments are separated by dot (".").</p> </li> 
+      <li> <p><code>+</code> An "OUTER JOIN" path component. Currently "+" only has effect when translated to SQL as OUTER JOIN. When evaluating expressions in memory, it is ignored.</p> </li> 
      </ul> 
     </div> 
     <div class="paragraph"> 
@@ -1714,18 +1714,18 @@ tx.addConnection("mydatanode", myConnection);</code></pre>
     </div> 
     <div class="ulist"> 
      <ul> 
-      <li> <p><code class="">name</code> - can be used to navigate (read) the "name" property of a Person (or any other type of object that has a "name" property).</p> </li> 
-      <li> <p><code class="">artist.exhibits.closingDate</code> - can be used to navigate to a closing date of any of the exhibits of a Painting’s Artist object.</p> </li> 
-      <li> <p><code class="">artist.exhibits+.closingDate</code> - same as the previous example, but when translated into SQL, an OUTER JOIN will be used for "exhibits".</p> </li> 
+      <li> <p><code>name</code> - can be used to navigate (read) the "name" property of a Person (or any other type of object that has a "name" property).</p> </li> 
+      <li> <p><code>artist.exhibits.closingDate</code> - can be used to navigate to a closing date of any of the exhibits of a Painting’s Artist object.</p> </li> 
+      <li> <p><code>artist.exhibits+.closingDate</code> - same as the previous example, but when translated into SQL, an OUTER JOIN will be used for "exhibits".</p> </li> 
      </ul> 
     </div> 
     <div class="paragraph"> 
-     <p>Similarly a database path expression is a dot-separated path through DB table joins and columns. In Cayenne joins are mapped as DbRelationships with some symbolic names (the closest concept to DbRelationship name in the DB world is a named foreign key constraint. But DbRelationship names are usually chosen arbitrarily, without regard to constraints naming or even constraints presence). A database path therefore might look like this - <code class="">db:dbrelationshipX.dbrelationshipY.COLUMN_Z"</code>. More specific examples:</p> 
+     <p>Similarly a database path expression is a dot-separated path through DB table joins and columns. In Cayenne joins are mapped as DbRelationships with some symbolic names (the closest concept to DbRelationship name in the DB world is a named foreign key constraint. But DbRelationship names are usually chosen arbitrarily, without regard to constraints naming or even constraints presence). A database path therefore might look like this - <code>db:dbrelationshipX.dbrelationshipY.COLUMN_Z"</code>. More specific examples:</p> 
     </div> 
     <div class="ulist"> 
      <ul> 
-      <li> <p><code class="">db:NAME</code> - can be used to navigate to the value of "NAME" column of some unspecified table.</p> </li> 
-      <li> <p><code class="">db:artist.artistExhibits.exhibit.CLOSING_DATE</code> - can be used to match a closing date of any of the exhibits of a related artist record.</p> </li> 
+      <li> <p><code>db:NAME</code> - can be used to navigate to the value of "NAME" column of some unspecified table.</p> </li> 
+      <li> <p><code>db:artist.artistExhibits.exhibit.CLOSING_DATE</code> - can be used to match a closing date of any of the exhibits of a related artist record.</p> </li> 
      </ul> 
     </div> 
     <div class="paragraph"> 
@@ -1733,18 +1733,18 @@ tx.addConnection("mydatanode", myConnection);</code></pre>
     </div> 
     <div class="ulist"> 
      <ul> 
-      <li> <p><code class="">artist.exhibits.closingDate</code> - full path</p> </li> 
-      <li> <p><code class="">e.closingDate</code> - alias "e" is used for <code class="">artist.exhibits</code>.</p> </li> 
+      <li> <p><code>artist.exhibits.closingDate</code> - full path</p> </li> 
+      <li> <p><code>e.closingDate</code> - alias "e" is used for <code>artist.exhibits</code>.</p> </li> 
      </ul> 
     </div> 
     <div class="paragraph"> 
-     <p>SelectQuery using the second form of the path expression must be made aware of the alias via <code class="">SelectQuery.aliasPathSplits(..)</code>, otherwise an Exception will be thrown. The main use of aliases is to allow users to control how SQL joins are generated if the same path is encountered more than once in any given Expression. Each alias for any given path would result in a separate join. Without aliases, a single join will be used for a group of matching paths.</p> 
+     <p>SelectQuery using the second form of the path expression must be made aware of the alias via <code>SelectQuery.aliasPathSplits(..)</code>, otherwise an Exception will be thrown. The main use of aliases is to allow users to control how SQL joins are generated if the same path is encountered more than once in any given Expression. Each alias for any given path would result in a separate join. Without aliases, a single join will be used for a group of matching paths.</p> 
     </div> 
    </div> 
    <div class="sect3"> 
     <h4 id="creating-expressions-from-strings"><a class="anchor" href="#creating-expressions-from-strings"></a>Creating Expressions from Strings</h4> 
     <div class="paragraph"> 
-     <p>While in most cases users are likely to rely on API from the following section for expression creation, we’ll start by showing String expressions, as this will help to understand the semantics. A Cayenne expression can be represented as a String, which can be converted to an expression object using <code class="">ExpressionFactory.exp</code> static method. Here is an example:</p> 
+     <p>While in most cases users are likely to rely on API from the following section for expression creation, we’ll start by showing String expressions, as this will help to understand the semantics. A Cayenne expression can be represented as a String, which can be converted to an expression object using <code>ExpressionFactory.exp</code> static method. Here is an example:</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -1787,7 +1787,7 @@ name LIKEIGNORECASE 'A%'</code></pre>
      </div> 
     </div> 
     <div class="paragraph"> 
-     <p>Path prefixes. Object expressions are unquoted strings, optionally prefixed by <code class="">obj:</code> (usually they are not prefixed at all actually). Database expressions are always prefixed with <code class="">db:</code>. A special kind of prefix, not discussed yet is <code class="">enum:</code> that prefixes an enumeration constant:</p> 
+     <p>Path prefixes. Object expressions are unquoted strings, optionally prefixed by <code>obj:</code> (usually they are not prefixed at all actually). Database expressions are always prefixed with <code>db:</code>. A special kind of prefix, not discussed yet is <code>enum:</code> that prefixes an enumeration constant:</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -1831,7 +1831,7 @@ Expression qualifier2 = template.paramsArray("Monet");</code></pre>
      </div> 
     </div> 
     <div class="paragraph"> 
-     <p>Positional binding is usually shorter. You can pass positional bindings to the <code class="">exp(..)</code> factory method (its second argument is a params vararg):</p> 
+     <p>Positional binding is usually shorter. You can pass positional bindings to the <code>exp(..)</code> factory method (its second argument is a params vararg):</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -1847,7 +1847,7 @@ Expression qualifier2 = template.paramsArray("Monet");</code></pre>
      </div> 
     </div> 
     <div class="paragraph"> 
-     <p>When matching on a relationship, the value parameter must be either a Persistent object, an <code class="">org.apache.cayenne.ObjectId</code>, or a numeric ID value (for single column IDs). E.g.:</p> 
+     <p>When matching on a relationship, the value parameter must be either a Persistent object, an <code>org.apache.cayenne.ObjectId</code>, or a numeric ID value (for single column IDs). E.g.:</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -1871,7 +1871,7 @@ Expression qualifier1 = template.params(p1);
      </div> 
     </div> 
     <div class="paragraph"> 
-     <p>Null handling. Handling of Java nulls as operands is no different from normal values. Instead of using special conditional operators, like SQL does (<code class="">IS NULL</code>, <code class="">IS NOT NULL</code>), "=" and "!=" expressions are used directly with null values. It is up to Cayenne to translate expressions with nulls to the valid SQL.</p> 
+     <p>Null handling. Handling of Java nulls as operands is no different from normal values. Instead of using special conditional operators, like SQL does (<code>IS NULL</code>, <code>IS NOT NULL</code>), "=" and "!=" expressions are used directly with null values. It is up to Cayenne to translate expressions with nulls to the valid SQL.</p> 
     </div> 
     <div class="admonitionblock note"> 
      <table> 
@@ -1887,7 +1887,7 @@ Expression qualifier1 = template.params(p1);
    <div class="sect3"> 
     <h4 id="creating-expressions-via-api"><a class="anchor" href="#creating-expressions-via-api"></a>Creating Expressions via API</h4> 
     <div class="paragraph"> 
-     <p>Creating expressions from Strings is a powerful and dynamic approach, however a safer alternative is to use Java API. It provides compile-time checking of expressions validity. The API in question is provided by <code class="">ExpressionFactory</code> class (that we’ve seen already), Property class and Expression class itself. <code class="">ExpressionFactory</code> contains a number of self-explanatory static methods that can be used to build expressions. E.g.:</p> 
+     <p>Creating expressions from Strings is a powerful and dynamic approach, however a safer alternative is to use Java API. It provides compile-time checking of expressions validity. The API in question is provided by <code>ExpressionFactory</code> class (that we’ve seen already), Property class and Expression class itself. <code>ExpressionFactory</code> contains a number of self-explanatory static methods that can be used to build expressions. E.g.:</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -1917,7 +1917,7 @@ Expression matchAllExp(String path, Object... values)</code></pre>
      </div> 
     </div> 
     <div class="paragraph"> 
-     <p>"Path" argument to both of these methods can use a split character (a pipe symbol '|') instead of dot to indicate that relationship following a path should be split into a separate set of joins, one per collection value. There can only be one split at most in any given path. Split must always precede a relationship. E.g. <code class="">"|exhibits.paintings"</code>, <code class="">"exhibits|paintings"</code>, etc. Internally Cayenne would generate distinct aliases for each of the split expressions, forcing separate joins.</p> 
+     <p>"Path" argument to both of these methods can use a split character (a pipe symbol '|') instead of dot to indicate that relationship following a path should be split into a separate set of joins, one per collection value. There can only be one split at most in any given path. Split must always precede a relationship. E.g. <code>"|exhibits.paintings"</code>, <code>"exhibits|paintings"</code>, etc. Internally Cayenne would generate distinct aliases for each of the split expressions, forcing separate joins.</p> 
     </div> 
     <div class="paragraph"> 
      <p>While ExpressionFactory is pretty powerful, there’s an even easier way to create expression using static Property objects generated by Cayenne for each persistent class. Some examples:</p> 
@@ -2068,7 +2068,7 @@ o.orderList(list);</code></pre>
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
-       <pre class="highlight"><code class="">INFO: SELECT t0.DATE_OF_BIRTH, t0.NAME, t0.ID FROM ARTIST t0
+       <pre class="highlight"><code>INFO: SELECT t0.DATE_OF_BIRTH, t0.NAME, t0.ID FROM ARTIST t0
 INFO: === returned 5 row. - took 5 ms.</code></pre> 
       </div> 
      </div> 
@@ -2087,7 +2087,7 @@ INFO: === returned 5 row. - took 5 ms.</code></pre>
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
-       <pre class="highlight"><code class="">INFO: SELECT t0.DATE_OF_BIRTH, t0.NAME, t0.ID FROM ARTIST t0 WHERE t0.NAME LIKE ?
+       <pre class="highlight"><code>INFO: SELECT t0.DATE_OF_BIRTH, t0.NAME, t0.ID FROM ARTIST t0 WHERE t0.NAME LIKE ?
 [bind: 1-&gt;NAME:'Pablo%']
 INFO: === returned 1 row. - took 6 ms.</code></pre> 
       </div> 
@@ -2121,7 +2121,7 @@ INFO: === returned 1 row. - took 6 ms.</code></pre>
     <div class="sect4"> 
      <h5 id="selecting-individual-columns"><a class="anchor" href="#selecting-individual-columns"></a>Selecting individual columns</h5> 
      <div class="paragraph"> 
-      <p><code class="">ObjectSelect</code> query can be used to fetch individual properties of objects via type-safe API:</p> 
+      <p><code>ObjectSelect</code> query can be used to fetch individual properties of objects via type-safe API:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -2130,7 +2130,7 @@ INFO: === returned 1 row. - took 6 ms.</code></pre>
       </div> 
      </div> 
      <div class="paragraph"> 
-      <p>And here is example of selecting several properties, note that result will be <code class="">Object[]</code>:</p> 
+      <p>And here is example of selecting several properties, note that result will be <code>Object[]</code>:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -2172,7 +2172,7 @@ for(Object[] next : artistAndPaintingCount) {
       </div> 
      </div> 
      <div class="paragraph"> 
-      <p>Here is generated <code class="">SQL</code> for this query:</p> 
+      <p>Here is generated <code>SQL</code> for this query:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -2291,7 +2291,7 @@ List&lt;String&gt; names = context.performQuery(query);</code></pre>
     <div class="sect4"> 
      <h5 id="selectbyid"><a class="anchor" href="#selectbyid"></a>SelectById</h5> 
      <div class="paragraph"> 
-      <p>This query allows to search objects by their ID. It’s introduced in Cayenne 4.0 and uses new "fluent" API same as <code class="">ObjectSelect</code> query.</p> 
+      <p>This query allows to search objects by their ID. It’s introduced in Cayenne 4.0 and uses new "fluent" API same as <code>ObjectSelect</code> query.</p> 
      </div> 
      <div class="paragraph"> 
       <p>Here is example of how to use it:</p> 
@@ -2308,7 +2308,7 @@ List&lt;String&gt; names = context.performQuery(query);</code></pre>
     <div class="sect4"> 
      <h5 id="sqlselect-and-sqlexec"><a class="anchor" href="#sqlselect-and-sqlexec"></a>SQLSelect and SQLExec</h5> 
      <div class="paragraph"> 
-      <p><code class="">SQLSelect</code> and <code class="">SQLExec</code> are essentially a "fluent" versions of older <code class="">SQLTemplate</code> query. <code class="">SQLSelect</code> can be used (as name suggests) to select custom data in form of entities, separate columns or collection of <code class="">DataRow</code>. <code class="">SQLExec</code> is designed to just execute any raw SQL code (e.g. updates, deletes, DDLs, etc.) This queries support all directives described in <a href="#sqltemplate">SQLTemplate</a> section.</p> 
+      <p><code>SQLSelect</code> and <code>SQLExec</code> are essentially a "fluent" versions of older <code>SQLTemplate</code> query. <code>SQLSelect</code> can be used (as name suggests) to select custom data in form of entities, separate columns or collection of <code>DataRow</code>. <code>SQLExec</code> is designed to just execute any raw SQL code (e.g. updates, deletes, DDLs, etc.) This queries support all directives described in <a href="#sqltemplate">SQLTemplate</a> section.</p> 
      </div> 
      <div class="paragraph"> 
       <p>Here is example of how to use SQLSelect:</p> 
@@ -2325,7 +2325,7 @@ List&lt;String&gt; names = context.performQuery(query);</code></pre>
       </div> 
      </div> 
      <div class="paragraph"> 
-      <p>And here is example of how to use <code class="">SQLExec</code>:</p> 
+      <p>And here is example of how to use <code>SQLExec</code>:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -2339,20 +2339,20 @@ List&lt;String&gt; names = context.performQuery(query);</code></pre>
     <div class="sect4"> 
      <h5 id="mappedselect-and-mappedexec"><a class="anchor" href="#mappedselect-and-mappedexec"></a>MappedSelect and MappedExec</h5> 
      <div class="paragraph"> 
-      <p><code class="">MappedSelect</code> and <code class="">MappedExec</code> is a queries that are just a reference to another queries stored in the DataMap. The actual stored query can be SelectQuery, SQLTemplate, EJBQLQuery, etc. Difference between <code class="">MappedSelect</code> and <code class="">MappedExec</code> is (as reflected in their names) whether underlying query intended to select data or just to perform some generic SQL code.</p> 
+      <p><code>MappedSelect</code> and <code>MappedExec</code> is a queries that are just a reference to another queries stored in the DataMap. The actual stored query can be SelectQuery, SQLTemplate, EJBQLQuery, etc. Difference between <code>MappedSelect</code> and <code>MappedExec</code> is (as reflected in their names) whether underlying query intended to select data or just to perform some generic SQL code.</p> 
      </div> 
      <div class="admonitionblock note"> 
       <table> 
        <tbody>
         <tr> 
          <td class="icon"> <i class="fa fa-info-circle fa-2x" title="Note"></i> </td> 
-         <td class="content"> These queries are "fluent" versions of deprecated <code class="">NamedQuery</code> class. </td> 
+         <td class="content"> These queries are "fluent" versions of deprecated <code>NamedQuery</code> class. </td> 
         </tr> 
        </tbody>
       </table> 
      </div> 
      <div class="paragraph"> 
-      <p>Here is example of how to use <code class="">MappedSelect</code>:</p> 
+      <p>Here is example of how to use <code>MappedSelect</code>:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -2362,7 +2362,7 @@ List&lt;String&gt; names = context.performQuery(query);</code></pre>
       </div> 
      </div> 
      <div class="paragraph"> 
-      <p>And here is example of <code class="">MappedExec</code>:</p> 
+      <p>And here is example of <code>MappedExec</code>:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -2377,7 +2377,7 @@ System.out.println("Rows updated: " + result.firstUpdateCount());</code></pre>
    <div class="sect3"> 
     <h4 id="procedurecall"><a class="anchor" href="#procedurecall"></a>ProcedureCall</h4> 
     <div class="paragraph"> 
-     <p>Stored procedures are mapped as separate objects in CayenneModeler. <code class="">ProcedureCall</code> provides a way to execute them with a certain set of parameters. This query is a "fluent" version of older <code class="">ProcedureQuery</code>. Just like with <code class="">SQLTemplate</code>, the outcome of a procedure can be anything - a single result set, multiple result sets, some data modification (returned as an update count), or a combination of these. So use root class to get a single result set, and use only procedure name for anything else:</p> 
+     <p>Stored procedures are mapped as separate objects in CayenneModeler. <code>ProcedureCall</code> provides a way to execute them with a certain set of parameters. This query is a "fluent" version of older <code>ProcedureQuery</code>. Just like with <code>SQLTemplate</code>, the outcome of a procedure can be anything - a single result set, multiple result sets, some data modification (returned as an update count), or a combination of these. So use root class to get a single result set, and use only procedure name for anything else:</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -2399,7 +2399,7 @@ ProcedureResult result = ProcedureCall.query("my_procedure")
      </div> 
     </div> 
     <div class="paragraph"> 
-     <p>A stored procedure can return data back to the application as result sets or via OUT parameters. To simplify the processing of the query output, QueryResponse treats OUT parameters as if it was a separate result set. For stored procedures declaref any OUT or INOUT parameters, <code class="">ProcedureResult</code> have convenient utility method to get them:</p> 
+     <p>A stored procedure can return data back to the application as result sets or via OUT parameters. To simplify the processing of the query output, QueryResponse treats OUT parameters as if it was a separate result set. For stored procedures declaref any OUT or INOUT parameters, <code>ProcedureResult</code> have convenient utility method to get them:</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -2417,7 +2417,7 @@ Object out = result.getOutParam("out_param");</code></pre>
    <div class="sect3"> 
     <h4 id="custom-queries"><a class="anchor" href="#custom-queries"></a>Custom Queries</h4> 
     <div class="paragraph"> 
-     <p>If a user needs some extra functionality not addressed by the existing set of Cayenne queries, he can write his own. The only requirement is to implement <code class="">org.apache.cayenne.query.Query</code> interface. The easiest way to go about it is to subclass some of the base queries in Cayenne.</p> 
+     <p>If a user needs some extra functionality not addressed by the existing set of Cayenne queries, he can write his own. The only requirement is to implement <code>org.apache.cayenne.query.Query</code> interface. The easiest way to go about it is to subclass some of the base queries in Cayenne.</p> 
     </div> 
     <div class="paragraph"> 
      <p>E.g. to do something directly in the JDBC layer, you might subclass AbstractQuery:</p> 
@@ -2517,7 +2517,7 @@ query.setTemplate(PostgresAdapter.class.getName(), pgSQL);</code></pre>
       <p>The most interesting aspect of SQLTemplate (and the reason why it is called a "template") is that a SQL string is treated by Cayenne as an Apache Velocity template. Before sending it to DB as a PreparedStatement, the String is evaluated in the Velocity context, that does variable substitutions, and performs special callbacks in response to various directives, thus controlling query interaction with the JDBC layer.</p> 
      </div> 
      <div class="paragraph"> 
-      <p>Check Velocity docs for the syntax details. Here we’ll just mention the two main scripting elements - "variables" (that look like <code class="">$var</code>) and "directives" (that look like <code class="">#directive(p1 p2 p3)</code>). All built-in Velocity directives are supported. Additionally Cayenne defines a number of its own directives to bind parameters to PreparedStatements and to control the structure of the ResultSet. These directives are described in the following sections.</p> 
+      <p>Check Velocity docs for the syntax details. Here we’ll just mention the two main scripting elements - "variables" (that look like <code>$var</code>) and "directives" (that look like <code>#directive(p1 p2 p3)</code>). All built-in Velocity directives are supported. Additionally Cayenne defines a number of its own directives to bind parameters to PreparedStatements and to control the structure of the ResultSet. These directives are described in the following sections.</p> 
      </div> 
     </div> 
     <div class="sect4"> 
@@ -2534,10 +2534,10 @@ query.setParameters(Collections.singletonMap("tableName", "mydb.PAINTING"));
       </div> 
      </div> 
      <div class="paragraph"> 
-      <p>The example above demonstrates the point made earlier in this chapter - even if we don’t know upfront which table the query will run against, we can still use a fixed "root" in constructor (<code class="">Artist.class</code> in this case) , as we are not planning on converting the result to objects.</p> 
+      <p>The example above demonstrates the point made earlier in this chapter - even if we don’t know upfront which table the query will run against, we can still use a fixed "root" in constructor (<code>Artist.class</code> in this case) , as we are not planning on converting the result to objects.</p> 
      </div> 
      <div class="paragraph"> 
-      <p>Variable substitution within the text uses <code class="">"object.toString()"</code> method to replace the variable value. Keep in mind that this may not be appropriate in all situations. E.g. passing a date object in a WHERE clause expression may be converted to a String not understood by the target RDBMS SQL parser. In such cases variable should be wrapped in <code class="">#bind</code> directive as described below.</p> 
+      <p>Variable substitution within the text uses <code>"object.toString()"</code> method to replace the variable value. Keep in mind that this may not be appropriate in all situations. E.g. passing a date object in a WHERE clause expression may be converted to a String not understood by the target RDBMS SQL parser. In such cases variable should be wrapped in <code>#bind</code> directive as described below.</p> 
      </div> 
     </div> 
     <div class="sect4"> 
@@ -2548,14 +2548,14 @@ query.setParameters(Collections.singletonMap("tableName", "mydb.PAINTING"));
      <div class="sect5"> 
       <h6 id="bind"><a class="anchor" href="#bind"></a>#bind</h6> 
       <div class="paragraph"> 
-       <p>Creates a PreparedStatement positional parameter in place of the directive, binding the value to it before statement execution. <code class="">#bind</code> is allowed in places where a "?" would be allowed in a PreparedStatement. And in such places it almost always makes sense to pass objects to the template via this or other forms of #bind instead of inserting them inline.</p> 
+       <p>Creates a PreparedStatement positional parameter in place of the directive, binding the value to it before statement execution. <code>#bind</code> is allowed in places where a "?" would be allowed in a PreparedStatement. And in such places it almost always makes sense to pass objects to the template via this or other forms of #bind instead of inserting them inline.</p> 
       </div> 
       <div class="paragraph"> 
        <p>Semantics:</p> 
       </div> 
       <div class="listingblock"> 
        <div class="content"> 
-        <pre class="highlight"><code class="">#bind(value)
+        <pre class="highlight"><code>#bind(value)
 #bind(value jdbcType)
 #bind(value jdbcType scale)</code></pre> 
        </div> 
@@ -2565,9 +2565,9 @@ query.setParameters(Collections.singletonMap("tableName", "mydb.PAINTING"));
       </div> 
       <div class="ulist"> 
        <ul> 
-        <li> <p><code class="">value</code> - can either be a char constant or a variable that is resolved from the query parameters. Note that the variable can be a collection, that will be automatically expanded into a list of individual value bindings. This is useful for instance to build IN conditions.</p> </li> 
-        <li> <p><code class="">jdbcType</code> - is a JDBC data type of the parameter as defined in <code class="">java.sql.Types</code>.</p> </li> 
-        <li> <p><code class="">scale</code> - An optional scale of the numeric value. Same as "scale" in PreparedStatement.</p> </li> 
+        <li> <p><code>value</code> - can either be a char constant or a variable that is resolved from the query parameters. Note that the variable can be a collection, that will be automatically expanded into a list of individual value bindings. This is useful for instance to build IN conditions.</p> </li> 
+        <li> <p><code>jdbcType</code> - is a JDBC data type of the parameter as defined in <code>java.sql.Types</code>.</p> </li> 
+        <li> <p><code>scale</code> - An optional scale of the numeric value. Same as "scale" in PreparedStatement.</p> </li> 
        </ul> 
       </div> 
       <div class="paragraph"> 
@@ -2575,7 +2575,7 @@ query.setParameters(Collections.singletonMap("tableName", "mydb.PAINTING"));
       </div> 
       <div class="listingblock"> 
        <div class="content"> 
-        <pre class="highlight"><code class="">#bind($xyz)
+        <pre class="highlight"><code>#bind($xyz)
 #bind('str')
 #bind($xyz 'VARCHAR')
 #bind($xyz 'DECIMAL' 2)</code></pre> 
@@ -2593,14 +2593,14 @@ query.setParameters(Collections.singletonMap("tableName", "mydb.PAINTING"));
      <div class="sect5"> 
       <h6 id="bindequal"><a class="anchor" href="#bindequal"></a>#bindEqual</h6> 
       <div class="paragraph"> 
-       <p>Same as #bind, but also includes the "=" sign in front of the value binding. Look at the example below - we took the #bind example and replaced <code class="">"ID = #bind(..)"</code> with <code class="">"ID #bindEqual(..)"</code>. While it looks like a clumsy shortcut to eliminate the equal sign, the actual reason why this is useful is that it allows the value to be null. If the value is not null, <code class="">"= ?"</code> is generated, but if it is, the resulting chunk of the SQL would look like <code class="">"IS NULL"</code> and will be compilant with what the DB expects.</p> 
+       <p>Same as #bind, but also includes the "=" sign in front of the value binding. Look at the example below - we took the #bind example and replaced <code>"ID = #bind(..)"</code> with <code>"ID #bindEqual(..)"</code>. While it looks like a clumsy shortcut to eliminate the equal sign, the actual reason why this is useful is that it allows the value to be null. If the value is not null, <code>"= ?"</code> is generated, but if it is, the resulting chunk of the SQL would look like <code>"IS NULL"</code> and will be compilant with what the DB expects.</p> 
       </div> 
       <div class="paragraph"> 
        <p>Semantics:</p> 
       </div> 
       <div class="listingblock"> 
        <div class="content"> 
-        <pre class="highlight"><code class="">#bindEqual(value)
+        <pre class="highlight"><code>#bindEqual(value)
 #bindEqual(value jdbcType)
 #bindEqual(value jdbcType scale)</code></pre> 
        </div> 
@@ -2613,7 +2613,7 @@ query.setParameters(Collections.singletonMap("tableName", "mydb.PAINTING"));
       </div> 
       <div class="listingblock"> 
        <div class="content"> 
-        <pre class="highlight"><code class="">#bindEqual($xyz)
+        <pre class="highlight"><code>#bindEqual($xyz)
 #bindEqual('str')
 #bindEqual($xyz 'VARCHAR')
 #bindEqual($xyz 'DECIMAL' 2)</code></pre> 
@@ -2631,14 +2631,14 @@ query.setParameters(Collections.singletonMap("tableName", "mydb.PAINTING"));
      <div class="sect5"> 
       <h6 id="bindnotequal"><a class="anchor" href="#bindnotequal"></a>#bindNotEqual</h6> 
       <div class="paragraph"> 
-       <p>This directive deals with the same issue as <code class="">#bindEqual</code> above, only it generates "not equal" in front of the value (or IS NOT NULL).</p> 
+       <p>This directive deals with the same issue as <code>#bindEqual</code> above, only it generates "not equal" in front of the value (or IS NOT NULL).</p> 
       </div> 
       <div class="paragraph"> 
        <p>Semantics:</p> 
       </div> 
       <div class="listingblock"> 
        <div class="content"> 
-        <pre class="highlight"><code class="">#bindNotEqual(value)
+        <pre class="highlight"><code>#bindNotEqual(value)
 #bindNotEqual(value jdbcType)
 #bindNotEqual(value jdbcType scale)</code></pre> 
        </div> 
@@ -2651,7 +2651,7 @@ query.setParameters(Collections.singletonMap("tableName", "mydb.PAINTING"));
       </div> 
       <div class="listingblock"> 
        <div class="content"> 
-        <pre class="highlight"><code class="">#bindNotEqual($xyz)
+        <pre class="highlight"><code>#bindNotEqual($xyz)
 #bindNotEqual('str')
 #bindNotEqual($xyz 'VARCHAR')
 #bindNotEqual($xyz 'DECIMAL' 2)</code></pre> 
@@ -2676,7 +2676,7 @@ query.setParameters(Collections.singletonMap("tableName", "mydb.PAINTING"));
       </div> 
       <div class="listingblock"> 
        <div class="content"> 
-        <pre class="highlight"><code class="">#bindObjectEqual(value columns idColumns)</code></pre> 
+        <pre class="highlight"><code>#bindObjectEqual(value columns idColumns)</code></pre> 
        </div> 
       </div> 
       <div class="paragraph"> 
@@ -2684,9 +2684,9 @@ query.setParameters(Collections.singletonMap("tableName", "mydb.PAINTING"));
       </div> 
       <div class="ulist"> 
        <ul> 
-        <li> <p><code class="">value</code> - must be a variable that is resolved from the query parameters to a Persistent or ObjectId.</p> </li> 
-        <li> <p><code class="">columns</code> - the names of the columns to generate in the SQL.</p> </li> 
-        <li> <p><code class="">idColumn</code> - the names of the ID columns for a given entity. Must match the order of "columns" to match against.</p> </li> 
+        <li> <p><code>value</code> - must be a variable that is resolved from the query parameters to a Persistent or ObjectId.</p> </li> 
+        <li> <p><code>columns</code> - the names of the columns to generate in the SQL.</p> </li> 
+        <li> <p><code>idColumn</code> - the names of the ID columns for a given entity. Must match the order of "columns" to match against.</p> </li> 
        </ul> 
       </div> 
       <div class="paragraph"> 
@@ -2694,7 +2694,7 @@ query.setParameters(Collections.singletonMap("tableName", "mydb.PAINTING"));
       </div> 
       <div class="listingblock"> 
        <div class="content"> 
-        <pre class="highlight"><code class="">#bindObjectEqual($a 't0.ID' 'ID')
+        <pre class="highlight"><code>#bindObjectEqual($a 't0.ID' 'ID')
 #bindObjectEqual($b ['t0.FK1', 't0.FK2'] ['PK1', 'PK2'])</code></pre> 
        </div> 
       </div> 
@@ -2721,7 +2721,7 @@ select.setParameters(Collections.singletonMap("a", a));</code></pre>
       </div> 
       <div class="listingblock"> 
        <div class="content"> 
-        <pre class="highlight"><code class="">#bindObjectNotEqual(value columns idColumns)</code></pre> 
+        <pre class="highlight"><code>#bindObjectNotEqual(value columns idColumns)</code></pre> 
        </div> 
       </div> 
       <div class="paragraph"> 
@@ -2732,7 +2732,7 @@ select.setParameters(Collections.singletonMap("a", a));</code></pre>
       </div> 
       <div class="listingblock"> 
        <div class="content"> 
-        <pre class="highlight"><code class="">#bindObjectNotEqual($a 't0.ID' 'ID')
+        <pre class="highlight"><code>#bindObjectNotEqual($a 't0.ID' 'ID')
 #bindObjectNotEqual($b ['t0.FK1', 't0.FK2'] ['PK1', 'PK2'])</code></pre> 
        </div> 
       </div> 
@@ -2759,7 +2759,7 @@ select.setParameters(Collections.singletonMap("a", a));</code></pre>
       </div> 
       <div class="listingblock"> 
        <div class="content"> 
-        <pre class="highlight"><code class="">#result(column)
+        <pre class="highlight"><code>#result(column)
 #result(column javaType)
 #result(column javaType alias)
 #result(column javaType alias dataRowKey)</code></pre> 
@@ -2770,10 +2770,10 @@ select.setParameters(Collections.singletonMap("a", a));</code></pre>
       </div> 
       <div class="ulist"> 
        <ul> 
-        <li> <p><code class="">column</code> - the name of the column to render in SQL SELECT clause.</p> </li> 
-        <li> <p><code class="">javaType</code> - a fully-qualified Java class name for a given result column. For simplicity most common Java types used in JDBC can be specified without a package. These include all numeric types, primitives, String, SQL dates, BigDecimal and BigInteger. So <code class="">"#result('A' 'String')"</code>, <code class="">"#result('B' 'java.lang.String')"</code> and <code class="">"#result('C' 'int')"</code> are all valid</p> </li> 
-        <li> <p><code class="">alias</code> - specifies both the SQL alias of the column and the value key in the DataRow. If omitted, "column" value is used.</p> </li> 
-        <li> <p><code class="">dataRowKey</code> - needed if SQL 'alias' is not appropriate as a DataRow key on the Cayenne side. One common case when this happens is when a DataRow retrieved from a query is mapped using joint prefetch keys (see below). In this case DataRow must use database path expressions for joint column keys, and their format is incompatible with most databases alias format.</p> </li> 
+        <li> <p><code>column</code> - the name of the column to render in SQL SELECT clause.</p> </li> 
+        <li> <p><code>javaType</code> - a fully-qualified Java class name for a given result column. For simplicity most common Java types used in JDBC can be specified without a package. These include all numeric types, primitives, String, SQL dates, BigDecimal and BigInteger. So <code>"#result('A' 'String')"</code>, <code>"#result('B' 'java.lang.String')"</code> and <code>"#result('C' 'int')"</code> are all valid</p> </li> 
+        <li> <p><code>alias</code> - specifies both the SQL alias of the column and the value key in the DataRow. If omitted, "column" value is used.</p> </li> 
+        <li> <p><code>dataRowKey</code> - needed if SQL 'alias' is not appropriate as a DataRow key on the Cayenne side. One common case when this happens is when a DataRow retrieved from a query is mapped using joint prefetch keys (see below). In this case DataRow must use database path expressions for joint column keys, and their format is incompatible with most databases alias format.</p> </li> 
        </ul> 
       </div> 
       <div class="paragraph"> 
@@ -2781,7 +2781,7 @@ select.setParameters(Collections.singletonMap("a", a));</code></pre>
       </div> 
       <div class="listingblock"> 
        <div class="content"> 
-        <pre class="highlight"><code class="">#result('NAME')
+        <pre class="highlight"><code>#result('NAME')
 #result('DATE_OF_BIRTH' 'java.util.Date')
 #result('DOB' 'java.util.Date' 'DATE_OF_BIRTH')
 #result('DOB' 'java.util.Date' '' 'artist.DATE_OF_BIRTH')
@@ -2901,10 +2901,10 @@ List&lt;Artist&gt; objects = context.performQuery(query);</code></pre>
        </div> 
       </div> 
       <div class="paragraph"> 
-       <p>And the final tip deals with capitalization of the DataRow keys. Queries like <code class="">"SELECT * FROM…​"</code> and even <code class="">"SELECT COLUMN1, COLUMN2, …​ FROM …​"</code> can sometimes result in Cayenne exceptions on attempts to convert fetched DataRows to objects. Essentially any query that is not using a <code class="">#result</code> directive to describe the result set is prone to this problem, as different databases may produce different capitalization of the java.sql.ResultSet columns.</p> 
+       <p>And the final tip deals with capitalization of the DataRow keys. Queries like <code>"SELECT * FROM…​"</code> and even <code>"SELECT COLUMN1, COLUMN2, …​ FROM …​"</code> can sometimes result in Cayenne exceptions on attempts to convert fetched DataRows to objects. Essentially any query that is not using a <code>#result</code> directive to describe the result set is prone to this problem, as different databases may produce different capitalization of the java.sql.ResultSet columns.</p> 
       </div> 
       <div class="paragraph"> 
-       <p>The most universal way to address this issue is to describe each column explicitly in the SQLTemplate via <code class="">#result</code>, e.g.: <code class="">"SELECT #result('column1'), #result('column2'), .."</code>. However this quickly becomes impractical for tables with lots of columns. For such cases Cayenne provides a shortcut based on the fact that an ORM mapping usually follows some naming convention for the column names. Simply put, for case-insensitive databases developers normally use either all lowercase or all uppercase column names. Here is the API that takes advantage of that user knowledge and forces Cayenne to follow a given naming convention for the DataRow keys (this is also available as a dropdown in the Modeler):</p> 
+       <p>The most universal way to address this issue is to describe each column explicitly in the SQLTemplate via <code>#result</code>, e.g.: <code>"SELECT #result('column1'), #result('column2'), .."</code>. However this quickly becomes impractical for tables with lots of columns. For such cases Cayenne provides a shortcut based on the fact that an ORM mapping usually follows some naming convention for the column names. Simply put, for case-insensitive databases developers normally use either all lowercase or all uppercase column names. Here is the API that takes advantage of that user knowledge and forces Cayenne to follow a given naming convention for the DataRow keys (this is also available as a dropdown in the Modeler):</p> 
       </div> 
       <div class="listingblock"> 
        <div class="content"> 
@@ -2963,31 +2963,31 @@ List objects = context.performQuery(query);</code></pre>
      <tbody> 
       <tr> 
        <td class="tableblock halign-left valign-middle"><p class="tableblock">PostAdd</p></td> 
-       <td class="tableblock halign-left valign-middle"><p class="tableblock">right after a new object is created inside <code class="">ObjectContext.newObject()</code>. When this event is fired the object is already registered with its ObjectContext and has its ObjectId and ObjectContext properties set.</p></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock">right after a new object is created inside <code>ObjectContext.newObject()</code>. When this event is fired the object is already registered with its ObjectContext and has its ObjectId and ObjectContext properties set.</p></td> 
       </tr> 
       <tr> 
        <td class="tableblock halign-left valign-middle"><p class="tableblock">PrePersist</p></td> 
-       <td class="tableblock halign-left valign-middle"><p class="tableblock">right before a new object is committed, inside <code class="">ObjectContext.commitChanges()</code> and <code class="">ObjectContext.commitChangesToParent()</code> (and after <code class="">"validateForInsert()"</code>).</p></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock">right before a new object is committed, inside <code>ObjectContext.commitChanges()</code> and <code>ObjectContext.commitChangesToParent()</code> (and after <code>"validateForInsert()"</code>).</p></td> 
       </tr> 
       <tr> 
        <td class="tableblock halign-left valign-middle"><p class="tableblock">PreUpdate</p></td> 
-       <td class="tableblock halign-left valign-middle"><p class="tableblock">right before a modified object is committed, inside <code class="">ObjectContext.commitChanges()</code> and <code class="">ObjectContext.commitChangesToParent()</code> (and after <code class="">"validateForUpdate()"</code>).</p></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock">right before a modified object is committed, inside <code>ObjectContext.commitChanges()</code> and <code>ObjectContext.commitChangesToParent()</code> (and after <code>"validateForUpdate()"</code>).</p></td> 
       </tr> 
       <tr> 
        <td class="tableblock halign-left valign-middle"><p class="tableblock">PreRemove</p></td> 
-       <td class="tableblock halign-left valign-middle"><p class="tableblock">right before an object is deleted, inside <code class="">ObjectContext.deleteObjects()</code>. The event is also generated for each object indirectly deleted as a result of CASCADE delete rule.</p></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock">right before an object is deleted, inside <code>ObjectContext.deleteObjects()</code>. The event is also generated for each object indirectly deleted as a result of CASCADE delete rule.</p></td> 
       </tr> 
       <tr> 
        <td class="tableblock halign-left valign-middle"><p class="tableblock">PostPersist</p></td> 
-       <td class="tableblock halign-left valign-middle"><p class="tableblock">right after a commit of a new object is done, inside <code class="">ObjectContext.commitChanges()</code>.</p></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock">right after a commit of a new object is done, inside <code>ObjectContext.commitChanges()</code>.</p></td> 
       </tr> 
       <tr> 
        <td class="tableblock halign-left valign-middle"><p class="tableblock">PostUpdate</p></td> 
-       <td class="tableblock halign-left valign-middle"><p class="tableblock">right after a commit of a modified object is done, inside <code class="">ObjectContext.commitChanges()</code>.</p></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock">right after a commit of a modified object is done, inside <code>ObjectContext.commitChanges()</code>.</p></td> 
       </tr> 
       <tr> 
        <td class="tableblock halign-left valign-middle"><p class="tableblock">PostRemove</p></td> 
-       <td class="tableblock halign-left valign-middle"><p class="tableblock">right after a commit of a deleted object is done, inside <code class="">ObjectContext.commitChanges()</code>.</p></td> 
+       <td class="tableblock halign-left valign-middle"><p class="tableblock">right after a commit of a deleted object is done, inside <code>ObjectContext.commitChanges()</code>.</p></td> 
       </tr> 
       <tr> 
        <td class="tableblock halign-left valign-middle"><p class="tableblock">PostLoad</p></td> 
@@ -3026,7 +3026,7 @@ public class Order extends _Order {
      </div> 
     </div> 
     <div class="paragraph"> 
-     <p>As <code class="">onNewOrder()</code> is already declared in the mapping, it does not need to be registered explicitly. Implementing the method in subclass to do something meaningful is all that is required at this point.</p> 
+     <p>As <code>onNewOrder()</code> is already declared in the mapping, it does not need to be registered explicitly. Implementing the method in subclass to do something meaningful is all that is required at this point.</p> 
     </div> 
     <div class="paragraph"> 
      <p>As a rule callback methods do not have any knowledge of the outside application, and can only access the state of the object itself and possibly the state of other persistent objects via object’s own ObjectContext.</p> 
@@ -3036,7 +3036,7 @@ public class Order extends _Order {
       <tbody>
        <tr> 
         <td class="icon"> <i class="fa fa-info-circle fa-2x" title="Note"></i> </td> 
-        <td class="content"> Validation and callbacks: There is a clear overlap in functionality between object callbacks and <code class="">DataObject.validateForX()</code> methods. In the future validation may be completely superceeded by callbacks. It is a good idea to use "validateForX" strictly for validation (or not use it at all). Updating the state before commit should be done via callbacks. </td> 
+        <td class="content"> Validation and callbacks: There is a clear overlap in functionality between object callbacks and <code>DataObject.validateForX()</code> methods. In the future validation may be completely superceeded by callbacks. It is a good idea to use "validateForX" strictly for validation (or not use it at all). Updating the state before commit should be done via callbacks. </td> 
        </tr> 
       </tbody>
      </table> 
@@ -3045,7 +3045,7 @@ public class Order extends _Order {
    <div class="sect3"> 
     <h4 id="callbacks-on-non-persistent-listeners"><a class="anchor" href="#callbacks-on-non-persistent-listeners"></a>Callbacks on Non-Persistent Listeners</h4> 
     <div class="paragraph"> 
-     <p>A listener is simply some application class that has one or more annotated callback methods. A callback method signature should be <code class="">void someMethod(SomePersistentType object)</code>. It can be public, private, protected or use default access:</p> 
+     <p>A listener is simply some application class that has one or more annotated callback methods. A callback method signature should be <code>void someMethod(SomePersistentType object)</code>. It can be public, private, protected or use default access:</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -3173,7 +3173,7 @@ public class MyEntity2 extends _MyEntity2 {
    <div class="sect3"> 
     <h4 id="combining-listeners-with-datachannelfilters"><a class="anchor" href="#combining-listeners-with-datachannelfilters"></a>Combining Listeners with DataChannelFilters</h4> 
     <div class="paragraph"> 
-     <p>A final touch in the listeners design is preserving the state of the listener within a single select or commit, so that events generated by multiple objects can be collected and processed all together. To do that you will need to implement a <code class="">DataChannelFilter</code>, and add some callback methods to it. They will store their state in a ThreadLocal variable of the filter. Here is an example filter that does something pretty meaningless - counts how many total objects were committed. However it demonstrates the important pattern of aggregating multiple events and presenting a combined result:</p> 
+     <p>A final touch in the listeners design is preserving the state of the listener within a single select or commit, so that events generated by multiple objects can be collected and processed all together. To do that you will need to implement a <code>DataChannelFilter</code>, and add some callback methods to it. They will store their state in a ThreadLocal variable of the filter. Here is an example filter that does something pretty meaningless - counts how many total objects were committed. However it demonstrates the important pattern of aggregating multiple events and presenting a combined result:</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -3282,17 +3282,17 @@ query.prefetch(Artist.PAINTINGS.dot(Painting.GALLERY).disjoint());</code></pre>
     <div class="sect4"> 
      <h5 id="prefetching-semantics"><a class="anchor" href="#prefetching-semantics"></a>Prefetching Semantics</h5> 
      <div class="paragraph"> 
-      <p>Prefetching semantics defines a strategy to prefetch relationships. Depending on it, Cayenne would generate different types of queries. The end result is the same - query root objects with related objects fully resolved. However semantics can affect performance, in some cases significantly. There are 3 types of prefetch semantics, all defined as constants in <code class="">org.apache.cayenne.query.PrefetchTreeNode</code>:</p> 
+      <p>Prefetching semantics defines a strategy to prefetch relationships. Depending on it, Cayenne would generate different types of queries. The end result is the same - query root objects with related objects fully resolved. However semantics can affect performance, in some cases significantly. There are 3 types of prefetch semantics, all defined as constants in <code>org.apache.cayenne.query.PrefetchTreeNode</code>:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
-       <pre class="highlight"><code class="">PrefetchTreeNode.JOINT_PREFETCH_SEMANTICS
+       <pre class="highlight"><code>PrefetchTreeNode.JOINT_PREFETCH_SEMANTICS
 PrefetchTreeNode.DISJOINT_PREFETCH_SEMANTICS
 PrefetchTreeNode.DISJOINT_BY_ID_PREFETCH_SEMANTICS</code></pre> 
       </div> 
      </div> 
      <div class="paragraph"> 
-      <p>There’s no limitation on mixing different types of semantics in the same query. Each prefetch can have its own semantics. <code class="">SelectQuery</code> uses <code class="">DISJOINT_PREFETCH_SEMANTICS</code> by default. <code class="">ObjectSelect</code> requires explicit semantics as we’ve seen above. <code class="">SQLTemplate</code> and <code class="">ProcedureQuery</code> are both using <code class="">JOINT_PREFETCH_SEMANTICS</code> and it can not be changed due to the nature of those two queries.</p> 
+      <p>There’s no limitation on mixing different types of semantics in the same query. Each prefetch can have its own semantics. <code>SelectQuery</code> uses <code>DISJOINT_PREFETCH_SEMANTICS</code> by default. <code>ObjectSelect</code> requires explicit semantics as we’ve seen above. <code>SQLTemplate</code> and <code>ProcedureQuery</code> are both using <code>JOINT_PREFETCH_SEMANTICS</code> and it can not be changed due to the nature of those two queries.</p> 
      </div> 
     </div> 
     <div class="sect4"> 
@@ -3307,7 +3307,7 @@ PrefetchTreeNode.DISJOINT_BY_ID_PREFETCH_SEMANTICS</code></pre>
     <div class="sect4"> 
      <h5 id="disjoint-by-id-prefetching-semantics"><a class="anchor" href="#disjoint-by-id-prefetching-semantics"></a>Disjoint-by-ID Prefetching Semantics</h5> 
      <div class="paragraph"> 
-      <p>This is a variation of disjoint prefetch where related objects are matched against a set of IDs derived from the fetched main objects (or intermediate objects in a multi-step prefetch). Cayenne limits the size of the generated WHERE clause, as most DBs can’t parse arbitrary large SQL. So prefetch queries are broken into smaller queries. The size of is controlled by the DI property <code class="">Constants.SERVER_MAX_ID_QUALIFIER_SIZE_PROPERTY</code> (the default number of conditions in the generated WHERE clause is 10000). Cayenne will generate (1 + N * M) SQL statements for each query using disjoint-by-ID prefetches, where N is the number of relationships to prefetch, and M is the number of queries for a given prefetch that is dependent on the number of objects in the result (ideally M = 1).</p> 
+      <p>This is a variation of disjoint prefetch where related objects are matched against a set of IDs derived from the fetched main objects (or intermediate objects in a multi-step prefetch). Cayenne limits the size of the generated WHERE clause, as most DBs can’t parse arbitrary large SQL. So prefetch queries are broken into smaller queries. The size of is controlled by the DI property <code>Constants.SERVER_MAX_ID_QUALIFIER_SIZE_PROPERTY</code> (the default number of conditions in the generated WHERE clause is 10000). Cayenne will generate (1 + N * M) SQL statements for each query using disjoint-by-ID prefetches, where N is the number of relationships to prefetch, and M is the number of queries for a given prefetch that is dependent on the number of objects in the result (ideally M = 1).</p> 
      </div> 
      <div class="paragraph"> 
       <p>The advantage of this type of prefetch is that matching database rows by ID may be much faster than matching the qualifier of the original query. Moreover this is <strong>the only type of prefetch</strong> that can handle SelectQueries with <strong>fetch</strong> limit. Both joint and regular disjoint prefetches may produce invalid results or generate inefficient fetch-the-entire table SQL when fetch limit is in effect.</p> 
@@ -3407,7 +3407,7 @@ for(DataRow row : rows) {
      <p>While contemporary hardware may easily allow applications to fetch hundreds of thousands or even millions of objects into memory, it doesn’t mean this is always a good idea to do so. You can optimize processing of very large result sets with two techniques discussed in this and the following chapter - iterated and paginated queries.</p> 
     </div> 
     <div class="paragraph"> 
-     <p>Iterated query is not actually a special query. Any selecting query can be executed in iterated mode by an ObjectContext. ObjectContext creates an object called <code class="">ResultIterator</code> that is backed by an open ResultSet. Iterator provides constant memory performance for arbitrarily large ResultSets. This is true at least on the Cayenne end, as JDBC driver may still decide to bring the entire ResultSet into the JVM memory.</p> 
+     <p>Iterated query is not actually a special query. Any selecting query can be executed in iterated mode by an ObjectContext. ObjectContext creates an object called <code>ResultIterator</code> that is backed by an open ResultSet. Iterator provides constant memory performance for arbitrarily large ResultSets. This is true at least on the Cayenne end, as JDBC driver may still decide to bring the entire ResultSet into the JVM memory.</p> 
     </div> 
     <div class="paragraph"> 
      <p>Data is read from ResultIterator one row/object at a time until it is exhausted. There are two styles of accessing ResultIterator - direct access which requires explicit closing to avoid JDBC resources leak, or a callback that lets Cayenne handle resource management. In both cases iteration can be performed using "for" loop, as ResultIterator is "Iterable".</p> 
@@ -3499,7 +3499,7 @@ List&lt;Artist&gt; artists =
       </div> 
      </div> 
      <div class="paragraph"> 
-      <p>This tells Cayenne that the query created here would like to use local cache of the context it is executed against. A vararg parameter to <code class="">localCache()</code> (or <code class="">sharedCache()</code>) method contains so called "cache groups". Those are arbitrary names that allow to categorize queries for the purpose of setting cache policies or explicit invalidation of the cache. More on that below.</p> 
+      <p>This tells Cayenne that the query created here would like to use local cache of the context it is executed against. A vararg parameter to <code>localCache()</code> (or <code>sharedCache()</code>) method contains so called "cache groups". Those are arbitrary names that allow to categorize queries for the purpose of setting cache policies or explicit invalidation of the cache. More on that below.</p> 
      </div> 
      <div class="paragraph"> 
       <p>The above API is enough for the caching to work, but by default your cache is an unmanaged LRU map. You can’t control its size, expiration policies, etc. For the managed cache, you will need to explicitly use one of the more advanced cache providers. One such provider available in Cayenne is a provider for <a href="http://www.ehcache.org">EhCache</a>. It can be enabled on ServerRuntime startup in a custom Module:</p> 
@@ -3535,7 +3535,7 @@ List&lt;Artist&gt; artists =
       <p>The example shows how to configure default cache settings ("defaultCache") as well as settings for a named cache group ("artists"). For many other things you can put in "ehcache.xml" refer to EhCache docs.</p> 
      </div> 
      <div class="paragraph"> 
-      <p>Often "passive" cache expiration policies similar to shown above are not sufficient, and the users want real-time cache invalidation when the data changes. So in addition to those policies, the app can invalidate individual cache groups explicitly with <code class="">RefreshQuery</code>:</p> 
+      <p>Often "passive" cache expiration policies similar to shown above are not sufficient, and the users want real-time cache invalidation when the data changes. So in addition to those policies, the app can invalidate individual cache groups explicitly with <code>RefreshQuery</code>:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -3544,7 +3544,7 @@ context.performGenericQuery(refresh);</code></pre>
       </div> 
      </div> 
      <div class="paragraph"> 
-      <p>The above can be used e.g. to build UI for manual cache invalidation. It is also possible to automate cache refresh when certain entities are committed. This requires including <code class="">cayenne-lifecycle.jar</code> deoendency. From that library you will need two things: <code class="">@CacheGroups</code> annotation to mark entities that generate cache invalidation events and <code class="">CacheInvalidationFilter</code> that catches the updates to the annotated objects and generates appropriate invalidation events:</p> 
+      <p>The above can be used e.g. to build UI for manual cache invalidation. It is also possible to automate cache refresh when certain entities are committed. This requires including <code>cayenne-lifecycle.jar</code> deoendency. From that library you will need two things: <code>@CacheGroups</code> annotation to mark entities that generate cache invalidation events and <code>CacheInvalidationFilter</code> that catches the updates to the annotated objects and generates appropriate invalidation events:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -3587,11 +3587,11 @@ public class Artist extends _Artist {
      </ul> 
     </div> 
     <div class="paragraph"> 
-     <p>So we’ve made a good case for disabling synchronization in most webapps. To do that, set to "false" the following DI property - <code class="">Constants.SERVER_CONTEXTS_SYNC_PROPERTY</code>, using one of the standard Cayenne DI approaches. E.g. from command line:</p> 
+     <p>So we’ve made a good case for disabling synchronization in most webapps. To do that, set to "false" the following DI property - <code>Constants.SERVER_CONTEXTS_SYNC_PROPERTY</code>, using one of the standard Cayenne DI approaches. E.g. from command line:</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="highlight"><code class="">$ java -Dcayenne.server.contexts_sync_strategy=false</code></pre> 
+      <pre class="highlight"><code>$ java -Dcayenne.server.contexts_sync_strategy=false</code></pre> 
      </div> 
     </div> 
     <div class="paragraph"> 
@@ -3691,7 +3691,7 @@ public class Artist extends _Artist {
       </div> 
      </div> 
      <div class="paragraph"> 
-      <p>Now let’s create a module implementing <code class="">org.apache.cayenne.tutorial.di.Module</code> interface that will contain DI configuration. A module binds service objects to keys that are reference. Binder provided by container implements fluent API to connect the key to implementation, and to configure various binding options (the options, such as scope, are demonstrated later in this chapter). The simplest form of a key is a Java Class object representing service interface. Here is a module that binds Service1 and Service2 to corresponding default implementations:</p> 
+      <p>Now let’s create a module implementing <code>org.apache.cayenne.tutorial.di.Module</code> interface that will contain DI configuration. A module binds service objects to keys that are reference. Binder provided by container implements fluent API to connect the key to implementation, and to configure various binding options (the options, such as scope, are demonstrated later in this chapter). The simplest form of a key is a Java Class object representing service interface. Here is a module that binds Service1 and Service2 to corresponding default implementations:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -3705,7 +3705,7 @@ public class Artist extends _Artist {
       </div> 
      </div> 
      <div class="paragraph"> 
-      <p>Once we have at least one module, we can create a DI container. <code class="">org.apache.cayenne.di.Injector</code> is the container class in Cayenne:</p> 
+      <p>Once we have at least one module, we can create a DI container. <code>org.apache.cayenne.di.Injector</code> is the container class in Cayenne:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -3728,7 +3728,7 @@ for (int i = 0; i &lt; 5; i++) {
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
-       <pre class="highlight"><code class="">0_Service1Impl
+       <pre class="highlight"><code>0_Service1Impl
 1_Service1Impl
 2_Service1Impl
 3_Service1Impl
@@ -3766,10 +3766,10 @@ binder.bind(Key.get(Service2.class, "i2")).to(Service2Impl.class);</code></pre>
     <div class="sect4"> 
      <h5 id="service-lifecycle"><a class="anchor" href="#service-lifecycle"></a>Service Lifecycle</h5> 
      <div class="paragraph"> 
-      <p>An important feature of the Cayenne DI container is instance scope. The default scope (implicitly used in all examples above) is "singleton", meaning that a binding would result in creation of only one service instance, that will be repeatedly returned from <code class="">Injector.getInstance(..)</code>, as well as injected into classes that declare it as a dependency.</p> 
+      <p>An important feature of the Cayenne DI container is instance scope. The default scope (implicitly used in all examples above) is "singleton", meaning that a binding would result in creation of only one service instance, that will be repeatedly returned from <code>Injector.getInstance(..)</code>, as well as injected into classes that declare it as a dependency.</p> 
      </div> 
      <div class="paragraph"> 
-      <p>Singleton scope dispatches a "BeforeScopeEnd" event to interested services. This event occurs before the scope is shutdown, i.e. when <code class="">Injector.shutdown()</code> is called. Note that the built-in Cayenne injector is shutdown behind the scenes when <code class="">ServerRuntime.shutdown()</code> is invoked. Services may register as listeners for this event by annotating a no-argument method with <code class="">@BeforeScopeEnd</code> annotation. Such method should be implemented if a service needs to clean up some resources, stop threads, etc.</p> 
+      <p>Singleton scope dispatches a "BeforeScopeEnd" event to interested services. This event occurs before the scope is shutdown, i.e. when <code>Injector.shutdown()</code> is called. Note that the built-in Cayenne injector is shutdown behind the scenes when <code>ServerRuntime.shutdown()</code> is invoked. Services may register as listeners for this event by annotating a no-argument method with <code>@BeforeScopeEnd</code> annotation. Such method should be implemented if a service needs to clean up some resources, stop threads, etc.</p> 
      </div> 
      <div class="paragraph"> 
       <p>Another useful scope is "no scope", meaning that every time a container is asked to provide a service instance for a given key, a new instance will be created and returned:</p> 
@@ -3780,7 +3780,7 @@ binder.bind(Key.get(Service2.class, "i2")).to(Service2Impl.class);</code></pre>
       </div> 
      </div> 
      <div class="paragraph"> 
-      <p>Users can also create their own scopes, e.g. a web application request scope or a session scope. Most often than not custom scopes can be created as instances of <code class="">org.apache.cayenne.di.spi.DefaultScope</code> with startup and shutdown managed by the application (e.g. singleton scope is a DefaultScope managed by the Injector) .</p> 
+      <p>Users can also create their own scopes, e.g. a web application request scope or a session scope. Most often than not custom scopes can be created as instances of <code>org.apache.cayenne.di.spi.DefaultScope</code> with startup and shutdown managed by the application (e.g. singleton scope is a DefaultScope managed by the Injector) .</p> 
      </div> 
     </div> 
     <div class="sect4"> 
@@ -3823,11 +3823,11 @@ ServerRuntime runtime = ServerRuntime.builder()
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
-       <pre class="highlight"><code class="">$ java -Dcayenne.server.contexts_sync_strategy=false ...</code></pre> 
+       <pre class="highlight"><code>$ java -Dcayenne.server.contexts_sync_strategy=false ...</code></pre> 
       </div> 
      </div> 
      <div class="paragraph"> 
-      <p>A second one is to contribute a property to <code class="">o.a.c.configuration.DefaultRuntimeProperties.properties</code> map (see the next section on how to do that). This map contains the default property values and can accept application-specific values, overrding the defaults.</p> 
+      <p>A second one is to contribute a property to <code>o.a.c.configuration.DefaultRuntimeProperties.properties</code> map (see the next section on how to do that). This map contains the default property values and can accept application-specific values, overrding the defaults.</p> 
      </div> 
      <div class="paragraph"> 
       <p>Note that if a property value is a name of a Java class, when this Java class is instantiated by Cayenne, the container performs injection of instance variables. So even the dynamically specified Java classes can use @Inject annotation to get a hold of other Cayenne services.</p> 
@@ -3839,7 +3839,7 @@ ServerRuntime runtime = ServerRuntime.builder()
     <div class="sect4"> 
      <h5 id="contributing-to-service-collections"><a class="anchor" href="#contributing-to-service-collections"></a>Contributing to Service Collections</h5> 
      <div class="paragraph"> 
-      <p>Cayenne can be extended by adding custom objects to named maps or lists bound in DI. We are calling these lists/maps "service collections". A service collection allows things like appending a custom strategy to a list of built-in strategies. E.g. an application that needs to install a custom DbAdapter for some database type may contribute an instance of custom DbAdapterDetector to a <code class="">o.a.c.configuration.server.DefaultDbAdapterFactory.detectors</code> list:</p> 
+      <p>Cayenne can be extended by adding custom objects to named maps or lists bound in DI. We are calling these lists/maps "service collections". A service collection allows things like appending a custom strategy to a list of built-in strategies. E.g. an application that needs to install a custom DbAdapter for some database type may contribute an instance of custom DbAdapterDetector to a <code>o.a.c.configuration.server.DefaultDbAdapterFactory.detectors</code> list:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -3860,7 +3860,7 @@ binder.bindList(DefaultDbAdapterFactory.DETECTORS_LIST)
       </div> 
      </div> 
      <div class="paragraph"> 
-      <p>Maps are customized using a similar <code class="">"bindMap"</code> method.</p> 
+      <p>Maps are customized using a similar <code>"bindMap"</code> method.</p> 
      </div> 
      <div class="paragraph"> 
       <p>The names of built-in collections are listed in "Appendix B".</p> 
@@ -3869,10 +3869,10 @@ binder.bindList(DefaultDbAdapterFactory.DETECTORS_LIST)
     <div class="sect4"> 
      <h5 id="alternative-service-implementations"><a class="anchor" href="#alternative-service-implementations"></a>Alternative Service Implementations</h5> 
      <div class="paragraph"> 
-      <p>As mentioned above, custom modules are loaded by ServerRuntime after the built-in modules. So it is easy to redefine a built-in service in Cayenne by rebinding desired implementations or providers. To do that, first we need to know what those services to redefine are. While we describe some of them in the following sections, the best way to get a full list is to check the source code of the Cayenne version you are using and namely look in <code class="">org.apache.cayenne.configuration.server.ServerModule</code> - the main built-in module in Cayenne.</p> 
+      <p>As mentioned above, custom modules are loaded by ServerRuntime after the built-in modules. So it is easy to redefine a built-in service in Cayenne by rebinding desired implementations or providers. To do that, first we need to know what those services to redefine are. While we describe some of them in the following sections, the best way to get a full list is to check the source code of the Cayenne version you are using and namely look in <code>org.apache.cayenne.configuration.server.ServerModule</code> - the main built-in module in Cayenne.</p> 
      </div> 
      <div class="paragraph"> 
-      <p>Now an example of overriding <code class="">QueryCache</code> service. The default implementation of this service is provided by <code class="">MapQueryCacheProvider</code>. But if we want to use <code class="">EhCacheQueryCache</code> (a Cayenne wrapper for the EhCache framework), we can define it like this:</p> 
+      <p>Now an example of overriding <code>QueryCache</code> service. The default implementation of this service is provided by <code>MapQueryCacheProvider</code>. But if we want to use <code>EhCacheQueryCache</code> (a Cayenne wrapper for the EhCache framework), we can define it like this:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -3886,10 +3886,10 @@ binder.bindList(DefaultDbAdapterFactory.DETECTORS_LIST)
     <div class="sect4"> 
      <h5 id="value-object-type"><a class="anchor" href="#value-object-type"></a>Value object type</h5> 
      <div class="paragraph"> 
-      <p><code class="">ValueObjectType</code> is a new and lightweight alternative to the Extended Types API described in the following section. In most cases is should be preferred as is it easier to understand and use. Currently only one case is known when <code class="">ExtendedType</code> should be used: when your value object can be mapped on different JDBC types.</p> 
+      <p><code>ValueObjectType</code> is a new and lightweight alternative to the Extended Types API described in the following section. In most cases is should be preferred as is it easier to understand and use. Currently only one case is known when <code>ExtendedType</code> should be used: when your value object can be mapped on different JDBC types.</p> 
      </div> 
      <div class="paragraph"> 
-      <p>In order to use your custom data type you should implement <code class="">ValueObjectType</code> describing it in terms of some type already known to Cayenne (e.g. backed by system or user ExtendedType). Let’s assume we want to support some data type called <code class="">Money</code>:</p> 
+      <p>In order to use your custom data type you should implement <code>ValueObjectType</code> describing it in terms of some type already known to Cayenne (e.g. backed by system or user ExtendedType). Let’s assume we want to support some data type called <code>Money</code>:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -3909,7 +3909,7 @@ binder.bindList(DefaultDbAdapterFactory.DETECTORS_LIST)
       </div> 
      </div> 
      <div class="paragraph"> 
-      <p>Here is how <code class="">ValueObjectType</code> that will allow to store our <code class="">Money</code> class as <code class="">BigDecimal</code> can be implemented:</p> 
+      <p>Here is how <code>ValueObjectType</code> that will allow to store our <code>Money</code> class as <code>BigDecimal</code> can be implemented:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -3943,7 +3943,7 @@ binder.bindList(DefaultDbAdapterFactory.DETECTORS_LIST)
       </div> 
      </div> 
      <div class="paragraph"> 
-      <p>Last step is to register this new type in <code class="">ServerRuntime</code>:</p> 
+      <p>Last step is to register this new type in <code>ServerRuntime</code>:</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -3965,7 +3965,7 @@ binder.bindList(DefaultDbAdapterFactory.DETECTORS_LIST)
      <div class="sect5"> 
       <h6 id="supporting-non-standard-types"><a class="anchor" href="#supporting-non-standard-types"></a>Supporting Non-Standard Types</h6> 
       <div class="paragraph"> 
-       <p>For supporting non-standard type you should define it via an interface <code class="">org.apache.cayenne.access.types.ExtendedType</code>. An implementation must provide <code class="">ExtendedType.getClassName()</code> method that returns a fully qualified Java class name for the supported custom type, and a number of methods that convert data between JDBC and custom type. The following example demonstrates how to add a custom DoubleArrayType to store <code class="">java.lang.Double[]</code> as a custom string in a database:</p> 
+       <p>For supporting non-standard type you should define it via an interface <code>org.apache.cayenne.access.types.ExtendedType</code>. An implementation must provide <code>ExtendedType.getClassName()</code> method that returns a fully qualified Java class name for the supported custom type, and a number of methods that convert data between JDBC and custom type. The following example demonstrates how to add a custom DoubleArrayType to store <code>java.lang.Double[]</code> as a custom string in a database:</p> 
       </div> 
       <div class="listingblock"> 
        <div class="content"> 
@@ -4050,7 +4050,7 @@ ServerRuntime runtime = ServerRuntime.builder()
      <div class="sect5"> 
       <h6 id="dbadapters-and-extended-types"><a class="anchor" href="#dbadapters-and-extended-types"></a>DbAdapters and Extended Types</h6> 
       <div class="paragraph"> 
-       <p>As shown in the example above, ExtendedTypes are stored by DbAdapter. In fact DbAdapters often install their own extended types to address incompatibilities, incompleteness and differences between JDBC drivers in handling "standard" JDBC types. For instance some drivers support reading large character columns (CLOB) as java.sql.Clob, but some other - as "character stream", etc. Adapters provided with Cayenne override <code class="">configureExtendedTypes()</code> method to install their own types, possibly substituting Cayenne defaults. Custom DbAdapters can use the same technique.</p> 
+       <p>As shown in the example above, ExtendedTypes are stored by DbAdapter. In fact DbAdapters often install their own extended types to address incompatibilities, incompleteness and differences between JDBC drivers in handling "standard" JDBC types. For instance some drivers support reading large character columns (CLOB) as java.sql.Clob, but some other - as "character stream", etc. Adapters provided with Cayenne override <code>configureExtendedTypes()</code> method to install their own types, possibly substituting Cayenne defaults. Custom DbAdapters can use the same technique.</p> 
       </div> 
      </div> 
     </div> 
@@ -4060,13 +4060,13 @@ ServerRuntime runtime = ServerRuntime.builder()
     <div class="sect4"> 
      <h5 id="jdbceventlogger"><a class="anchor" href="#jdbceventlogger"></a>JdbcEventLogger</h5> 
      <div class="paragraph"> 
-      <p><code class="">org.apache.cayenne.log.JdbcEventLogger</code> is the service that defines logging API for Cayenne internals. It provides facilities for logging queries, commits, transactions, etc. The default implementation is <code class="">org.apache.cayenne.log.Slf4jJdbcEventLogger</code> that performs logging via slf4j-api library. Cayenne library includes another potentially useful logger - <code class="">org.apache.cayenne.log.FormattedSlf4jJdbcEventLogger</code> that produces formatted multiline SQL output that can be easier to read.</p> 
+      <p><code>org.apache.cayenne.log.JdbcEventLogger</code> is the service that defines logging API for Cayenne internals. It provides facilities for logging queries, commits, transactions, etc. The default implementation is <code>org.apache.cayenne.log.Slf4jJdbcEventLogger</code> that performs logging via slf4j-api library. Cayenne library includes another potentially useful logger - <code>org.apache.cayenne.log.FormattedSlf4jJdbcEventLogger</code> that produces formatted multiline SQL output that can be easier to read.</p> 
      </div> 
     </div> 
     <div class="sect4"> 
      <h5 id="datasourcefactory"><a class="anchor" href="#datasourcefactory"></a>DataSourceFactory</h5> 
      <div class="paragraph"> 
-      <p>Factory that returns <code class="">javax.sql.DataSource</code> object based on the configuration provided in the "nodeDescriptor".</p> 
+      <p>Factory that returns <code>javax.sql.DataSource</code> object based on the configuration provided in the "nodeDescriptor".</p> 
      </div> 
     </div> 
     <div class="sect4"> 
@@ -4196,9 +4196,9 @@ ServerRuntime runtime = ServerRuntime.builder()
     <div class="ulist"> 
      <ul> 
       <li> <p>A SQL migrations framework is used to bring a local DB to a certain version. This is outside of the scope of Cayenne and is done with a third-party tool, such as Liquibase or Flyway.</p> </li> 
-      <li> <p>OR mapping model (Cayenne XML files) are synchronized with the state of the database using <code class="">"cdbimport"</code> tool provdied by Cayenne.</p> </li> 
-      <li> <p>Object layer of the OR mapping model is customized to the developer liking, usually via CayenneModeler. Subsequent runs of <code class="">"cdbimport"</code> will not override any customizations that you make.</p> </li> 
-      <li> <p>Java classes are generated using <code class="">"cgen"</code> tool provided by Cayenne.</p> </li> 
+      <li> <p>OR mapping model (Cayenne XML files) are synchronized with the state of the database using <code>"cdbimport"</code> tool provdied by Cayenne.</p> </li> 
+      <li> <p>Object layer of the OR mapping model is customized to the developer liking, usually via CayenneModeler. Subsequent runs of <code>"cdbimport"</code> will not override any customizations that you make.</p> </li> 
+      <li> <p>Java classes are generated using <code>"cgen"</code> tool provided by Cayenne.</p> </li> 
      </ul> 
     </div> 
     <div class="paragraph"> 
@@ -4472,7 +4472,7 @@ ServerRuntime runtime = ServerRuntime.builder()
      </div> 
     </div> 
     <div class="paragraph"> 
-     <p>All filtering tags <code class="">&lt;includeTable&gt;</code>, <code class="">&lt;excludeTable&gt;</code>, <code class="">&lt;includeColumn&gt;</code>, <code class="">&lt;excludeColumn&gt;</code>, <code class="">&lt;includeProcedure&gt;</code> and <code class="">&lt;excludeProcedure&gt;</code> have 2 ways to pass filtering RegExp.</p> 
+     <p>All filtering tags <code>&lt;includeTable&gt;</code>, <code>&lt;excludeTable&gt;</code>, <code>&lt;includeColumn&gt;</code>, <code>&lt;excludeColumn&gt;</code>, <code>&lt;includeProcedure&gt;</code> and <code>&lt;excludeProcedure&gt;</code> have 2 ways to pass filtering RegExp.</p> 
     </div> 
     <div class="paragraph"> 
      <p>1) text inside tag</p> 
@@ -4493,7 +4493,7 @@ ServerRuntime runtime = ServerRuntime.builder()
      </div> 
     </div> 
     <div class="paragraph"> 
-     <p>All filtering tags can be placed inside schema and catalog tags, but also inside <code class="">&lt;dbimport&gt;</code> tag. It means that filtering rules will be applied for all schemas and catalogs.</p> 
+     <p>All filtering tags can be placed inside schema and catalog tags, but also inside <code>&lt;dbimport&gt;</code> tag. It means that filtering rules will be applied for all schemas and catalogs.</p> 
     </div> 
    </div> 
    <div class="sect3"> 
@@ -4596,7 +4596,7 @@ ServerRuntime runtime = ServerRuntime.builder()
    <div class="sect3"> 
     <h4 id="ant-configuration-example"><a class="anchor" href="#ant-configuration-example"></a>Ant configuration example</h4> 
     <div class="paragraph"> 
-     <p>Here is config sample for <code class="">Ant</code> task:</p> 
+     <p>Here is config sample for <code>Ant</code> task:</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -4638,7 +4638,7 @@ ServerRuntime runtime = ServerRuntime.builder()
       <tbody>
        <tr> 
         <td class="icon"> <i class="fa fa-info-circle fa-2x" title="Note"></i> </td> 
-        <td class="content"> In Ant task configuration all filter tags located inside root tag <code class="">&lt;cdbimport&gt;</code> as there is no <code class="">&lt;dbimport&gt;</code> tag. </td> 
+        <td class="content"> In Ant task configuration all filter tags located inside root tag <code>&lt;cdbimport&gt;</code> as there is no <code>&lt;dbimport&gt;</code> tag. </td> 
        </tr> 
       </tbody>
      </table> 
@@ -4653,7 +4653,7 @@ ServerRuntime runtime = ServerRuntime.builder()
    <div class="sect3"> 
     <h4 id="skip-relationships-loading"><a class="anchor" href="#skip-relationships-loading"></a>Skip Relationships Loading</h4> 
     <div class="paragraph"> 
-     <p>You are able to skip relationships loading by the <code class="">&lt;skipRelationshipsLoading&gt;</code> element.</p> 
+     <p>You are able to skip relationships loading by the <code>&lt;skipRelationshipsLoading&gt;</code> element.</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -4666,7 +4666,7 @@ ServerRuntime runtime = ServerRuntime.builder()
    <div class="sect3"> 
     <h4 id="skip-primary-keys-loading"><a class="anchor" href="#skip-primary-keys-loading"></a>Skip Primary Keys Loading</h4> 
     <div class="paragraph"> 
-     <p>Another useful Cayenne reverse engineering property is <code class="">&lt;skipPrimaryKeyLoading&gt;</code>. If you decide to support all relationships at the application layer and avoid their management in database, you’ll find useful to turn off primary keys synchronization at all.</p> 
+     <p>Another useful Cayenne reverse engineering property is <code>&lt;skipPrimaryKeyLoading&gt;</code>. If you decide to support all relationships at the application layer and avoid their management in database, you’ll find useful to turn off primary keys synchronization at all.</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -4679,7 +4679,7 @@ ServerRuntime runtime = ServerRuntime.builder()
    <div class="sect3"> 
     <h4 id="table-types"><a class="anchor" href="#table-types"></a>Table Types</h4> 
     <div class="paragraph"> 
-     <p>By default, cdbimport imports tables and views. Some databases may support other table-like objects, e.g. <code class="">SYSTEM TABLE, GLOBAL TEMPORARY, LOCAL TEMPORARY, ALIAS, SYNONYM</code>, etc. To control which types should be included <code class="">&lt;tableType&gt;&lt;/tableType&gt;</code> element is used. Some examples:</p> 
+     <p>By default, cdbimport imports tables and views. Some databases may support other table-like objects, e.g. <code>SYSTEM TABLE, GLOBAL TEMPORARY, LOCAL TEMPORARY, ALIAS, SYNONYM</code>, etc. To control which types should be included <code>&lt;tableType&gt;&lt;/tableType&gt;</code> element is used. Some examples:</p> 
     </div> 
     <div class="paragraph"> 
      <p>Import tables only (skip views and others and other types):</p> 
@@ -4819,7 +4819,7 @@ public class MyEntity extends _MyEntity {
      </div> 
     </div> 
     <div class="paragraph"> 
-     <p>After any modification of <code class="">MyEntity</code> objects cache group <code class="">"some-group"</code> will be dropped from cache automatically.</p> 
+     <p>After any modification of <code>MyEntity</code> objects cache group <code>"some-group"</code> will be dropped from cache automatically.</p> 
     </div> 
     <div class="admonitionblock note"> 
      <table> 
@@ -4835,7 +4835,7 @@ public class MyEntity extends _MyEntity {
      <p>In case you need some complex logic of cache invalidation you can disable default behaviour and provide your own.</p> 
     </div> 
     <div class="paragraph"> 
-     <p>To do so you need to implement <code class="">o.a.c.cache.invalidation.InvalidationHandler</code> interface and setup Cache Invalidation module to use it. Let’s use implementation class called <code class="">CustomInvalidationHandler</code> that will simply match all entities' types with <code class="">"custom-group"</code> cache group regardless of any annotations:</p> 
+     <p>To do so you need to implement <code>o.a.c.cache.invalidation.InvalidationHandler</code> interface and setup Cache Invalidation module to use it. Let’s use implementation class called <code>CustomInvalidationHandler</code> that will simply match all entities' types with <code>"custom-group"</code> cache group regardless of any annotations:</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -4848,7 +4848,7 @@ public class MyEntity extends _MyEntity {
      </div> 
     </div> 
     <div class="paragraph"> 
-     <p>Now we’ll set up it’s usage by <code class="">ServerRuntime</code>:</p> 
+     <p>Now we’ll set up it’s usage by <code>ServerRuntime</code>:</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -4906,10 +4906,10 @@ public class MyEntity extends _MyEntity {
    <div class="sect3"> 
     <h4 id="usage-2"><a class="anchor" href="#usage-2"></a>Usage</h4> 
     <div class="paragraph"> 
-     <p>In order to use <code class="">commitlog</code> module you need to perform three steps:</p> 
+     <p>In order to use <code>commitlog</code> module you need to perform three steps:</p> 
     </div> 
     <div class="paragraph"> 
-     <p>1) Mark all entities which changes you are interested in with <code class="">@org.apache.cayenne.commitlog.CommitLog</code> annotation</p> 
+     <p>1) Mark all entities which changes you are interested in with <code>@org.apache.cayenne.commitlog.CommitLog</code> annotation</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -4920,7 +4920,7 @@ public class MyEntity extends _MyEntity {
      </div> 
     </div> 
     <div class="paragraph"> 
-     <p>2) Implement <code class="">CommitLogListener</code> interface.</p> 
+     <p>2) Implement <code>CommitLogListener</code> interface.</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -4938,7 +4938,7 @@ public class MyEntity extends _MyEntity {
      </div> 
     </div> 
     <div class="paragraph"> 
-     <p>3) Inject your listener into <code class="">ServerRuntime</code></p> 
+     <p>3) Inject your listener into <code>ServerRuntime</code></p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
@@ -4986,15 +4986,15 @@ public class MyEntity extends _MyEntity {
     <div class="sect4"> 
      <h5 id="setup-your-model-and-db"><a class="anchor" href="#setup-your-model-and-db"></a>Setup your model and DB</h5> 
      <div class="paragraph"> 
-      <p>To use crypto module you must prepare your database to allow <code class="">byte[]</code> storage and properly name columns that will contain encrypted values.</p> 
+      <p>To use crypto module you must prepare your database to allow <code>byte[]</code> storage and properly name columns that will contain encrypted values.</p> 
      </div> 
      <div class="paragraph"> 
       <p>Currently supported SQL types that can be used to store encrypted data are:</p> 
      </div> 
      <div class="olist arabic"> 
       <ol class="arabic"> 
-       <li> <p>Binary types: <code class="">BINARY, BLOB, VARBINARY, LONGVARBINARY</code>. These types are preferred.</p> </li> 
-       <li> <p>Character types, that will store <code class="">base64</code> encoded value: <code class="">CHAR, NCHAR, CLOB, NCLOB, LONGVARCHAR, LONGNVARCHAR, VARCHAR, NVARCHAR</code>.</p> </li> 
+       <li> <p>Binary types: <code>BINARY, BLOB, VARBINARY, LONGVARBINARY</code>. These types are preferred.</p> </li> 
+       <li> <p>Character types, that will store <code>base64</code> encoded value: <code>CHAR, NCHAR, CLOB, NCLOB, LONGVARCHAR, LONGNVARCHAR, VARCHAR, NVARCHAR</code>.</p> </li> 
       </ol> 
      </div> 
      <div class="admonitionblock note"> 
@@ -5008,7 +5008,7 @@ public class MyEntity extends _MyEntity {
       </table> 
      </div> 
      <div class="paragraph"> 
-      <p>Default naming strategy that doesn’t require additional setup suggests using "CRYPTO_" prefix. You can change this default strategy by injecting you own implementation of <code class="">o.a.c.crypto.map.ColumnMapper</code> interface.</p> 
+      <p>Default naming strategy that doesn’t require additional setup suggests using "CRYPTO_" prefix. You can change this default strategy by injecting you own implementation of <code>o.a.c.crypto.map.ColumnMapper</code> interface.</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -5019,7 +5019,7 @@ public class MyEntity extends _MyEntity {
       </div> 
      </div> 
      <div class="paragraph"> 
-      <p>Here is an example of how <code class="">ObjEntity</code> with two encrypted and two unencrypted properties can look like:</p> 
+      <p>Here is an example of how <code>ObjEntity</code> with two encrypted and two unencrypted properties can look like:</p> 
      </div> 
      <div class="imageblock" style="text-align: left"> 
       <div class="content"> 
@@ -5030,7 +5030,7 @@ public class MyEntity extends _MyEntity {
     <div class="sect4"> 
      <h5 id="setup-keystore"><a class="anchor" href="#setup-keystore"></a>Setup keystore</h5> 
      <div class="paragraph"> 
-      <p>To perform encryption you must provide <code class="">KEYSTORE_URL</code> and <code class="">KEY_PASSWORD</code>. Currently crypto module supports only Java "jceks" KeyStore.</p> 
+      <p>To perform encryption you must provide <code>KEYSTORE_URL</code> and <code>KEY_PASSWORD</code>. Currently crypto module supports only Java "jceks" KeyStore.</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -5044,7 +5044,7 @@ public class MyEntity extends _MyEntity {
     <div class="sect4"> 
      <h5 id="additional-settings"><a class="anchor" href="#additional-settings"></a>Additional settings</h5> 
      <div class="paragraph"> 
-      <p>Additionally to <code class="">ColumnMapper</code> mentioned above you can customize other parts of <code class="">crypto module</code>. You can enable <code class="">gzip</code> compression and <code class="">HMAC</code> usage (later will ensure integrity of data).</p> 
+      <p>Additionally to <code>ColumnMapper</code> mentioned above you can customize other parts of <code>crypto module</code>. You can enable <code>gzip</code> compression and <code>HMAC</code> usage (later will ensure integrity of data).</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -5056,7 +5056,7 @@ public class MyEntity extends _MyEntity {
       </div> 
      </div> 
      <div class="paragraph"> 
-      <p>Another useful extension point is support for custom Java value types. To add support for your data type you need to implement <code class="">o.a.c.crypto.transformer.value.BytesConverter</code> interface that will convert required type to and from <code class="">byte[]</code>.</p> 
+      <p>Another useful extension point is support for custom Java value types. To add support for your data type you need to implement <code>o.a.c.crypto.transformer.value.BytesConverter</code> interface that will convert required type to and from <code>byte[]</code>.</p> 
      </div> 
      <div class="listingblock"> 
       <div class="content"> 
@@ -5071,7 +5071,7 @@ public class MyEntity extends _MyEntity {
        <tbody>
         <tr> 
          <td class="icon"> <i class="fa fa-info-circle fa-2x" title="Note"></i> </td> 
-         <td class="content"> In addition to Java primitive types (and their object counterparts), <code class="">crypto module</code> supports encryption only of <code class="">java.util.Date, java.math.BigInteger</code> and <code class="">java.math.BigDecimal</code> types. </td> 
+         <td class="content"> In addition to Java primitive types (and their object counterparts), <code>crypto module</code> supports encryption only of <code>java.util.Date, java.math.BigInteger</code> and <code>java.math.BigDecimal</code> types. </td> 
         </tr> 
        </tbody>
       </table> 
@@ -5113,7 +5113,7 @@ public class MyEntity extends _MyEntity {
    <div class="sect3"> 
     <h4 id="usage-4"><a class="anchor" href="#usage-4"></a>Usage</h4> 
     <div class="paragraph"> 
-     <p>To use JCache provider in your app you need to include this module and caching provider libs (e.g. Ehcache). You can provide own implementation of <code class="">org.apache.cayenne.jcache.JCacheConfigurationFactory</code> to customize cache configuration if required.</p> 
+     <p>To use JCache provider in your app you need to include this module and caching provider libs (e.g. Ehcache). You can provide own implementation of <code>org.apache.cayenne.jcache.JCacheConfigurationFactory</code> to customize cache configuration if required.</p> 
     </div> 
     <div class="paragraph"> 
      <p>For advanced configuration and management please use provider specific options and tools.</p> 
@@ -5138,7 +5138,7 @@ public class MyEntity extends _MyEntity {
    <div class="sect3"> 
     <h4 id="description-5"><a class="anchor" href="#description-5"></a>Description</h4> 
     <div class="paragraph"> 
-     <p>Joda time module allows to use <code class="">org.joda.time.LocalTime</code>, <code class="">org.joda.time.LocalDate</code>, <code class="">org.joda.time.LocalDateTime</code> and <code class="">org.joda.time.DateTime</code> types for entity attributes.</p> 
+     <p>Joda time module allows to use <code>org.joda.time.LocalTime</code>, <code>org.joda.time.LocalDate</code>, <code>org.joda.time.LocalDateTime</code> and <code>org.joda.time.DateTime</code> types for entity attributes.</p> 
     </div> 
    </div> 
    <div class="sect3"> 
@@ -5224,7 +5224,7 @@ public class MyEntity extends _MyEntity {
    <div class="sect3"> 
     <h4 id="description-7"><a class="anchor" href="#description-7"></a>Description</h4> 
     <div class="paragraph"> 
-     <p>This module enables usage of full featured Apache Velocity templates in <code class="">org.apache.cayenne.query.SQLTemplate</code> queries.</p> 
+     <p>This module enables usage of full featured Apache Velocity templates in <code>org.apache.cayenne.query.SQLTemplate</code> queries.</p> 
     </div> 
    </div> 
    <div class="sect3"> 
@@ -5256,17 +5256,17 @@ public class MyEntity extends _MyEntity {
      <p>This module doesn’t require any additional setup.</p> 
     </div> 
     <div class="paragraph"> 
-     <p>In addition of directives mentioned in <a href="#directives">this chapter</a>, this module enables <code class="">#chain</code> and <code class="">#chunk</code> directives.</p> 
+     <p>In addition of directives mentioned in <a href="#directives">this chapter</a>, this module enables <code>#chain</code> and <code>#chunk</code> directives.</p> 
     </div> 
     <div class="paragraph"> 
-     <p><code class="">#chain</code> and <code class="">#chunk</code> directives are used for conditional inclusion of SQL code. They are used together with <code class="">#chain</code> wrapping multiple <code class="">#chunks</code>. A chunk evaluates its parameter expression and if it is NULL suppresses rendering of the enclosed SQL block. A chain renders its prefix and its chunks joined by the operator. If all the chunks are suppressed, the chain itself is suppressed. This allows to work with otherwise hard to script SQL semantics. E.g. a WHERE clause can contain multiple conditions joined with AND or OR. Application code would like to exclude a condition if its right-hand parameter is not present (similar to Expression pruning discussed above). If all conditions are excluded, the entire WHERE clause should be excluded. chain/chunk allows to do that.</p> 
+     <p><code>#chain</code> and <code>#chunk</code> directives are used for conditional inclusion of SQL code. They are used together with <code>#chain</code> wrapping multiple <code>#chunks</code>. A chunk evaluates its parameter expression and if it is NULL suppresses rendering of the enclosed SQL block. A chain renders its prefix and its chunks joined by the operator. If all the chunks are suppressed, the chain itself is suppressed. This allows to work with otherwise hard to script SQL semantics. E.g. a WHERE clause can contain multiple conditions joined with AND or OR. Application code would like to exclude a condition if its right-hand parameter is not present (similar to Expression pruning discussed above). If all conditions are excluded, the entire WHERE clause should be excluded. chain/chunk allows to do that.</p> 
     </div> 
     <div class="paragraph"> 
      <p>Semantics:</p> 
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="highlight"><code class="">#chain(operator) ... #end
+      <pre class="highlight"><code>#chain(operator) ... #end
 #chain(operator prefix) ... #end
 #chunk() ... #end
 #chunk(param) ... #end</code></pre> 
@@ -5277,7 +5277,7 @@ public class MyEntity extends _MyEntity {
     </div> 
     <div class="listingblock"> 
      <div class="content"> 
-      <pre class="highlight"><code class="">#chain('OR' 'WHERE')
+      <pre class="highlight"><code>#chain('OR' 'WHERE')
     #chunk($name) NAME LIKE #bind($name) #end
     #chunk($id) ARTIST_ID &gt; #bind($id) #end
 #end"</code></pre> 
@@ -5291,135 +5291,135 @@ public class MyEntity extends _MyEntity {
  <h2 id="appendix-a-configuration-properties"><a class="anchor" href="#appendix-a-configuration-properties"></a>6. Appendix A. Configuration Properties</h2> 
  <div class="sectionbody"> 
   <div class="paragraph"> 
-   <p>Note that the property names below are defined as constants in <code class="">org.apache.cayenne.configuration.Constants</code> interface.</p> 
+   <p>Note that the property names below are defined as constants in <code>org.apache.cayenne.configuration.Constants</code> interface.</p> 
   </div> 
   <div id="configProperties" class="ulist"> 
    <ul> 
-    <li> <p><code class="">cayenne.jdbc.driver[.domain_name.node_name]</code> defines a JDBC driver class to use when creating a DataSource. If domain name and optionally - node name are specified, the setting overrides DataSource info just for this domain/node. Otherwise the override is applied to all domains/nodes in the system.</p> 
+    <li> <p><code>cayenne.jdbc.driver[.domain_name.node_name]</code> defines a JDBC driver class to use when creating a DataSource. If domain name and optionally - node name are specified, the setting overrides DataSource info just for this domain/node. Otherwise the override is applied to all domains/nodes in the system.</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Default value: none, project DataNode configuration is used</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.jdbc.url[.domain_name.node_name]</code> defines a DB URL to use when creating a DataSource. If domain name and optionally - node name are specified, the setting overrides DataSource info just for this domain/node. Otherwise the override is applied to all domains/nodes in the system.</p> 
+    <li> <p><code>cayenne.jdbc.url[.domain_name.node_name]</code> defines a DB URL to use when creating a DataSource. If domain name and optionally - node name are specified, the setting overrides DataSource info just for this domain/node. Otherwise the override is applied to all domains/nodes in the system.</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Default value: none, project DataNode configuration is used</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.jdbc.username[.domain_name.node_name]</code> defines a DB user name to use when creating a DataSource. If domain name and optionally - node name are specified, the setting overrides DataSource info just for this domain/node. Otherwise the override is applied to all domains/nodes in the system.</p> 
+    <li> <p><code>cayenne.jdbc.username[.domain_name.node_name]</code> defines a DB user name to use when creating a DataSource. If domain name and optionally - node name are specified, the setting overrides DataSource info just for this domain/node. Otherwise the override is applied to all domains/nodes in the system.</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Possible values: any</p> </li> 
        <li> <p>Default value: none, project DataNode configuration is used</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.jdbc.password[.domain_name.node_name]</code> defines a DB password to use when creating a DataSource. If domain name and optionally - node name are specified, the setting overrides DataSource info just for this domain/node. Otherwise the override is applied to all domains/nodes in the system</p> 
+    <li> <p><code>cayenne.jdbc.password[.domain_name.node_name]</code> defines a DB password to use when creating a DataSource. If domain name and optionally - node name are specified, the setting overrides DataSource info just for this domain/node. Otherwise the override is applied to all domains/nodes in the system</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Default value: none, project DataNode configuration is used</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.jdbc.min_connections[.domain_name.node_name]</code> defines the DB connection pool minimal size. If domain name and optionally - node name are specified, the setting overrides DataSource info just for this domain/node. Otherwise the override is applied to all domains/nodes in the system</p> 
+    <li> <p><code>cayenne.jdbc.min_connections[.domain_name.node_name]</code> defines the DB connection pool minimal size. If domain name and optionally - node name are specified, the setting overrides DataSource info just for this domain/node. Otherwise the override is applied to all domains/nodes in the system</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Default value: none, project DataNode configuration is used</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.jdbc.max_connections[.domain_name.node_name]</code> defines the DB connection pool maximum size. If domain name and optionally - node name are specified, the setting overrides DataSource info just for this domain/node. Otherwise the override is applied to all domains/nodes in the system</p> 
+    <li> <p><code>cayenne.jdbc.max_connections[.domain_name.node_name]</code> defines the DB connection pool maximum size. If domain name and optionally - node name are specified, the setting overrides DataSource info just for this domain/node. Otherwise the override is applied to all domains/nodes in the system</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Default value: none, project DataNode configuration is used</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.querycache.size</code> An integer defining the maximum number of entries in the query cache. Note that not all QueryCache providers may respect this property. MapQueryCache uses it, but the rest would use alternative configuration methods.</p> 
+    <li> <p><code>cayenne.querycache.size</code> An integer defining the maximum number of entries in the query cache. Note that not all QueryCache providers may respect this property. MapQueryCache uses it, but the rest would use alternative configuration methods.</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Possible values: any positive int value</p> </li> 
        <li> <p>Default value: 2000</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.server.contexts_sync_strategy</code> defines whether peer ObjectContexts should receive snapshot events after commits from other contexts. If true (<em>default</em>), the contexts would automatically synchronize their state with peers.</p> 
+    <li> <p><code>cayenne.server.contexts_sync_strategy</code> defines whether peer ObjectContexts should receive snapshot events after commits from other contexts. If true (<em>default</em>), the contexts would automatically synchronize their state with peers.</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Possible values: true, false</p> </li> 
        <li> <p>Default value: true</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.server.object_retain_strategy</code> defines fetched objects retain strategy for ObjectContexts. When weak or soft strategy is used, objects retained by ObjectContext that have no local changes can potentially get garbage collected when JVM feels like doing it.</p> 
+    <li> <p><code>cayenne.server.object_retain_strategy</code> defines fetched objects retain strategy for ObjectContexts. When weak or soft strategy is used, objects retained by ObjectContext that have no local changes can potentially get garbage collected when JVM feels like doing it.</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Possible values: weak, soft, hard</p> </li> 
        <li> <p>Default value: weak</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.server.max_id_qualifier_size</code> defines a maximum number of ID qualifiers in the WHERE clause of queries that are generated for paginated queries and for DISJOINT_BY_ID prefetch processing. This is needed to avoid hitting WHERE clause size limitations and memory usage efficiency.</p> 
+    <li> <p><code>cayenne.server.max_id_qualifier_size</code> defines a maximum number of ID qualifiers in the WHERE clause of queries that are generated for paginated queries and for DISJOINT_BY_ID prefetch processing. This is needed to avoid hitting WHERE clause size limitations and memory usage efficiency.</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Possible values: any positive int</p> </li> 
        <li> <p>Default value: 10000</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.server.external_tx</code> defines whether runtime should use external transactions.</p> 
+    <li> <p><code>cayenne.server.external_tx</code> defines whether runtime should use external transactions.</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Possible values: true, false</p> </li> 
        <li> <p>Default value: false</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.rop.service_url</code> defines the URL of the ROP server</p> 
+    <li> <p><code>cayenne.rop.service_url</code> defines the URL of the ROP server</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Default value: none</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.rop.service_username</code> defines the user name for an ROP client to login to an ROP server.</p> 
+    <li> <p><code>cayenne.rop.service_username</code> defines the user name for an ROP client to login to an ROP server.</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Default value: none</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.rop.service_password</code> defines the password for an ROP client to login to an ROP server.</p> 
+    <li> <p><code>cayenne.rop.service_password</code> defines the password for an ROP client to login to an ROP server.</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Default value: none</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.rop.shared_session_name</code> defines the name of the shared session that an ROP client wants to join on an ROP server. If omitted, a dedicated session is created.</p> 
+    <li> <p><code>cayenne.rop.shared_session_name</code> defines the name of the shared session that an ROP client wants to join on an ROP server. If omitted, a dedicated session is created.</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Default value: none</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.rop.service.timeout</code> a value in milliseconds for the ROP client-server connection read operation timeout</p> 
+    <li> <p><code>cayenne.rop.service.timeout</code> a value in milliseconds for the ROP client-server connection read operation timeout</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Possible values: any positive long value</p> </li> 
        <li> <p>Default value: none</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.rop.channel_events</code> defines whether client-side DataChannel should dispatch events to child ObjectContexts. If set to true, ObjectContexts will receive commit events and merge changes committed by peer contexts that passed through the common client DataChannel.</p> 
+    <li> <p><code>cayenne.rop.channel_events</code> defines whether client-side DataChannel should dispatch events to child ObjectContexts. If set to true, ObjectContexts will receive commit events and merge changes committed by peer contexts that passed through the common client DataChannel.</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Possible values: true, false</p> </li> 
        <li> <p>Default value: false</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.rop.context_change_events</code> defines whether object property changes in the client context result in firing events. Client UI components can listen to these events and update the UI. Disabled by default.</p> 
+    <li> <p><code>cayenne.rop.context_change_events</code> defines whether object property changes in the client context result in firing events. Client UI components can listen to these events and update the UI. Disabled by default.</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Possible values: true, false</p> </li> 
        <li> <p>Default value: false</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.rop.context_lifecycle_events</code> defines whether object commit and rollback operations in the client context result in firing events. Client UI components can listen to these events and update the UI. Disabled by default.</p> 
+    <li> <p><code>cayenne.rop.context_lifecycle_events</code> defines whether object commit and rollback operations in the client context result in firing events. Client UI components can listen to these events and update the UI. Disabled by default.</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Possible values: true,false</p> </li> 
        <li> <p>Default value: false</p> </li> 
       </ul> 
      </div> </li> 
-    <li> <p><code class="">cayenne.server.rop_event_bridge_factory</code> defines the name of the <code class="">org.apache.cayenne.event.EventBridgeFactory</code> that is passed from the ROP server to the client. I.e. server DI would provide a name of the factory, passing this name to the client via the wire. The client would instantiate it to receive events from the server. Note that this property is stored in <code class="">cayenne.server.rop_event_bridge_properties</code> map, not in the main <code class="">cayenne.properties</code>.</p> 
+    <li> <p><code>cayenne.server.rop_event_bridge_factory</code> defines the name of the <code>org.apache.cayenne.event.EventBridgeFactory</code> that is passed from the ROP server to the client. I.e. server DI would provide a name of the factory, passing this name to the client via the wire. The client would instantiate it to receive events from the server. Note that this property is stored in <code>cayenne.server.rop_event_bridge_properties</code> map, not in the main <code>cayenne.properties</code>.</p> 
      <div class="ulist"> 
       <ul> 
        <li> <p>Default value: false</p> </li> 
@@ -5433,7 +5433,7 @@ public class MyEntity extends _MyEntity {
  <h2 id="appendix-b-service-collections"><a class="anchor" href="#appendix-b-service-collections"></a>7. Appendix B. Service Collections</h2> 
  <div class="sectionbody"> 
   <div class="paragraph"> 
-   <p>Note that the collection keys below are defined as constants in <code class="">org.apache.cayenne.configuration.Constants</code> interface.</p> 
+   <p>Note that the collection keys below are defined as constants in <code>org.apache.cayenne.configuration.Constants</code> interface.</p> 
   </div> 
   <table id="serviceCollections" class="tableblock frame-all grid-all spread table table-bordered"> 
    <caption class="title">
@@ -5453,44 +5453,44 @@ public class MyEntity extends _MyEntity {
    </thead> 
    <tbody> 
     <tr> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code class="">cayenne.properties</code></p></td> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code class="">Map&lt;String,String&gt;</code></p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>cayenne.properties</code></p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>Map&lt;String,String&gt;</code></p></td> 
      <td class="tableblock halign-left valign-middle"><p class="tableblock">Properties used by built-in Cayenne services. The keys in this map are the property names from the table in Appendix A. Separate copies of this map exist on the server and ROP client.</p></td> 
     </tr> 
     <tr> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code class="">cayenne.server.adapter_detectors</code></p></td> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code class="">List&lt;DbAdapterDetector&gt;</code></p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>cayenne.server.adapter_detectors</code></p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>List&lt;DbAdapterDetector&gt;</code></p></td> 
      <td class="tableblock halign-left valign-middle"><p class="tableblock">Contains objects that can discover the type of current database and install the correct DbAdapter in runtime.</p></td> 
     </tr> 
     <tr> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code class="">cayenne.server.domain_filters</code></p></td> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code class="">List&lt;DataChannelFilter&gt;</code></p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>cayenne.server.domain_filters</code></p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>List&lt;DataChannelFilter&gt;</code></p></td> 
      <td class="tableblock halign-left valign-middle"><p class="tableblock">Stores DataDomain filters.</p></td> 
     </tr> 
     <tr> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code class="">cayenne.server.project_locations</code></p></td> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code class="">List&lt;String&gt;</code></p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>cayenne.server.project_locations</code></p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>List&lt;String&gt;</code></p></td> 
      <td class="tableblock halign-left valign-middle"><p class="tableblock">Stores locations of the one of more project configuration files.</p></td> 
     </tr> 
     <tr> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code class="">cayenne.server.default_types</code></p></td> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code class="">List&lt;ExtendedType&gt;</code></p></td> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock">Stores default adapter-agnostic ExtendedTypes. Default ExtendedTypes can be overridden / extended by DB-specific DbAdapters as well as by user-provided types configured in another colltecion (see <code class="">"cayenne.server.user_types"</code>).</p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>cayenne.server.default_types</code></p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>List&lt;ExtendedType&gt;</code></p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock">Stores default adapter-agnostic ExtendedTypes. Default ExtendedTypes can be overridden / extended by DB-specific DbAdapters as well as by user-provided types configured in another colltecion (see <code>"cayenne.server.user_types"</code>).</p></td> 
     </tr> 
     <tr> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code class="">cayenne.server.user_types</code></p></td> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code class="">List&lt;ExtendedType&gt;</code></p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>cayenne.server.user_types</code></p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>List&lt;ExtendedType&gt;</code></p></td> 
      <td class="tableblock halign-left valign-middle"><p class="tableblock">Stores a user-provided ExtendedTypes. This collection will be merged into a full list of ExtendedTypes and would override any ExtendedTypes defined in a default list, or by a DbAdapter.</p></td> 
     </tr> 
     <tr> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code class="">cayenne.server.type_factories</code></p></td> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code class="">List&lt;ExtendedTypeFactory&gt;</code></p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>cayenne.server.type_factories</code></p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>List&lt;ExtendedTypeFactory&gt;</code></p></td> 
      <td class="tableblock halign-left valign-middle"><p class="tableblock">Stores default and user-provided ExtendedTypeFactories. ExtendedTypeFactory allows to define ExtendedTypes dynamically for the whole group of Java classes. E.g. Cayenne supplies a factory to map all Enums regardless of their type.</p></td> 
     </tr> 
     <tr> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code class="">cayenne.server.rop_event_bridge_properties</code></p></td> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code class="">Map&lt;String, String&gt;</code></p></td> 
-     <td class="tableblock halign-left valign-middle"><p class="tableblock">Stores event bridge properties passed to the ROP client on bootstrap. This means that the map is configured by server DI, and passed to the client via the wire. The properties in this map are specific to EventBridgeFactory implementation (e.g JMS or XMPP connection prameters). One common property is <code class="">"cayenne.server.rop_event_bridge_factory"</code> that defines the type of the factory.</p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>cayenne.server.rop_event_bridge_properties</code></p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock"><code>Map&lt;String, String&gt;</code></p></td> 
+     <td class="tableblock halign-left valign-middle"><p class="tableblock">Stores event bridge properties passed to the ROP client on bootstrap. This means that the map is configured by server DI, and passed to the client via the wire. The properties in this map are specific to EventBridgeFactory implementation (e.g JMS or XMPP connection prameters). One common property is <code>"cayenne.server.rop_event_bridge_factory"</code> that defines the type of the factory.</p></td> 
     </tr> 
    </tbody> 
   </table> 
@@ -5501,7 +5501,7 @@ public class MyEntity extends _MyEntity {
  <div class="sectionbody"> 
   <div class="listingblock"> 
    <div class="content"> 
-    <pre class="highlight"><code class="">TOKENS
+    <pre class="highlight"><code>TOKENS
 &lt;DEFAULT&gt; SKIP : {
 " "
 | "\t"

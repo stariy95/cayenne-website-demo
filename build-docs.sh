@@ -50,7 +50,7 @@ function checkAndCreateDir() {
 function clearDir() {
     if [ -d "$1" ]; then
         echo "Clearing dir: $1"
-        rm -rf "$1/*"
+        rm -rf "$1/"
     fi
 }
 
@@ -83,7 +83,7 @@ ASCII_DOC_DIR="$BASE_DIR/src/main/site/content/docs/$MAJOR_VERSION"     # Asciid
 CAYENNE_TMP_DIR="$BASE_DIR/target/cayenne-tmp"                          # tmp directory to checkout Cayenne
 
 # prepare all directories
-clearDir          "$ASCII_DOC_DIR"
+#clearDir          "$ASCII_DOC_DIR"
 clearDir          "$CAYENNE_TMP_DIR"
 checkAndCreateDir "$ASCII_DOC_DIR"
 checkAndCreateDir "$JAVA_DOC_DIR"
@@ -97,7 +97,7 @@ git checkout "$GIT_TAG"
 
 # build it
 echo "Running Maven build... it can take a while..."
-mvn install -q -DskipTests > /dev/null # 2>&1
+mvn install -q -DskipTests > /dev/null 2>&1
 echo "Maven build complete"
 
 # copy JavaDoc
