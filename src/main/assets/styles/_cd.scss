@@ -237,30 +237,45 @@
 
 			.table {
 				table-layout: fixed;
-				width: 100%;
 
 				td {
 					overflow: scroll;
-					padding: 0.75rem;
+					padding: $table-cell-padding-sm;
 				}
 
+				.halign-center {
+					text-align:center;
+				}
+
+				.valign-middle {
+					vertical-align: middle;
+				}
+			}
+
+			.admonitionblock {
+				td {
+					padding: $table-cell-padding;
+				}
+				// Icon in admonition block
 				td.icon {
-					width: 10%;
 					text-align: center;
+					border-right: $table-border-width solid $table-border-color;
 					i {
 						vertical-align: middle;
 					}
 				}
-
-				p {
-					//word-break: break-all;
-					//word-wrap: break-word;
-				}
 			}
 
 			code {
-				word-break: break-all;
-				word-wrap: break-word;
+				@include media-breakpoint-down(md) {
+					word-break: break-all;
+					word-wrap: break-word;
+				}
+			}
+
+			code.hljs {
+				word-break: normal;
+				word-wrap: normal;
 			}
 
 			.icon {
